@@ -8,7 +8,7 @@
         Try
             ' 1. Creamos el objeto Voluntario con los datos de los cuadros de texto
             ' (Asumo que tu clase Voluntario tiene un constructor que recibe el DNI)
-            Dim nuevoVoluntario As New Voluntario(DNItext.Text)
+            Dim nuevoVoluntario As New Centro_logistico(DNItext.Text)
             nuevoVoluntario.Nombre = Nombretext.Text
             nuevoVoluntario.especialidad = Especialidadtext.Text
             nuevoVoluntario.centro = Centrotext.Text ' O el ID del centro

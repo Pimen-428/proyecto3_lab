@@ -24,7 +24,6 @@ Partial Class menu
     Private Sub InitializeComponent()
         labelmenu = New Label()
         voluntarios_boton = New Button()
-        CheckedListBox1 = New CheckedListBox()
         SuspendLayout()
         ' 
         ' labelmenu
@@ -46,20 +45,11 @@ Partial Class menu
         voluntarios_boton.Text = "ver voluntarios"
         voluntarios_boton.UseVisualStyleBackColor = True
         ' 
-        ' CheckedListBox1
-        ' 
-        CheckedListBox1.FormattingEnabled = True
-        CheckedListBox1.Location = New Point(20, 25)
-        CheckedListBox1.Name = "CheckedListBox1"
-        CheckedListBox1.Size = New Size(150, 400)
-        CheckedListBox1.TabIndex = 2
-        ' 
         ' menu
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
-        Controls.Add(CheckedListBox1)
         Controls.Add(voluntarios_boton)
         Controls.Add(labelmenu)
         Name = "menu"
@@ -70,5 +60,4 @@ Partial Class menu
 
     Friend WithEvents labelmenu As Label
     Friend WithEvents voluntarios_boton As Button
-    Friend WithEvents CheckedListBox1 As CheckedListBox
 End Class
