@@ -32,10 +32,10 @@
     End Function
 
     Public Function Actualizar(centro_logistico As Centro_logistico) As Integer
-        Return AgenteBD.ObtenerAgente.Modificar("UPDATE voluntario SET Nombre='" & centro_logistico.nombre_centro & "', Ciudad='" & centro_logistico.ciudad_centro & "', CapacidadTM='" & centro_logistico.capacidad & "' WHERE idCentro='" & centro_logistico.id & "';")
+        Return AgenteBD.ObtenerAgente.Modificar("UPDATE centro_logistico SET Nombre='" & centro_logistico.nombre_centro & "', Ciudad='" & centro_logistico.ciudad_centro & "', CapacidadTM='" & centro_logistico.capacidad & "' WHERE idCentro='" & centro_logistico.id & "';")
     End Function
 
     Public Function Borrar(centro_logistico As Centro_logistico) As Integer
-        Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM voluntario WHERE idCentro='" & centro_logistico.id & "';")
+        Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM centro_logistico WHERE idCentro='" & centro_logistico.id & "';")
     End Function
 End Class
