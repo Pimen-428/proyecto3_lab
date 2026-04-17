@@ -14,7 +14,6 @@
             c.capacidad = aux(4)
             Me.Centro.Add(c)
         Next
-        Throw New NotImplementedException()
     End Sub
 
     Public Sub Leer(ByRef centro_logistico As Centro_logistico)

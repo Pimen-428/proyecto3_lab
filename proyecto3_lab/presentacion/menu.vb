@@ -10,10 +10,6 @@
         vistanueva.BringToFront()
     End Sub
 
-    Private Sub CentrosLogisticosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CentrosLogisticosToolStripMenuItem.Click
-
-    End Sub
-
     Private Sub MenuPrincipalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MenuPrincipalToolStripMenuItem.Click
         cambiarvista(New VentanaInicio())
     End Sub

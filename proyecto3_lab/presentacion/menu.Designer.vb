@@ -60,7 +60,7 @@ Partial Class menu
         ' ToolStripTextBox1
         ' 
         ToolStripTextBox1.Name = "ToolStripTextBox1"
-        ToolStripTextBox1.Size = New Size(224, 26)
+        ToolStripTextBox1.Size = New Size(189, 26)
         ToolStripTextBox1.Text = "ver voluntarios"
         ' 
         ' CentrosLogisticosToolStripMenuItem

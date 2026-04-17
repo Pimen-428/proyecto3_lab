@@ -22,38 +22,41 @@ Partial Class Voluntarios_pag
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        ListBox1 = New ListBox()
+        lista = New ListBox()
         StatusStrip1 = New StatusStrip()
         añadir = New ToolStripStatusLabel()
         editar = New ToolStripStatusLabel()
         buscar = New ToolStripStatusLabel()
+        Panel_voluntarios = New Panel()
+        ToolStripStatusLabel1 = New ToolStripStatusLabel()
         StatusStrip1.SuspendLayout()
         SuspendLayout()
         ' 
-        ' ListBox1
+        ' lista
         ' 
-        ListBox1.FormattingEnabled = True
-        ListBox1.Location = New Point(31, 89)
-        ListBox1.Name = "ListBox1"
-        ListBox1.Size = New Size(150, 284)
-        ListBox1.TabIndex = 0
+        lista.Dock = DockStyle.Left
+        lista.FormattingEnabled = True
+        lista.Location = New Point(0, 0)
+        lista.Name = "lista"
+        lista.Size = New Size(150, 479)
+        lista.TabIndex = 0
         ' 
         ' StatusStrip1
         ' 
         StatusStrip1.BackColor = SystemColors.GradientActiveCaption
         StatusStrip1.ImageScalingSize = New Size(20, 20)
-        StatusStrip1.Items.AddRange(New ToolStripItem() {añadir, editar, buscar})
-        StatusStrip1.Location = New Point(0, 453)
+        StatusStrip1.Items.AddRange(New ToolStripItem() {añadir, editar, buscar, ToolStripStatusLabel1})
+        StatusStrip1.Location = New Point(150, 453)
         StatusStrip1.Name = "StatusStrip1"
-        StatusStrip1.Size = New Size(755, 26)
+        StatusStrip1.Size = New Size(605, 26)
         StatusStrip1.TabIndex = 1
         StatusStrip1.Text = "StatusStrip1"
         ' 
         ' añadir
         ' 
         añadir.Name = "añadir"
-        añadir.Size = New Size(122, 20)
-        añadir.Text = "añadir voluntario"
+        añadir.Size = New Size(125, 20)
+        añadir.Text = "Añadir Voluntario"
         ' 
         ' editar
         ' 
@@ -64,15 +67,30 @@ Partial Class Voluntarios_pag
         ' buscar
         ' 
         buscar.Name = "buscar"
-        buscar.Size = New Size(123, 20)
-        buscar.Text = "buscar voluntario"
+        buscar.Size = New Size(124, 20)
+        buscar.Text = "buscar Voluntario"
+        ' 
+        ' Panel_voluntarios
+        ' 
+        Panel_voluntarios.Dock = DockStyle.Fill
+        Panel_voluntarios.Location = New Point(150, 0)
+        Panel_voluntarios.Name = "Panel_voluntarios"
+        Panel_voluntarios.Size = New Size(605, 453)
+        Panel_voluntarios.TabIndex = 11
+        ' 
+        ' ToolStripStatusLabel1
+        ' 
+        ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        ToolStripStatusLabel1.Size = New Size(135, 20)
+        ToolStripStatusLabel1.Text = "Eliminar Voluntario"
         ' 
         ' Voluntarios_pag
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        Controls.Add(Panel_voluntarios)
         Controls.Add(StatusStrip1)
-        Controls.Add(ListBox1)
+        Controls.Add(lista)
         Name = "Voluntarios_pag"
         Size = New Size(755, 479)
         StatusStrip1.ResumeLayout(False)
@@ -81,10 +99,12 @@ Partial Class Voluntarios_pag
         PerformLayout()
     End Sub
 
-    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents lista As ListBox
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents añadir As ToolStripStatusLabel
     Friend WithEvents buscar As ToolStripStatusLabel
     Friend WithEvents editar As ToolStripStatusLabel
+    Friend WithEvents Panel_voluntarios As Panel
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
 
 End Class
