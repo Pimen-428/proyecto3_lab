@@ -24,8 +24,9 @@ Partial Class Voluntarios_pag
     Private Sub InitializeComponent()
         ListBox1 = New ListBox()
         StatusStrip1 = New StatusStrip()
-        ToolStripStatusLabel1 = New ToolStripStatusLabel()
-        ToolStripStatusLabel2 = New ToolStripStatusLabel()
+        añadir = New ToolStripStatusLabel()
+        editar = New ToolStripStatusLabel()
+        buscar = New ToolStripStatusLabel()
         StatusStrip1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -39,26 +40,32 @@ Partial Class Voluntarios_pag
         ' 
         ' StatusStrip1
         ' 
-        StatusStrip1.BackColor = SystemColors.GrayText
+        StatusStrip1.BackColor = SystemColors.GradientActiveCaption
         StatusStrip1.ImageScalingSize = New Size(20, 20)
-        StatusStrip1.Items.AddRange(New ToolStripItem() {ToolStripStatusLabel1, ToolStripStatusLabel2})
+        StatusStrip1.Items.AddRange(New ToolStripItem() {añadir, editar, buscar})
         StatusStrip1.Location = New Point(0, 453)
         StatusStrip1.Name = "StatusStrip1"
         StatusStrip1.Size = New Size(755, 26)
         StatusStrip1.TabIndex = 1
         StatusStrip1.Text = "StatusStrip1"
         ' 
-        ' ToolStripStatusLabel1
+        ' añadir
         ' 
-        ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        ToolStripStatusLabel1.Size = New Size(153, 20)
-        ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
+        añadir.Name = "añadir"
+        añadir.Size = New Size(122, 20)
+        añadir.Text = "añadir voluntario"
         ' 
-        ' ToolStripStatusLabel2
+        ' editar
         ' 
-        ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        ToolStripStatusLabel2.Size = New Size(153, 20)
-        ToolStripStatusLabel2.Text = "ToolStripStatusLabel2"
+        editar.Name = "editar"
+        editar.Size = New Size(120, 20)
+        editar.Text = "Editar Voluntario"
+        ' 
+        ' buscar
+        ' 
+        buscar.Name = "buscar"
+        buscar.Size = New Size(123, 20)
+        buscar.Text = "buscar voluntario"
         ' 
         ' Voluntarios_pag
         ' 
@@ -76,7 +83,8 @@ Partial Class Voluntarios_pag
 
     Friend WithEvents ListBox1 As ListBox
     Friend WithEvents StatusStrip1 As StatusStrip
-    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
+    Friend WithEvents añadir As ToolStripStatusLabel
+    Friend WithEvents buscar As ToolStripStatusLabel
+    Friend WithEvents editar As ToolStripStatusLabel
 
 End Class

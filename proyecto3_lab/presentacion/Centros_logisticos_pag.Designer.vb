@@ -22,8 +22,15 @@ Partial Class Centros_logisticos_pag
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container()
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        SuspendLayout()
+        ' 
+        ' Centros_logisticos_pag
+        ' 
+        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleMode = AutoScaleMode.Font
+        Name = "Centros_logisticos_pag"
+        Size = New Size(569, 406)
+        ResumeLayout(False)
     End Sub
 
 End Class
