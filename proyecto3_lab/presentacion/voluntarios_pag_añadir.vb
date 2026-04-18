@@ -2,7 +2,7 @@
     Private c As Centro_logistico
     Private Sub Añadir_boton_Click(sender As Object, e As EventArgs) Handles Añadir_boton.Click
         Dim pAux As Voluntario
-        If TextBoxDni_añadir.Text = "" Or TextBoxNombre_añadir.Text = "" Or ComboBox_añadir.Text = "" Then
+        If TextBoxDni_añadir.Text = "" Or TextBoxNombre_añadir.Text = "" Or ComboBox_añadir.Text = "" Or TextBoxEspecialidad_añadir.Text = "" Then
             MessageBox.Show("Faltan datos por rellenar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If

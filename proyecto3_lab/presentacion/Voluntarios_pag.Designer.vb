@@ -26,9 +26,7 @@ Partial Class Voluntarios_pag
         StatusStrip1 = New StatusStrip()
         añadir = New ToolStripStatusLabel()
         editar = New ToolStripStatusLabel()
-        buscar = New ToolStripStatusLabel()
         Panel_voluntarios = New Panel()
-        ToolStripStatusLabel1 = New ToolStripStatusLabel()
         StatusStrip1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -45,7 +43,7 @@ Partial Class Voluntarios_pag
         ' 
         StatusStrip1.BackColor = SystemColors.GradientActiveCaption
         StatusStrip1.ImageScalingSize = New Size(20, 20)
-        StatusStrip1.Items.AddRange(New ToolStripItem() {añadir, editar, buscar, ToolStripStatusLabel1})
+        StatusStrip1.Items.AddRange(New ToolStripItem() {añadir, editar})
         StatusStrip1.Location = New Point(150, 453)
         StatusStrip1.Name = "StatusStrip1"
         StatusStrip1.Size = New Size(605, 26)
@@ -61,14 +59,8 @@ Partial Class Voluntarios_pag
         ' editar
         ' 
         editar.Name = "editar"
-        editar.Size = New Size(120, 20)
-        editar.Text = "Editar Voluntario"
-        ' 
-        ' buscar
-        ' 
-        buscar.Name = "buscar"
-        buscar.Size = New Size(124, 20)
-        buscar.Text = "buscar Voluntario"
+        editar.Size = New Size(126, 20)
+        editar.Text = "Editar Voluntarios"
         ' 
         ' Panel_voluntarios
         ' 
@@ -77,12 +69,6 @@ Partial Class Voluntarios_pag
         Panel_voluntarios.Name = "Panel_voluntarios"
         Panel_voluntarios.Size = New Size(605, 453)
         Panel_voluntarios.TabIndex = 11
-        ' 
-        ' ToolStripStatusLabel1
-        ' 
-        ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        ToolStripStatusLabel1.Size = New Size(135, 20)
-        ToolStripStatusLabel1.Text = "Eliminar Voluntario"
         ' 
         ' Voluntarios_pag
         ' 
@@ -102,9 +88,7 @@ Partial Class Voluntarios_pag
     Friend WithEvents lista As ListBox
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents añadir As ToolStripStatusLabel
-    Friend WithEvents buscar As ToolStripStatusLabel
     Friend WithEvents editar As ToolStripStatusLabel
     Friend WithEvents Panel_voluntarios As Panel
-    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
 
 End Class
