@@ -27,7 +27,9 @@
     End Sub
 
     Public Function Insertar(centro_logistico As Centro_logistico) As Integer
-        Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO centro_logistico (Nombre, Ciudad, CapacidadTM) " & "VALUES ('" & centro_logistico.nombre_centro & "', '" & centro_logistico.ciudad_centro & "', " & centro_logistico.capacidad & ");")
+        Dim num As Double = Val(centro_logistico.capacidad)
+        Dim capacidadFormateada As String = num.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)
+        Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO centro_logistico (Nombre, Ciudad, CapacidadTM) " & "VALUES ('" & centro_logistico.nombre_centro & "', '" & centro_logistico.ciudad_centro & "', " & capacidadFormateada & ");")
     End Function
 
     Public Function Actualizar(centro_logistico As Centro_logistico) As Integer

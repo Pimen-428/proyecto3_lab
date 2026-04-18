@@ -17,4 +17,8 @@
     Private Sub ToolStripTextBox1_Click(sender As Object, e As EventArgs) Handles ToolStripTextBox1.Click
         cambiarvista(New Voluntarios_pag())
     End Sub
+
+    Private Sub CentrosLogisticosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CentrosLogisticosToolStripMenuItem.Click
+        cambiarvista(New CentroLogistico_pag())
+    End Sub
 End Class

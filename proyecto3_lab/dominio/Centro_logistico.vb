@@ -3,7 +3,7 @@
     Public Property nombre_centro As String
     Public Property ciudad_centro As String
     'mirar esta por que en la base de datos es decimal(10,2)
-    Public Property capacidad As Integer
+    Public Property capacidad As String
     Public ReadOnly Property CentroDAO As Centro_logisticoDAO
     Public Sub New()
         Me.CentroDAO = New Centro_logisticoDAO

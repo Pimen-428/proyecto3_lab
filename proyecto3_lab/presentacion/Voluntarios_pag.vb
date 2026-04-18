@@ -5,6 +5,7 @@
     Private Sub Voluntarios_pag_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         refrescarlistbox()
         Me.añadir_boolean = False
+        Me.editar_boolean = False
     End Sub
     Public Sub refrescarlistbox()
         Dim pAux As Voluntario
