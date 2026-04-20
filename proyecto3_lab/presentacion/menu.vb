@@ -21,4 +21,12 @@
     Private Sub CentrosLogisticosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CentrosLogisticosToolStripMenuItem.Click
         cambiarvista(New CentroLogistico_pag())
     End Sub
+
+    Private Sub VoluntariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VoluntariosToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ZonasDeConflictoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ZonasDeConflictoToolStripMenuItem.Click
+
+    End Sub
 End Class
