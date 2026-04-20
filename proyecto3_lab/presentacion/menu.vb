@@ -22,11 +22,7 @@
         cambiarvista(New CentroLogistico_pag())
     End Sub
 
-    Private Sub VoluntariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VoluntariosToolStripMenuItem.Click
-
-    End Sub
-
     Private Sub ZonasDeConflictoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ZonasDeConflictoToolStripMenuItem.Click
-
+        cambiarvista(New Zonas_pag())
     End Sub
 End Class

@@ -23,62 +23,74 @@ Partial Class Zonas_pag
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Lista_Zonas = New ListBox()
-        Añadir = New Button()
-        Editar = New Button()
         Panel_Zonas = New Panel()
-        Panel_Zonas.SuspendLayout()
+        StatusStrip1 = New StatusStrip()
+        AÑadirBoton = New ToolStripStatusLabel()
+        EditarBoton = New ToolStripStatusLabel()
+        StatusStrip1.SuspendLayout()
         SuspendLayout()
         ' 
         ' Lista_Zonas
         ' 
+        Lista_Zonas.Dock = DockStyle.Left
         Lista_Zonas.FormattingEnabled = True
-        Lista_Zonas.Location = New Point(4, 7)
+        Lista_Zonas.Location = New Point(0, 0)
+        Lista_Zonas.Margin = New Padding(2)
         Lista_Zonas.Name = "Lista_Zonas"
-        Lista_Zonas.Size = New Size(266, 1079)
+        Lista_Zonas.Size = New Size(214, 878)
         Lista_Zonas.TabIndex = 0
-        ' 
-        ' Añadir
-        ' 
-        Añadir.Location = New Point(824, 1005)
-        Añadir.Name = "Añadir"
-        Añadir.Size = New Size(112, 34)
-        Añadir.TabIndex = 1
-        Añadir.Text = "Añadir"
-        Añadir.UseVisualStyleBackColor = True
-        ' 
-        ' Editar
-        ' 
-        Editar.Location = New Point(996, 1006)
-        Editar.Name = "Editar"
-        Editar.Size = New Size(112, 34)
-        Editar.TabIndex = 2
-        Editar.Text = "Editar"
-        Editar.UseVisualStyleBackColor = True
         ' 
         ' Panel_Zonas
         ' 
-        Panel_Zonas.Controls.Add(Editar)
-        Panel_Zonas.Controls.Add(Añadir)
-        Panel_Zonas.Location = New Point(277, 27)
+        Panel_Zonas.Dock = DockStyle.Fill
+        Panel_Zonas.Location = New Point(214, 0)
+        Panel_Zonas.Margin = New Padding(2)
         Panel_Zonas.Name = "Panel_Zonas"
-        Panel_Zonas.Size = New Size(1302, 1055)
+        Panel_Zonas.Size = New Size(1052, 878)
         Panel_Zonas.TabIndex = 3
+        ' 
+        ' StatusStrip1
+        ' 
+        StatusStrip1.ImageScalingSize = New Size(20, 20)
+        StatusStrip1.Items.AddRange(New ToolStripItem() {AÑadirBoton, EditarBoton})
+        StatusStrip1.Location = New Point(214, 852)
+        StatusStrip1.Name = "StatusStrip1"
+        StatusStrip1.Size = New Size(1052, 26)
+        StatusStrip1.TabIndex = 4
+        StatusStrip1.Text = "StatusStrip1"
+        ' 
+        ' AÑadirBoton
+        ' 
+        AÑadirBoton.Name = "AÑadirBoton"
+        AÑadirBoton.Size = New Size(53, 20)
+        AÑadirBoton.Text = "Añadir"
+        ' 
+        ' EditarBoton
+        ' 
+        EditarBoton.Name = "EditarBoton"
+        EditarBoton.Size = New Size(48, 20)
+        EditarBoton.Text = "Editar"
         ' 
         ' Zonas_pag
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        Controls.Add(StatusStrip1)
         Controls.Add(Panel_Zonas)
         Controls.Add(Lista_Zonas)
+        Margin = New Padding(2)
         Name = "Zonas_pag"
-        Size = New Size(1582, 1098)
-        Panel_Zonas.ResumeLayout(False)
+        Size = New Size(1266, 878)
+        StatusStrip1.ResumeLayout(False)
+        StatusStrip1.PerformLayout()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents Lista_Zonas As ListBox
-    Friend WithEvents Añadir As Button
-    Friend WithEvents Editar As Button
     Friend WithEvents Panel_Zonas As Panel
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents AÑadirBoton As ToolStripStatusLabel
+    Friend WithEvents EditarBoton As ToolStripStatusLabel
 
 End Class

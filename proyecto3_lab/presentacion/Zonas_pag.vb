@@ -25,17 +25,6 @@
         Next
     End Sub
 
-    Private Sub btn_añadir_Click(sender As Object, e As EventArgs) Handles Añadir.Click
-        If añadir_boolean Then
-            Panel_Zonas.Controls.Clear()
-            añadir_boolean = False
-        Else
-            cambiarvista(New zonas_pag_añadir())
-            añadir_boolean = True
-            editar_boolean = False
-        End If
-    End Sub
-
     Private Sub cambiarvista(vistanueva As Control)
         Panel_zonas.Controls.Clear()
         vistanueva.Dock = DockStyle.Fill
@@ -64,7 +53,23 @@
         End If
     End Sub
 
-    Private Sub Panel_Zonas_Paint(sender As Object, e As PaintEventArgs) Handles Panel_Zonas.Paint
+    Private Sub AÑadirBoton_Click(sender As Object, e As EventArgs) Handles AÑadirBoton.Click
+        If añadir_boolean Then
+            Panel_Zonas.Controls.Clear()
+            añadir_boolean = False
+        Else
+            cambiarvista(New zonas_pag_añadir)
+            añadir_boolean = True
+        End If
+    End Sub
 
+    Private Sub EditarBoton_Click(sender As Object, e As EventArgs) Handles EditarBoton.Click
+        If añadir_boolean Then
+            Panel_Zonas.Controls.Clear()
+            editar_boolean = False
+        Else
+            cambiarvista(New zonas_pag_editar)
+            editar_boolean = False
+        End If
     End Sub
 End Class
