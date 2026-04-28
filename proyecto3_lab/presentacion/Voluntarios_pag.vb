@@ -71,7 +71,5 @@
         End If
     End Sub
 
-    Private Sub Panel_voluntarios_Paint(sender As Object, e As PaintEventArgs) Handles Panel_voluntarios.Paint
 
-    End Sub
 End Class

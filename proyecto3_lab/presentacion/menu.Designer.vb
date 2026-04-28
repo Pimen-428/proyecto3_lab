@@ -28,7 +28,7 @@ Partial Class menu
         ToolStripTextBox1 = New ToolStripMenuItem()
         CentrosLogisticosToolStripMenuItem = New ToolStripMenuItem()
         EnviosToolStripMenuItem = New ToolStripMenuItem()
-        ZonasDeConflictoToolStripMenuItem = New ToolStripMenuItem()
+        ZonasDeConflictoToolStripMenuItem1 = New ToolStripMenuItem()
         panel_principal = New Panel()
         MenuStrip1.SuspendLayout()
         SuspendLayout()
@@ -37,7 +37,7 @@ Partial Class menu
         ' 
         MenuStrip1.BackColor = SystemColors.ActiveCaption
         MenuStrip1.ImageScalingSize = New Size(20, 20)
-        MenuStrip1.Items.AddRange(New ToolStripItem() {MenuPrincipalToolStripMenuItem, ToolStripMenuItem1, CentrosLogisticosToolStripMenuItem, EnviosToolStripMenuItem})
+        MenuStrip1.Items.AddRange(New ToolStripItem() {MenuPrincipalToolStripMenuItem, ToolStripMenuItem1, CentrosLogisticosToolStripMenuItem, EnviosToolStripMenuItem, ZonasDeConflictoToolStripMenuItem1})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
         MenuStrip1.Size = New Size(800, 28)
@@ -61,7 +61,7 @@ Partial Class menu
         ' ToolStripTextBox1
         ' 
         ToolStripTextBox1.Name = "ToolStripTextBox1"
-        ToolStripTextBox1.Size = New Size(224, 26)
+        ToolStripTextBox1.Size = New Size(189, 26)
         ToolStripTextBox1.Text = "ver voluntarios"
         ' 
         ' CentrosLogisticosToolStripMenuItem
@@ -72,16 +72,15 @@ Partial Class menu
         ' 
         ' EnviosToolStripMenuItem
         ' 
-        EnviosToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {ZonasDeConflictoToolStripMenuItem})
         EnviosToolStripMenuItem.Name = "EnviosToolStripMenuItem"
         EnviosToolStripMenuItem.Size = New Size(65, 24)
         EnviosToolStripMenuItem.Text = "Envios"
         ' 
-        ' ZonasDeConflictoToolStripMenuItem
+        ' ZonasDeConflictoToolStripMenuItem1
         ' 
-        ZonasDeConflictoToolStripMenuItem.Name = "ZonasDeConflictoToolStripMenuItem"
-        ZonasDeConflictoToolStripMenuItem.Size = New Size(224, 26)
-        ZonasDeConflictoToolStripMenuItem.Text = "Zonas de conflicto"
+        ZonasDeConflictoToolStripMenuItem1.Name = "ZonasDeConflictoToolStripMenuItem1"
+        ZonasDeConflictoToolStripMenuItem1.Size = New Size(148, 24)
+        ZonasDeConflictoToolStripMenuItem1.Text = "Zonas de Conflicto"
         ' 
         ' panel_principal
         ' 
@@ -115,5 +114,5 @@ Partial Class menu
     Friend WithEvents CentrosLogisticosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EnviosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripTextBox1 As ToolStripMenuItem
-    Friend WithEvents ZonasDeConflictoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ZonasDeConflictoToolStripMenuItem1 As ToolStripMenuItem
 End Class
