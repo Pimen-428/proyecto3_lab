@@ -29,11 +29,11 @@
         Return Me.AlmacenamientoDAO.RestarStock(Me.IdCentro, Me.IdSuministro, Me.CantidadStock)
     End Function
 
-    Public Function ObtenerInventarioByCentro() As DataTable
+    Public Function ObtenerInventarioByCentro() As Collection
         Return Me.AlmacenamientoDAO.ObtenerInventarioByCentro(Me.IdCentro)
     End Function
 
-    Public Function ObtenerListadoGlobal() As DataTable
+    Public Function ObtenerListadoGlobal() As Collection
         Return Me.AlmacenamientoDAO.ObtenerListadoGlobal()
     End Function
 

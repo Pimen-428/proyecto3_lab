@@ -29,21 +29,20 @@ Partial Class VentanaInicio
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 30F)
-        Label1.Location = New Point(319, 259)
-        Label1.Margin = New Padding(4, 0, 4, 0)
+        Label1.Location = New Point(413, 246)
         Label1.Name = "Label1"
-        Label1.Size = New Size(431, 81)
+        Label1.Size = New Size(288, 54)
         Label1.TabIndex = 0
         Label1.Text = "menu principal"
         ' 
         ' VentanaInicio
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         Controls.Add(Label1)
-        Margin = New Padding(4, 4, 4, 4)
+        Margin = New Padding(3, 2, 3, 2)
         Name = "VentanaInicio"
-        Size = New Size(1086, 615)
+        Size = New Size(1206, 593)
         ResumeLayout(False)
         PerformLayout()
     End Sub

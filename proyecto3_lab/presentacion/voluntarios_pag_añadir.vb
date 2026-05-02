@@ -49,4 +49,8 @@
         TextBoxNombre_añadir.Text = ""
         ComboBox_añadir.Text = ""
     End Sub
+
+    Private Sub TextBoxDni_añadir_TextChanged(sender As Object, e As EventArgs) Handles TextBoxDni_añadir.TextChanged
+
+    End Sub
 End Class

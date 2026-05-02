@@ -37,74 +37,79 @@ Partial Class voluntarios_pag_editar
         ' ComboBoxDniEditar
         ' 
         ComboBoxDniEditar.FormattingEnabled = True
-        ComboBoxDniEditar.Location = New Point(408, 225)
+        ComboBoxDniEditar.Location = New Point(357, 169)
+        ComboBoxDniEditar.Margin = New Padding(3, 2, 3, 2)
         ComboBoxDniEditar.Name = "ComboBoxDniEditar"
-        ComboBoxDniEditar.Size = New Size(151, 28)
+        ComboBoxDniEditar.Size = New Size(133, 23)
         ComboBoxDniEditar.TabIndex = 0
         ' 
         ' TextBoxEspecialidadEditar
         ' 
-        TextBoxEspecialidadEditar.Location = New Point(136, 225)
+        TextBoxEspecialidadEditar.Location = New Point(119, 169)
+        TextBoxEspecialidadEditar.Margin = New Padding(3, 2, 3, 2)
         TextBoxEspecialidadEditar.Name = "TextBoxEspecialidadEditar"
-        TextBoxEspecialidadEditar.Size = New Size(125, 27)
+        TextBoxEspecialidadEditar.Size = New Size(110, 23)
         TextBoxEspecialidadEditar.TabIndex = 1
         ' 
         ' TextBoxDniEditar
         ' 
-        TextBoxDniEditar.Location = New Point(136, 112)
+        TextBoxDniEditar.Location = New Point(119, 84)
+        TextBoxDniEditar.Margin = New Padding(3, 2, 3, 2)
         TextBoxDniEditar.Name = "TextBoxDniEditar"
-        TextBoxDniEditar.Size = New Size(125, 27)
+        TextBoxDniEditar.Size = New Size(110, 23)
         TextBoxDniEditar.TabIndex = 2
         ' 
         ' TextBoxNombreEditar
         ' 
-        TextBoxNombreEditar.Location = New Point(408, 112)
+        TextBoxNombreEditar.Location = New Point(357, 84)
+        TextBoxNombreEditar.Margin = New Padding(3, 2, 3, 2)
         TextBoxNombreEditar.Name = "TextBoxNombreEditar"
-        TextBoxNombreEditar.Size = New Size(125, 27)
+        TextBoxNombreEditar.Size = New Size(110, 23)
         TextBoxNombreEditar.TabIndex = 3
         ' 
         ' DNIlabel
         ' 
         DNIlabel.AutoSize = True
-        DNIlabel.Location = New Point(136, 72)
+        DNIlabel.Location = New Point(119, 54)
         DNIlabel.Name = "DNIlabel"
-        DNIlabel.Size = New Size(35, 20)
+        DNIlabel.Size = New Size(27, 15)
         DNIlabel.TabIndex = 4
         DNIlabel.Text = "DNI"
         ' 
         ' LabelEspecialidad
         ' 
         LabelEspecialidad.AutoSize = True
-        LabelEspecialidad.Location = New Point(136, 189)
+        LabelEspecialidad.Location = New Point(119, 142)
         LabelEspecialidad.Name = "LabelEspecialidad"
-        LabelEspecialidad.Size = New Size(93, 20)
+        LabelEspecialidad.Size = New Size(72, 15)
         LabelEspecialidad.TabIndex = 5
         LabelEspecialidad.Text = "Especialidad"
         ' 
         ' LabelNombre
         ' 
         LabelNombre.AutoSize = True
-        LabelNombre.Location = New Point(408, 72)
+        LabelNombre.Location = New Point(357, 54)
         LabelNombre.Name = "LabelNombre"
-        LabelNombre.Size = New Size(64, 20)
+        LabelNombre.Size = New Size(51, 15)
         LabelNombre.TabIndex = 6
         LabelNombre.Text = "Nombre"
         ' 
         ' LabelCentro
         ' 
         LabelCentro.AutoSize = True
-        LabelCentro.Location = New Point(408, 189)
+        LabelCentro.Location = New Point(357, 142)
         LabelCentro.Name = "LabelCentro"
-        LabelCentro.Size = New Size(53, 20)
+        LabelCentro.Size = New Size(43, 15)
         LabelCentro.TabIndex = 7
         LabelCentro.Text = "Centro"
         ' 
         ' ButtonEditar
         ' 
         ButtonEditar.BackColor = SystemColors.ButtonShadow
-        ButtonEditar.Location = New Point(123, 323)
+        ButtonEditar.Location = New Point(108, 242)
+        ButtonEditar.Margin = New Padding(3, 2, 3, 2)
         ButtonEditar.Name = "ButtonEditar"
-        ButtonEditar.Size = New Size(94, 29)
+        ButtonEditar.Size = New Size(82, 22)
         ButtonEditar.TabIndex = 8
         ButtonEditar.Text = "Editar Voluntario"
         ButtonEditar.UseVisualStyleBackColor = False
@@ -112,16 +117,17 @@ Partial Class voluntarios_pag_editar
         ' ButtonEliminar
         ' 
         ButtonEliminar.BackColor = SystemColors.MenuHighlight
-        ButtonEliminar.Location = New Point(465, 323)
+        ButtonEliminar.Location = New Point(407, 242)
+        ButtonEliminar.Margin = New Padding(3, 2, 3, 2)
         ButtonEliminar.Name = "ButtonEliminar"
-        ButtonEliminar.Size = New Size(94, 29)
+        ButtonEliminar.Size = New Size(82, 22)
         ButtonEliminar.TabIndex = 10
         ButtonEliminar.Text = "Eliminar"
         ButtonEliminar.UseVisualStyleBackColor = False
         ' 
         ' voluntarios_pag_editar
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         Controls.Add(ButtonEliminar)
         Controls.Add(ButtonEditar)
@@ -133,8 +139,9 @@ Partial Class voluntarios_pag_editar
         Controls.Add(TextBoxDniEditar)
         Controls.Add(TextBoxEspecialidadEditar)
         Controls.Add(ComboBoxDniEditar)
+        Margin = New Padding(3, 2, 3, 2)
         Name = "voluntarios_pag_editar"
-        Size = New Size(672, 425)
+        Size = New Size(588, 319)
         ResumeLayout(False)
         PerformLayout()
     End Sub

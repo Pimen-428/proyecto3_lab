@@ -26,12 +26,4 @@
         Return Me.DetalleRecepcionDAO.Insertar(Me)
     End Function
 
-    Public Function ObtenerPorRecepcion() As DataTable
-        Return Me.DetalleRecepcionDAO.ObtenerPorRecepcion(Me.IdRecepcion)
-    End Function
-
-    Public Function ObtenerTodos() As DataTable
-        Return Me.DetalleRecepcionDAO.ObtenerTodos()
-    End Function
-
 End Class

@@ -34,8 +34,8 @@
                 Exit Sub
             End Try
         Else
-                ' Aquí va el código (o nada) si el usuario pulsa NO
-                MessageBox.Show("Operación cancelada.")
+            ' Aquí va el código (o nada) si el usuario pulsa NO
+            MessageBox.Show("Operación cancelada.")
         End If
         vaciarTextBox()
         Dim formularioPadre As Voluntarios_pag = DirectCast(Me.Parent.Parent, Voluntarios_pag)
@@ -102,5 +102,9 @@
         TextBoxEspecialidadEditar.Text = ""
         TextBoxNombreEditar.Text = ""
         ComboBoxDniEditar.Text = ""
+    End Sub
+
+    Private Sub ComboBoxDniEditar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxDniEditar.SelectedIndexChanged
+
     End Sub
 End Class
