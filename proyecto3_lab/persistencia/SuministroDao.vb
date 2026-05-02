@@ -19,6 +19,7 @@ Public Class Suminstro
               "PesoUnitario = " & ent.PesoUnitario.ToString(System.Globalization.CultureInfo.InvariantCulture) & " " &
               "WHERE idSuministro = " & ent.IdSuministro & ";"
     End Function
+
     Public Function Eliminar(ByVal idSuministro As Integer) As Integer
         Dim sql As String
         sql = "DELETE FROM suministro WHERE idSuministro = " & idSuministro & ";"

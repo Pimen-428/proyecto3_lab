@@ -89,6 +89,5 @@ Public Class AlmacenamientoDAO
             Return AgenteBD.ObtenerAgente.Modificar(sql)
         End Function
 
-    End Class
 
 End Class
