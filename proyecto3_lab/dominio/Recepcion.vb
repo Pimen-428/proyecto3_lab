@@ -1,24 +1,34 @@
-﻿Imports Microsoft.VisualBasic
+﻿Public Class Recepcion
 
-Public Class Recepcion
+    Public Property IdRecepcion As Integer
+    Public Property IdCentro As Integer
+    Public Property DniVoluntario As String
+    Public Property Fecha As Date
+    Public Property Origen As String
 
-    Public Property IdRecepcion As Integer        ' INT
-        Public Property IdCentro As Integer           ' INT (clave foránea → centro)
-        Public Property DniVoluntario As String       ' VARCHAR(15)
-        Public Property Fecha As Date                 ' DATE
-        Public Property Origen As String              ' VARCHAR(100)
+    Public ReadOnly Property RecepcionDAO As RecepcionDAO
 
-        ' Constructor vacío
-        Public Sub New()
-        End Sub
+    ' Constructor vacío
+    Public Sub New()
+        Me.RecepcionDAO = New RecepcionDAO
+    End Sub
 
-        ' Constructor completo
-        Public Sub New(idRecepcion As Integer, idCentro As Integer, dniVoluntario As String, fecha As Date, origen As String)
-            Me.IdRecepcion = idRecepcion
-            Me.IdCentro = idCentro
-            Me.DniVoluntario = dniVoluntario
-            Me.Fecha = fecha
-            Me.Origen = origen
-        End Sub
+    ' Constructor con ID
+    Public Sub New(id As Integer)
+        Me.RecepcionDAO = New RecepcionDAO
+        Me.IdRecepcion = id
+    End Sub
 
-    End Class
+
+    ' Registrar la recepción
+    Public Function InsertarRecepcion() As Integer
+        Return Me.RecepcionDAO.Insertar(Me)
+    End Function
+
+    ' Insertar stock validando capacidad
+    ' Devuelve -1 si supera capacidad
+    Public Function InsertarStock(ByVal kilos As Double) As Integer
+        Return Me.RecepcionDAO.InsertarStock(Me, kilos)
+    End Function
+
+End Class
