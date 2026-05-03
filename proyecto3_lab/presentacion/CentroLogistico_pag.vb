@@ -38,7 +38,7 @@
             Exit Sub
         End Try
         For Each pAux In Me.c.CentroDAO.Centro
-            Me.ListBoxCentros.Items.Add(pAux.id)
+            Me.ListBoxCentros.Items.Add(pAux.id & " - " & pAux.nombre_centro)
         Next
     End Sub
     Private Sub CentroLogistico_pag_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -49,8 +49,10 @@
 
     Private Sub ListBoxCentros_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxCentros.SelectedIndexChanged
         If Not Me.ListBoxCentros.SelectedItem Is Nothing Then
+            Dim texto As String = Me.ListBoxCentros.SelectedItem.ToString()
+            Dim separacion() As String = texto.Split("-")
             ' 1. Creamos el objeto voluntario con el DNI seleccionado
-            Dim seleccionado As New Centro_logistico(Me.ListBoxCentros.SelectedItem.ToString())
+            Dim seleccionado As New Centro_logistico(separacion(0))
 
             Try
                 ' 2. Cargamos sus datos desde la BD

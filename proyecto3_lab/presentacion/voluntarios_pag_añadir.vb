@@ -31,6 +31,7 @@
         refrescarcombobox()
     End Sub
     Private Sub refrescarcombobox()
+        Me.ComboBox_añadir.Items.Clear()
         Dim pAux As Centro_logistico
         Me.c = New Centro_logistico
         Try
@@ -49,4 +50,5 @@
         TextBoxNombre_añadir.Text = ""
         ComboBox_añadir.Text = ""
     End Sub
+
 End Class

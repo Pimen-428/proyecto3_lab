@@ -54,7 +54,7 @@ Public Class Suminstro
 
         If tabla.Rows.Count > 0 Then
             Dim fila As DataRow = tabla.Rows(0)
-            suministro.IdSuministro = fila("idSuministro")
+            suministro.id_suministro = fila("idSuministro")
             suministro.Descripcion = fila("Descripcion")
             suministro.Categoria = fila("Categoria")
             suministro.PesoUnitario = fila("PesoUnitario")

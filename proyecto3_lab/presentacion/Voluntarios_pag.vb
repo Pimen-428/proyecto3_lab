@@ -18,7 +18,7 @@
             Exit Sub
         End Try
         For Each pAux In Me.v.PerDAO.Personas
-            Me.lista.Items.Add(pAux.DNI)
+            Me.lista.Items.Add(pAux.DNI & " - " & pAux.Nombre)
         Next
     End Sub
     Private Sub añadir_Click(sender As Object, e As EventArgs) Handles añadir.Click
@@ -50,7 +50,9 @@
     Private Sub lista_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lista.SelectedIndexChanged
         If Not Me.lista.SelectedItem Is Nothing Then
             ' 1. Creamos el objeto voluntario con el DNI seleccionado
-            Dim seleccionado As New Voluntario(Me.lista.SelectedItem.ToString())
+            Dim texto As String = Me.lista.SelectedItem.ToString()
+            Dim dividido() As String = texto.Split(" -")
+            Dim seleccionado As New Voluntario(dividido(0))
 
             Try
                 ' 2. Cargamos sus datos desde la BD

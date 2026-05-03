@@ -37,5 +37,4 @@
     Public Function BorrarPersona() As Integer
         Return Me.PerDAO.Borrar(Me)
     End Function
-
 End Class
