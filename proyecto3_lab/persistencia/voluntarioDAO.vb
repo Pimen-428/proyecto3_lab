@@ -41,5 +41,17 @@
         Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM voluntario WHERE DNI='" & p.DNI & "';")
     End Function
 
+    Public Function Leerdecentro(voluntario As Voluntario, centro As String)
+        Dim p As Voluntario
+        Dim col, aux As Collection
+        col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM voluntario WHERE idCentro = " & centro & " ORDER BY DNI")
+        For Each aux In col
+            p = New Voluntario(aux(1).ToString)
+            p.Nombre = aux(2).ToString
+            p.especialidad = aux(3).ToString
+            p.centro = aux(4)
+            Me.Personas.Add(p)
+        Next
+    End Function
 End Class
 

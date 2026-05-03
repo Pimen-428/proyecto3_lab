@@ -28,4 +28,5 @@
     Public Function BorrarCentro() As Integer
         Return Me.CentroDAO.Borrar(Me)
     End Function
+
 End Class

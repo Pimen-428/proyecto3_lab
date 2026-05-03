@@ -25,7 +25,12 @@
         cambiarvista(New Zonas_pag())
     End Sub
 
-    Private Sub EnviosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EnviosToolStripMenuItem.Click
+
+    Private Sub RealizarEnvioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RealizarEnvioToolStripMenuItem.Click
         cambiarvista(New envios_pag())
+    End Sub
+
+    Private Sub EditarEstadoEnvioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditarEstadoEnvioToolStripMenuItem.Click
+        cambiarvista(New envios_editar_pag())
     End Sub
 End Class

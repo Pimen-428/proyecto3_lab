@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class CentroLogistico_pag
     Inherits System.Windows.Forms.UserControl
 
     'UserControl reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class CentroLogistico_pag
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         ListBoxCentros = New ListBox()
         PanelCentro = New Panel()
@@ -35,16 +35,18 @@ Partial Class CentroLogistico_pag
         ListBoxCentros.Dock = DockStyle.Left
         ListBoxCentros.FormattingEnabled = True
         ListBoxCentros.Location = New Point(0, 0)
+        ListBoxCentros.Margin = New Padding(3, 2, 3, 2)
         ListBoxCentros.Name = "ListBoxCentros"
-        ListBoxCentros.Size = New Size(150, 386)
+        ListBoxCentros.Size = New Size(131, 492)
         ListBoxCentros.TabIndex = 1
         ' 
         ' PanelCentro
         ' 
         PanelCentro.Dock = DockStyle.Fill
-        PanelCentro.Location = New Point(150, 0)
+        PanelCentro.Location = New Point(131, 0)
+        PanelCentro.Margin = New Padding(3, 2, 3, 2)
         PanelCentro.Name = "PanelCentro"
-        PanelCentro.Size = New Size(381, 386)
+        PanelCentro.Size = New Size(641, 492)
         PanelCentro.TabIndex = 2
         ' 
         ' StatusStrip1
@@ -52,33 +54,35 @@ Partial Class CentroLogistico_pag
         StatusStrip1.BackColor = SystemColors.ActiveCaption
         StatusStrip1.ImageScalingSize = New Size(20, 20)
         StatusStrip1.Items.AddRange(New ToolStripItem() {AñadirCentro_boton, editar_centro_boton})
-        StatusStrip1.Location = New Point(150, 360)
+        StatusStrip1.Location = New Point(131, 470)
         StatusStrip1.Name = "StatusStrip1"
-        StatusStrip1.Size = New Size(381, 26)
+        StatusStrip1.Padding = New Padding(1, 0, 13, 0)
+        StatusStrip1.Size = New Size(641, 22)
         StatusStrip1.TabIndex = 0
         StatusStrip1.Text = "StatusStrip1"
         ' 
         ' AñadirCentro_boton
         ' 
         AñadirCentro_boton.Name = "AñadirCentro_boton"
-        AñadirCentro_boton.Size = New Size(101, 20)
+        AñadirCentro_boton.Size = New Size(81, 17)
         AñadirCentro_boton.Text = "Añadir Centro"
         ' 
         ' editar_centro_boton
         ' 
         editar_centro_boton.Name = "editar_centro_boton"
-        editar_centro_boton.Size = New Size(94, 20)
+        editar_centro_boton.Size = New Size(74, 17)
         editar_centro_boton.Text = "Editar centro"
         ' 
         ' CentroLogistico_pag
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         Controls.Add(StatusStrip1)
         Controls.Add(PanelCentro)
         Controls.Add(ListBoxCentros)
+        Margin = New Padding(3, 2, 3, 2)
         Name = "CentroLogistico_pag"
-        Size = New Size(531, 386)
+        Size = New Size(772, 492)
         StatusStrip1.ResumeLayout(False)
         StatusStrip1.PerformLayout()
         ResumeLayout(False)

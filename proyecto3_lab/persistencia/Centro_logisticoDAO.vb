@@ -1,4 +1,6 @@
-﻿Public Class Centro_logisticoDAO
+﻿Imports Windows.Win32.System
+
+Public Class Centro_logisticoDAO
     Public ReadOnly Property Centro As Collection
     Public Sub New()
         Me.Centro = New Collection

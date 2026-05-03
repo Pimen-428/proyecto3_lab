@@ -73,4 +73,7 @@
         End If
     End Sub
 
+    Private Sub PanelCentro_Paint(sender As Object, e As PaintEventArgs) Handles PanelCentro.Paint
+
+    End Sub
 End Class

@@ -28,6 +28,8 @@ Partial Class menu
         ToolStripTextBox1 = New ToolStripMenuItem()
         CentrosLogisticosToolStripMenuItem = New ToolStripMenuItem()
         EnviosToolStripMenuItem = New ToolStripMenuItem()
+        RealizarEnvioToolStripMenuItem = New ToolStripMenuItem()
+        EditarEstadoEnvioToolStripMenuItem = New ToolStripMenuItem()
         ZonasDeConflictoToolStripMenuItem1 = New ToolStripMenuItem()
         panel_principal = New Panel()
         MenuStrip1.SuspendLayout()
@@ -72,9 +74,22 @@ Partial Class menu
         ' 
         ' EnviosToolStripMenuItem
         ' 
+        EnviosToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {RealizarEnvioToolStripMenuItem, EditarEstadoEnvioToolStripMenuItem})
         EnviosToolStripMenuItem.Name = "EnviosToolStripMenuItem"
         EnviosToolStripMenuItem.Size = New Size(65, 24)
         EnviosToolStripMenuItem.Text = "Envios"
+        ' 
+        ' RealizarEnvioToolStripMenuItem
+        ' 
+        RealizarEnvioToolStripMenuItem.Name = "RealizarEnvioToolStripMenuItem"
+        RealizarEnvioToolStripMenuItem.Size = New Size(224, 26)
+        RealizarEnvioToolStripMenuItem.Text = "Realizar envio"
+        ' 
+        ' EditarEstadoEnvioToolStripMenuItem
+        ' 
+        EditarEstadoEnvioToolStripMenuItem.Name = "EditarEstadoEnvioToolStripMenuItem"
+        EditarEstadoEnvioToolStripMenuItem.Size = New Size(224, 26)
+        EditarEstadoEnvioToolStripMenuItem.Text = "Editar estado envio"
         ' 
         ' ZonasDeConflictoToolStripMenuItem1
         ' 
@@ -115,4 +130,6 @@ Partial Class menu
     Friend WithEvents EnviosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripTextBox1 As ToolStripMenuItem
     Friend WithEvents ZonasDeConflictoToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents RealizarEnvioToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EditarEstadoEnvioToolStripMenuItem As ToolStripMenuItem
 End Class

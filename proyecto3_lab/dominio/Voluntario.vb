@@ -37,4 +37,8 @@
     Public Function BorrarPersona() As Integer
         Return Me.PerDAO.Borrar(Me)
     End Function
+
+    Public Function LeerTodasPersonasdecentro(centro As String)
+        Return Me.PerDAO.Leerdecentro(Me, centro)
+    End Function
 End Class
