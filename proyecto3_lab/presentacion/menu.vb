@@ -21,8 +21,16 @@
     Private Sub CentrosLogisticosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CentrosLogisticosToolStripMenuItem.Click
         cambiarvista(New CentroLogistico_pag())
     End Sub
-
-    Private Sub ZonasDeConflictoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ZonasDeConflictoToolStripMenuItem.Click
+    Private Sub ZonasDeConflictoToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ZonasDeConflictoToolStripMenuItem1.Click
         cambiarvista(New Zonas_pag())
+    End Sub
+
+
+    Private Sub RealizarEnvioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RealizarEnvioToolStripMenuItem.Click
+        cambiarvista(New envios_pag())
+    End Sub
+
+    Private Sub EditarEstadoEnvioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditarEstadoEnvioToolStripMenuItem.Click
+        cambiarvista(New envios_editar_pag())
     End Sub
 End Class

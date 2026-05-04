@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class VentanaInicio
+Partial Class envios_editar_pag
     Inherits System.Windows.Forms.UserControl
 
     'UserControl reemplaza a Dispose para limpiar la lista de componentes.
@@ -22,31 +22,15 @@ Partial Class VentanaInicio
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Label1 = New Label()
         SuspendLayout()
         ' 
-        ' Label1
-        ' 
-        Label1.AutoSize = True
-        Label1.Dock = DockStyle.Fill
-        Label1.Font = New Font("Segoe UI", 30F)
-        Label1.Location = New Point(0, 0)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(355, 67)
-        Label1.TabIndex = 0
-        Label1.Text = "menu principal"
-        ' 
-        ' VentanaInicio
+        ' envios_editar_pag
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        Controls.Add(Label1)
-        Name = "VentanaInicio"
-        Size = New Size(1378, 791)
+        Name = "envios_editar_pag"
+        Size = New Size(697, 458)
         ResumeLayout(False)
-        PerformLayout()
     End Sub
-
-    Friend WithEvents Label1 As Label
 
 End Class

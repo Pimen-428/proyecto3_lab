@@ -28,10 +28,10 @@ Partial Class CentroLogistico_pag_editar
         LabelNombre = New Label()
         LabelCiudad = New Label()
         LabelCantidad = New Label()
-        TextBoxid = New TextBox()
         TextBoxnombre = New TextBox()
         TextBoxCiudad = New TextBox()
         TextBoxAlmacenamiento = New TextBox()
+        ComboBoxId = New ComboBox()
         SuspendLayout()
         ' 
         ' ButtonEditar
@@ -90,13 +90,6 @@ Partial Class CentroLogistico_pag_editar
         LabelCantidad.TabIndex = 5
         LabelCantidad.Text = "Almacenamiento"
         ' 
-        ' TextBoxid
-        ' 
-        TextBoxid.Location = New Point(67, 104)
-        TextBoxid.Name = "TextBoxid"
-        TextBoxid.Size = New Size(125, 27)
-        TextBoxid.TabIndex = 6
-        ' 
         ' TextBoxnombre
         ' 
         TextBoxnombre.Location = New Point(67, 218)
@@ -118,14 +111,22 @@ Partial Class CentroLogistico_pag_editar
         TextBoxAlmacenamiento.Size = New Size(125, 27)
         TextBoxAlmacenamiento.TabIndex = 9
         ' 
+        ' ComboBoxId
+        ' 
+        ComboBoxId.FormattingEnabled = True
+        ComboBoxId.Location = New Point(67, 103)
+        ComboBoxId.Name = "ComboBoxId"
+        ComboBoxId.Size = New Size(151, 28)
+        ComboBoxId.TabIndex = 10
+        ' 
         ' CentroLogistico_pag_editar
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        Controls.Add(ComboBoxId)
         Controls.Add(TextBoxAlmacenamiento)
         Controls.Add(TextBoxCiudad)
         Controls.Add(TextBoxnombre)
-        Controls.Add(TextBoxid)
         Controls.Add(LabelCantidad)
         Controls.Add(LabelCiudad)
         Controls.Add(LabelNombre)
@@ -144,9 +145,9 @@ Partial Class CentroLogistico_pag_editar
     Friend WithEvents LabelNombre As Label
     Friend WithEvents LabelCiudad As Label
     Friend WithEvents LabelCantidad As Label
-    Friend WithEvents TextBoxid As TextBox
     Friend WithEvents TextBoxnombre As TextBox
     Friend WithEvents TextBoxCiudad As TextBox
     Friend WithEvents TextBoxAlmacenamiento As TextBox
+    Friend WithEvents ComboBoxId As ComboBox
 
 End Class

@@ -6,6 +6,12 @@
             Exit Sub
         End If
 
+        Dim capacidadValue As Decimal
+        If Not Decimal.TryParse(TextBoxCapacidad.Text, capacidadValue) Then
+            MessageBox.Show("La capacidad debe ser un valor numérico.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
         pAux = New Centro_logistico()
         pAux.capacidad = TextBoxCapacidad.Text
         pAux.ciudad_centro = TextBoxCiudad.Text

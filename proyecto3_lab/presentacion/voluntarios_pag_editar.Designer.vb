@@ -24,7 +24,6 @@ Partial Class voluntarios_pag_editar
     Private Sub InitializeComponent()
         ComboBoxDniEditar = New ComboBox()
         TextBoxEspecialidadEditar = New TextBox()
-        TextBoxDniEditar = New TextBox()
         TextBoxNombreEditar = New TextBox()
         DNIlabel = New Label()
         LabelEspecialidad = New Label()
@@ -32,6 +31,7 @@ Partial Class voluntarios_pag_editar
         LabelCentro = New Label()
         ButtonEditar = New Button()
         ButtonEliminar = New Button()
+        ComboBoxDni = New ComboBox()
         SuspendLayout()
         ' 
         ' ComboBoxDniEditar
@@ -48,13 +48,6 @@ Partial Class voluntarios_pag_editar
         TextBoxEspecialidadEditar.Name = "TextBoxEspecialidadEditar"
         TextBoxEspecialidadEditar.Size = New Size(125, 27)
         TextBoxEspecialidadEditar.TabIndex = 1
-        ' 
-        ' TextBoxDniEditar
-        ' 
-        TextBoxDniEditar.Location = New Point(136, 112)
-        TextBoxDniEditar.Name = "TextBoxDniEditar"
-        TextBoxDniEditar.Size = New Size(125, 27)
-        TextBoxDniEditar.TabIndex = 2
         ' 
         ' TextBoxNombreEditar
         ' 
@@ -119,10 +112,19 @@ Partial Class voluntarios_pag_editar
         ButtonEliminar.Text = "Eliminar"
         ButtonEliminar.UseVisualStyleBackColor = False
         ' 
+        ' ComboBoxDni
+        ' 
+        ComboBoxDni.FormattingEnabled = True
+        ComboBoxDni.Location = New Point(136, 112)
+        ComboBoxDni.Name = "ComboBoxDni"
+        ComboBoxDni.Size = New Size(151, 28)
+        ComboBoxDni.TabIndex = 11
+        ' 
         ' voluntarios_pag_editar
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
+        Controls.Add(ComboBoxDni)
         Controls.Add(ButtonEliminar)
         Controls.Add(ButtonEditar)
         Controls.Add(LabelCentro)
@@ -130,7 +132,6 @@ Partial Class voluntarios_pag_editar
         Controls.Add(LabelEspecialidad)
         Controls.Add(DNIlabel)
         Controls.Add(TextBoxNombreEditar)
-        Controls.Add(TextBoxDniEditar)
         Controls.Add(TextBoxEspecialidadEditar)
         Controls.Add(ComboBoxDniEditar)
         Name = "voluntarios_pag_editar"
@@ -141,7 +142,6 @@ Partial Class voluntarios_pag_editar
 
     Friend WithEvents ComboBoxDniEditar As ComboBox
     Friend WithEvents TextBoxEspecialidadEditar As TextBox
-    Friend WithEvents TextBoxDniEditar As TextBox
     Friend WithEvents TextBoxNombreEditar As TextBox
     Friend WithEvents DNIlabel As Label
     Friend WithEvents LabelEspecialidad As Label
@@ -149,5 +149,6 @@ Partial Class voluntarios_pag_editar
     Friend WithEvents LabelCentro As Label
     Friend WithEvents ButtonEditar As Button
     Friend WithEvents ButtonEliminar As Button
+    Friend WithEvents ComboBoxDni As ComboBox
 
 End Class

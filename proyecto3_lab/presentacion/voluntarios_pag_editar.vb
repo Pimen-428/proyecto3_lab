@@ -3,14 +3,14 @@
     Private v As Voluntario
     Public Sub voluntarioseleccionado(ByVal v_recibido As Voluntario)
         v = v_recibido
-        TextBoxDniEditar.Text = v.DNI
+        ComboBoxDni.Text = v.DNI
         TextBoxEspecialidadEditar.Text = v.especialidad
         TextBoxNombreEditar.Text = v.Nombre
         ComboBoxDniEditar.Text = v.centro
     End Sub
     Private Sub ButtonEliminar_Click(sender As Object, e As EventArgs) Handles ButtonEliminar.Click
         Dim respuesta As DialogResult
-        If TextBoxDniEditar.Text = "" Then
+        If ComboBoxDni.Text = "" Then
             MessageBox.Show("Tienes que poner el DNI para poder eliminar al voluntario", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
@@ -21,7 +21,7 @@
                                     MessageBoxIcon.Question)
 
         Dim pAux As Voluntario
-        Dim Dni As String = TextBoxDniEditar.Text
+        Dim Dni As String = ComboBoxDni.Text
         pAux = New Voluntario(Dni)
         ' Evaluamos la respuesta
         If respuesta = DialogResult.Yes Then
@@ -34,21 +34,22 @@
                 Exit Sub
             End Try
         Else
-                ' Aquí va el código (o nada) si el usuario pulsa NO
-                MessageBox.Show("Operación cancelada.")
+            ' Aquí va el código (o nada) si el usuario pulsa NO
+            MessageBox.Show("Operación cancelada.")
         End If
         vaciarTextBox()
         Dim formularioPadre As Voluntarios_pag = DirectCast(Me.Parent.Parent, Voluntarios_pag)
         formularioPadre.refrescarlistbox()
+        refrescarcomboboxdni()
     End Sub
 
     Private Sub ButtonEditar_Click(sender As Object, e As EventArgs) Handles ButtonEditar.Click
         Dim respuesta As DialogResult
-        If TextBoxDniEditar.Text = "" Or TextBoxNombreEditar.Text = "" Or ComboBoxDniEditar.Text = "" Or TextBoxEspecialidadEditar.Text = "" Then
+        If ComboBoxDni.Text = "" Or TextBoxNombreEditar.Text = "" Or ComboBoxDniEditar.Text = "" Or TextBoxEspecialidadEditar.Text = "" Then
             MessageBox.Show("Faltan datos por rellenar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
-        Dim Dni As String = TextBoxDniEditar.Text
+        Dim Dni As String = ComboBoxDni.Text
         Dim Centro As Integer = Convert.ToInt16(ComboBoxDniEditar.Text)
         Dim nombre As String = TextBoxNombreEditar.Text
         Dim especialidad As String = TextBoxEspecialidadEditar.Text
@@ -83,8 +84,10 @@
 
     Private Sub voluntarios_pag_editar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         refrescarcombobox()
+        refrescarcomboboxdni()
     End Sub
     Private Sub refrescarcombobox()
+        Me.ComboBoxDniEditar.Items.Clear()
         Dim pAux As Centro_logistico
         Me.c = New Centro_logistico
         Try
@@ -97,10 +100,29 @@
             Me.ComboBoxDniEditar.Items.Add(pAux.id)
         Next
     End Sub
+    Private Sub refrescarcomboboxdni()
+        Me.ComboBoxDni.Items.Clear()
+        Dim pAux As Voluntario
+        Me.v = New Voluntario
+        Try
+            Me.v.LeerTodasPersonas()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End Try
+        For Each pAux In Me.v.PerDAO.Personas
+            Me.ComboBoxDni.Items.Add(pAux.DNI)
+        Next
+    End Sub
+
     Private Sub vaciarTextBox()
-        TextBoxDniEditar.Text = ""
+        ComboBoxDni.Text = ""
         TextBoxEspecialidadEditar.Text = ""
         TextBoxNombreEditar.Text = ""
         ComboBoxDniEditar.Text = ""
+    End Sub
+
+    Private Sub ComboBoxDniEditar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxDniEditar.SelectedIndexChanged
+
     End Sub
 End Class

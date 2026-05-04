@@ -37,81 +37,86 @@ Partial Class voluntarios_pag_añadir
         ' 
         Añadir_boton.BackColor = SystemColors.AppWorkspace
         Añadir_boton.ForeColor = SystemColors.ControlText
-        Añadir_boton.Location = New Point(67, 317)
+        Añadir_boton.Location = New Point(59, 238)
+        Añadir_boton.Margin = New Padding(3, 2, 3, 2)
         Añadir_boton.Name = "Añadir_boton"
-        Añadir_boton.Size = New Size(94, 29)
+        Añadir_boton.Size = New Size(82, 22)
         Añadir_boton.TabIndex = 11
         Añadir_boton.Text = "Añadir"
         Añadir_boton.UseVisualStyleBackColor = False
         ' 
         ' TextBoxEspecialidad_añadir
         ' 
-        TextBoxEspecialidad_añadir.Location = New Point(215, 260)
+        TextBoxEspecialidad_añadir.Location = New Point(188, 195)
+        TextBoxEspecialidad_añadir.Margin = New Padding(3, 2, 3, 2)
         TextBoxEspecialidad_añadir.Name = "TextBoxEspecialidad_añadir"
-        TextBoxEspecialidad_añadir.Size = New Size(125, 27)
+        TextBoxEspecialidad_añadir.Size = New Size(110, 23)
         TextBoxEspecialidad_añadir.TabIndex = 19
         ' 
         ' TextBoxNombre_añadir
         ' 
-        TextBoxNombre_añadir.Location = New Point(434, 138)
+        TextBoxNombre_añadir.Location = New Point(380, 104)
+        TextBoxNombre_añadir.Margin = New Padding(3, 2, 3, 2)
         TextBoxNombre_añadir.Name = "TextBoxNombre_añadir"
-        TextBoxNombre_añadir.Size = New Size(125, 27)
+        TextBoxNombre_añadir.Size = New Size(110, 23)
         TextBoxNombre_añadir.TabIndex = 18
         ' 
         ' ComboBox_añadir
         ' 
         ComboBox_añadir.FormattingEnabled = True
-        ComboBox_añadir.Location = New Point(434, 259)
+        ComboBox_añadir.Location = New Point(380, 194)
+        ComboBox_añadir.Margin = New Padding(3, 2, 3, 2)
         ComboBox_añadir.Name = "ComboBox_añadir"
-        ComboBox_añadir.Size = New Size(151, 28)
+        ComboBox_añadir.Size = New Size(133, 23)
         ComboBox_añadir.TabIndex = 17
         ' 
         ' TextBoxDni_añadir
         ' 
-        TextBoxDni_añadir.Location = New Point(212, 138)
+        TextBoxDni_añadir.Location = New Point(188, 104)
+        TextBoxDni_añadir.Margin = New Padding(3, 2, 3, 2)
         TextBoxDni_añadir.Name = "TextBoxDni_añadir"
-        TextBoxDni_añadir.Size = New Size(125, 27)
+        TextBoxDni_añadir.Size = New Size(110, 23)
         TextBoxDni_añadir.TabIndex = 16
         ' 
         ' centro_label
         ' 
         centro_label.AutoSize = True
-        centro_label.Location = New Point(434, 206)
+        centro_label.Location = New Point(380, 154)
         centro_label.Name = "centro_label"
-        centro_label.Size = New Size(156, 20)
+        centro_label.Size = New Size(124, 15)
         centro_label.TabIndex = 15
         centro_label.Text = "Centro de pertenencia"
         ' 
         ' especialidad_label
         ' 
         especialidad_label.AutoSize = True
-        especialidad_label.Location = New Point(215, 206)
+        especialidad_label.Location = New Point(188, 154)
         especialidad_label.Name = "especialidad_label"
-        especialidad_label.Size = New Size(93, 20)
+        especialidad_label.Size = New Size(72, 15)
         especialidad_label.TabIndex = 14
         especialidad_label.Text = "Especialidad"
         ' 
         ' Nombre_label
         ' 
         Nombre_label.AutoSize = True
-        Nombre_label.Location = New Point(434, 87)
+        Nombre_label.Location = New Point(380, 65)
         Nombre_label.Name = "Nombre_label"
-        Nombre_label.Size = New Size(61, 20)
+        Nombre_label.Size = New Size(49, 15)
         Nombre_label.TabIndex = 13
         Nombre_label.Text = "nombre"
         ' 
         ' DNI_label
         ' 
         DNI_label.AutoSize = True
-        DNI_label.Location = New Point(215, 87)
+        DNI_label.Location = New Point(188, 65)
         DNI_label.Name = "DNI_label"
-        DNI_label.Size = New Size(35, 20)
+        DNI_label.Size = New Size(27, 15)
         DNI_label.TabIndex = 12
         DNI_label.Text = "DNI"
         ' 
         ' voluntarios_pag_añadir
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         Controls.Add(TextBoxEspecialidad_añadir)
         Controls.Add(TextBoxNombre_añadir)
@@ -122,8 +127,9 @@ Partial Class voluntarios_pag_añadir
         Controls.Add(Nombre_label)
         Controls.Add(DNI_label)
         Controls.Add(Añadir_boton)
+        Margin = New Padding(3, 2, 3, 2)
         Name = "voluntarios_pag_añadir"
-        Size = New Size(790, 418)
+        Size = New Size(691, 314)
         ResumeLayout(False)
         PerformLayout()
     End Sub

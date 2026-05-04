@@ -2,7 +2,7 @@
     Private c As Centro_logistico
     Friend Sub centroseleccionado(seleccionado As Centro_logistico)
         c = seleccionado
-        TextBoxid.Text = c.id
+        ComboBoxId.Text = c.id
         TextBoxnombre.Text = c.nombre_centro
         TextBoxCiudad.Text = c.ciudad_centro
         TextBoxAlmacenamiento.Text = c.capacidad
@@ -10,20 +10,14 @@
 
     Private Sub ButtonEliminar_Click(sender As Object, e As EventArgs) Handles ButtonEliminar.Click
         Dim respuesta As DialogResult
-        If TextBoxAlmacenamiento.Text = "" Or TextBoxCiudad.Text = "" Or TextBoxid.Text = "" Or TextBoxnombre.Text = "" Then
-            MessageBox.Show("Faltan datos por rellenar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        If ComboBoxId.Text = "" Then
+            MessageBox.Show("Tienes que indicar la Id del centro que quieres eliminar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
-        Dim id As String = TextBoxid.Text
-        Dim nombre As String = TextBoxnombre.Text
-        Dim capacidad As String = TextBoxAlmacenamiento.Text
-        Dim ciudad As String = TextBoxCiudad.Text
+        Dim id As String = ComboBoxId.Text
         Dim pAux As Centro_logistico
         pAux = New Centro_logistico()
         pAux.id = id
-        pAux.nombre_centro = nombre
-        pAux.capacidad = capacidad
-        pAux.ciudad_centro = ciudad
         ' Mostramos el mensaje con botones Yes y No, y un icono de interrogación
         respuesta = MessageBox.Show("¿Estás seguro de que quieres borrarr este voluntario?",
                                     "Confirmación",
@@ -46,21 +40,23 @@
         vaciarTextBox()
         Dim formularioPadre As CentroLogistico_pag = DirectCast(Me.Parent.Parent, CentroLogistico_pag)
         formularioPadre.refrescarlistbox()
+        refrescarcombobox()
     End Sub
 
     Private Sub ButtonEditar_Click(sender As Object, e As EventArgs) Handles ButtonEditar.Click
         Dim respuesta As DialogResult
-        If TextBoxAlmacenamiento.Text = "" Or TextBoxCiudad.Text = "" Or TextBoxid.Text = "" Or TextBoxnombre.Text = "" Then
+        If TextBoxAlmacenamiento.Text = "" Or TextBoxCiudad.Text = "" Or ComboBoxId.Text = "" Or TextBoxnombre.Text = "" Then
             MessageBox.Show("Faltan datos por rellenar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
-        Try
-            Convert.ToDouble(TextBoxAlmacenamiento)
-        Catch ex As Exception
-            MessageBox.Show("La capacidad tiene que ser un numero", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
+        Dim capacidadValue As Decimal
+        If Not Decimal.TryParse(TextBoxAlmacenamiento.Text, capacidadValue) Then
+            MessageBox.Show("La capacidad debe ser un valor numérico.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
-        End Try
-        Dim id As String = TextBoxid.Text
+        End If
+
+        Dim id As String = ComboBoxId.Text
         Dim nombre As String = TextBoxnombre.Text
         Dim capacidad As String = TextBoxAlmacenamiento.Text
         Dim ciudad As String = TextBoxCiudad.Text
@@ -92,11 +88,30 @@
         vaciarTextBox()
         Dim formularioPadre As CentroLogistico_pag = DirectCast(Me.Parent.Parent, CentroLogistico_pag)
         formularioPadre.refrescarlistbox()
+        refrescarcombobox()
     End Sub
     Public Sub vaciarTextBox()
-        TextBoxid.Text = ""
+        ComboBoxId.Text = ""
         TextBoxnombre.Text = ""
         TextBoxAlmacenamiento.Text = ""
         TextBoxCiudad.Text = ""
+    End Sub
+    Private Sub refrescarcombobox()
+        Me.ComboBoxId.Items.Clear()
+        Dim pAux As Centro_logistico
+        Me.c = New Centro_logistico
+        Try
+            Me.c.LeerTodosCentros()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End Try
+        For Each pAux In Me.c.CentroDAO.Centro
+            Me.ComboBoxId.Items.Add(pAux.id)
+        Next
+    End Sub
+
+    Private Sub CentroLogistico_pag_editar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        refrescarcombobox()
     End Sub
 End Class

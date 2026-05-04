@@ -18,4 +18,16 @@
     Public Function BorrarDetalle() As Integer
         Return Me.DetalleEnvioDAO.Borrar(Me)
     End Function
+
+    Public Function InsertarDetalleYRestarStock(idCentroOrigen As Integer) As Integer
+
+        Dim resultadoDetalle As Integer = Me.DetalleEnvioDAO.Insertar(Me)
+
+
+        If resultadoDetalle > 0 Then
+            Return Me.DetalleEnvioDAO.ActualizarStock(idCentroOrigen, Me.id_suministro, Me.cantidad)
+        Else
+            Return 0
+        End If
+    End Function
 End Class
