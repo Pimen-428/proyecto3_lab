@@ -27,4 +27,10 @@
     Public Function Borrar(ByVal d As detalle_entrega) As Integer
         Return AgenteBD.ObtenerAgente().Modificar("DELETE FROM detalle_entrega WHERE idDetalleEntrega=" & d.id)
     End Function
+    Public Function ActualizarStock(idCentro As Integer, idSuministro As Integer, cantidadARestar As Integer) As Integer
+
+        Dim sql As String = "UPDATE almacenamiento SET CantidadStock = CantidadStock - " & cantidadARestar &
+                            " WHERE idCentro = " & idCentro & " AND idSuministro = " & idSuministro & ";"
+        Return AgenteBD.ObtenerAgente().Modificar(sql)
+    End Function
 End Class

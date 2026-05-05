@@ -35,7 +35,7 @@ Partial Class Voluntarios_pag
         lista.Dock = DockStyle.Left
         lista.FormattingEnabled = True
         lista.Location = New Point(0, 0)
-        lista.Margin = New Padding(4, 4, 4, 4)
+        lista.Margin = New Padding(4)
         lista.Name = "lista"
         lista.Size = New Size(186, 599)
         lista.TabIndex = 0
@@ -68,7 +68,7 @@ Partial Class Voluntarios_pag
         ' 
         Panel_voluntarios.Dock = DockStyle.Fill
         Panel_voluntarios.Location = New Point(186, 0)
-        Panel_voluntarios.Margin = New Padding(4, 4, 4, 4)
+        Panel_voluntarios.Margin = New Padding(4)
         Panel_voluntarios.Name = "Panel_voluntarios"
         Panel_voluntarios.Size = New Size(758, 567)
         Panel_voluntarios.TabIndex = 11
@@ -80,7 +80,7 @@ Partial Class Voluntarios_pag
         Controls.Add(Panel_voluntarios)
         Controls.Add(StatusStrip1)
         Controls.Add(lista)
-        Margin = New Padding(4, 4, 4, 4)
+        Margin = New Padding(4)
         Name = "Voluntarios_pag"
         Size = New Size(944, 599)
         StatusStrip1.ResumeLayout(False)

@@ -37,50 +37,51 @@ Partial Class Zonas_pag
         Lista_Zonas.Location = New Point(0, 0)
         Lista_Zonas.Margin = New Padding(2)
         Lista_Zonas.Name = "Lista_Zonas"
-        Lista_Zonas.Size = New Size(214, 878)
+        Lista_Zonas.Size = New Size(266, 1098)
         Lista_Zonas.TabIndex = 0
         ' 
         ' Panel_Zonas
         ' 
         Panel_Zonas.Dock = DockStyle.Fill
-        Panel_Zonas.Location = New Point(214, 0)
+        Panel_Zonas.Location = New Point(266, 0)
         Panel_Zonas.Margin = New Padding(2)
         Panel_Zonas.Name = "Panel_Zonas"
-        Panel_Zonas.Size = New Size(1052, 878)
+        Panel_Zonas.Size = New Size(1316, 1098)
         Panel_Zonas.TabIndex = 3
         ' 
         ' StatusStrip1
         ' 
         StatusStrip1.ImageScalingSize = New Size(20, 20)
         StatusStrip1.Items.AddRange(New ToolStripItem() {AÑadirBoton, EditarBoton})
-        StatusStrip1.Location = New Point(214, 852)
+        StatusStrip1.Location = New Point(266, 1066)
         StatusStrip1.Name = "StatusStrip1"
-        StatusStrip1.Size = New Size(1052, 26)
+        StatusStrip1.Padding = New Padding(1, 0, 18, 0)
+        StatusStrip1.Size = New Size(1316, 32)
         StatusStrip1.TabIndex = 4
         StatusStrip1.Text = "StatusStrip1"
         ' 
         ' AÑadirBoton
         ' 
         AÑadirBoton.Name = "AÑadirBoton"
-        AÑadirBoton.Size = New Size(53, 20)
+        AÑadirBoton.Size = New Size(64, 25)
         AÑadirBoton.Text = "Añadir"
         ' 
         ' EditarBoton
         ' 
         EditarBoton.Name = "EditarBoton"
-        EditarBoton.Size = New Size(48, 20)
+        EditarBoton.Size = New Size(57, 25)
         EditarBoton.Text = "Editar"
         ' 
         ' Zonas_pag
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         Controls.Add(StatusStrip1)
         Controls.Add(Panel_Zonas)
         Controls.Add(Lista_Zonas)
         Margin = New Padding(2)
         Name = "Zonas_pag"
-        Size = New Size(1266, 878)
+        Size = New Size(1582, 1098)
         StatusStrip1.ResumeLayout(False)
         StatusStrip1.PerformLayout()
         ResumeLayout(False)

@@ -72,4 +72,8 @@
             editar_boolean = False
         End If
     End Sub
+
+    Private Sub Panel_Zonas_Paint(sender As Object, e As PaintEventArgs) Handles Panel_Zonas.Paint
+
+    End Sub
 End Class

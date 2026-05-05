@@ -26,10 +26,11 @@ Partial Class envios_editar_pag
         ' 
         ' envios_editar_pag
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
+        Margin = New Padding(4, 4, 4, 4)
         Name = "envios_editar_pag"
-        Size = New Size(697, 458)
+        Size = New Size(871, 572)
         ResumeLayout(False)
     End Sub
 
