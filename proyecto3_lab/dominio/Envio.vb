@@ -26,5 +26,10 @@
     Public Function ActualizarEnvio() As Integer
         Return Me.EnvioDAO.Actualizar(Me)
     End Function
-
+    Public Function UltimoEnvio()
+        Return Me.EnvioDAO.UltimoEnvioCreado()
+    End Function
+    Public Function EliminarEnvio() As Integer
+        Return Me.EnvioDAO.Borrar(Me)
+    End Function
 End Class

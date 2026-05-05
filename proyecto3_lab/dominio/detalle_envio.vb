@@ -18,8 +18,21 @@
     Public Function BorrarDetalle() As Integer
         Return Me.DetalleEnvioDAO.Borrar(Me)
     End Function
-
+    'esta funcion permitia que hubiese stock negativo, la he arreglado
     Public Function InsertarDetalleYRestarStock(idCentroOrigen As Integer) As Integer
+        Dim alm As New Almacenamiento()
+        alm.IdCentro = idCentroOrigen
+        alm.IdSuministro = Me.id_suministro
+
+        ' 2. Obtenemos el stock actual usando el método que ya definiste
+        Dim cantidaddelalmacen As Integer = alm.ObtenerStock()
+
+        ' 3. VALIDACIÓN: Si no hay suficiente stock, lanzamos un error o devolvemos un código
+        If cantidaddelalmacen < Me.cantidad Then
+            ' Puedes lanzar una excepción para que el Try/Catch de la presentación lo capture
+            Throw New Exception("Stock insuficiente para el suministro " & Me.id_suministro &
+                            ". Disponible: " & cantidaddelalmacen & ", Solicitado: " & Me.cantidad)
+        End If
 
         Dim resultadoDetalle As Integer = Me.DetalleEnvioDAO.Insertar(Me)
 

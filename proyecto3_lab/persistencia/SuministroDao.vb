@@ -63,7 +63,7 @@ Public Class SuminstroDao
         Return suministro
     End Function
     ''metodo creado pro pimen, devuelve los suministros de un centro determinado
-    Public Function suministrocentro(centro As String)
+    Public Sub suministrocentro(centro As String)
         Dim ent As Suministro
         Dim col, aux As Collection
 
@@ -79,5 +79,5 @@ Public Class SuminstroDao
             ent.PesoUnitario = CDbl(aux(4))
             Me.Suministros.Add(ent)
         Next
-    End Function
+    End Sub
 End Class

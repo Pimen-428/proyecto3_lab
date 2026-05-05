@@ -30,7 +30,8 @@
         Next
     End Sub
     Public Function Insertar(Envio As Envio) As Integer
-        Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO envio (idCentroOrigen, idCentroDestino, DniVoluntario, Fecha, Estado) " & "VALUES ('" & Envio.id_origen & "', '" & Envio.id_destino & "', '" & Envio.dni_voluntario & "', '" & Envio.fecha & "', '" & Envio.Estado & ");")
+        Dim fechaFormateada As String = Envio.fecha.ToString("yyyy-MM-dd")
+        Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO envio (idCentroOrigen, idCentroDestino, DniVoluntario, Fecha, Estado) " & "VALUES ('" & Envio.id_origen & "', '" & Envio.id_destino & "', '" & Envio.dni_voluntario & "', '" & fechaFormateada & "', '" & Envio.Estado & "');")
     End Function
 
     Public Function Actualizar(Envio As Envio) As Integer
@@ -38,6 +39,10 @@
     End Function
 
     Public Function Borrar(Envio As Envio) As Integer
-        Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM ennvio WHERE idEnvio='" & Envio.id & "';")
+        AgenteBD.ObtenerAgente.Modificar("DELETE FROM detalle_envio WHERE idEnvio=" & Envio.id & ";")
+        Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM envio WHERE idEnvio='" & Envio.id & "';")
+    End Function
+    Public Function UltimoEnvioCreado()
+        Return AgenteBD.ObtenerAgente.Leer("SELECT * FROM envio ORDER BY idEnvio DESC LIMIT 1;")
     End Function
 End Class

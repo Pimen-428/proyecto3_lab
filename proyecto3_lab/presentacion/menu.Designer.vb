@@ -82,13 +82,13 @@ Partial Class menu
         ' RealizarEnvioToolStripMenuItem
         ' 
         RealizarEnvioToolStripMenuItem.Name = "RealizarEnvioToolStripMenuItem"
-        RealizarEnvioToolStripMenuItem.Size = New Size(224, 26)
+        RealizarEnvioToolStripMenuItem.Size = New Size(220, 26)
         RealizarEnvioToolStripMenuItem.Text = "Realizar envio"
         ' 
         ' EditarEstadoEnvioToolStripMenuItem
         ' 
         EditarEstadoEnvioToolStripMenuItem.Name = "EditarEstadoEnvioToolStripMenuItem"
-        EditarEstadoEnvioToolStripMenuItem.Size = New Size(224, 26)
+        EditarEstadoEnvioToolStripMenuItem.Size = New Size(220, 26)
         EditarEstadoEnvioToolStripMenuItem.Text = "Editar estado envio"
         ' 
         ' ZonasDeConflictoToolStripMenuItem1

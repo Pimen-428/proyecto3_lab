@@ -122,7 +122,7 @@ Partial Class voluntarios_pag_editar
         ' 
         ' voluntarios_pag_editar
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         Controls.Add(ComboBoxDni)
         Controls.Add(ButtonEliminar)

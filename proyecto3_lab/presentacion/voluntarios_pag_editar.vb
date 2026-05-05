@@ -122,7 +122,5 @@
         ComboBoxDniEditar.Text = ""
     End Sub
 
-    Private Sub ComboBoxDniEditar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxDniEditar.SelectedIndexChanged
 
-    End Sub
 End Class

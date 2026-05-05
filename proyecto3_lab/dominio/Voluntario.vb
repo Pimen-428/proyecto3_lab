@@ -38,7 +38,7 @@
         Return Me.PerDAO.Borrar(Me)
     End Function
 
-    Public Function LeerTodasPersonasdecentro(centro As String)
-        Return Me.PerDAO.Leerdecentro(Me, centro)
-    End Function
+    Public Sub LeerTodasPersonasdecentro(centro As String)
+        Me.PerDAO.Leerdecentro(centro)
+    End Sub
 End Class

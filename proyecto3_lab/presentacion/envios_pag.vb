@@ -41,12 +41,14 @@
         ComboBoxDestino.Items.Clear()
         ComboBoxVoluntarios.Text = ""
         ComboBoxVoluntarios.Items.Clear()
+        DataGridView.Rows.Clear()
     End Sub
     Public Sub LimpiarTodoMenosOrigen()
         ComboBoxDestino.Text = ""
         ComboBoxDestino.Items.Clear()
         ComboBoxVoluntarios.Text = ""
         ComboBoxVoluntarios.Items.Clear()
+        DataGridView.Rows.Clear()
     End Sub
     Private Sub refrescarcomboboxvolunatios()
         Me.ComboBoxVoluntarios.Items.Clear()
@@ -64,7 +66,6 @@
     End Sub
     Private Sub refrescarcomboboxvolunatiosfromcentro(centro As String)
         Me.ComboBoxVoluntarios.Items.Clear()
-        Dim pAux As Voluntario
         Me.v = New Voluntario
         Try
             Me.v.LeerTodasPersonasdecentro(centro)
@@ -84,17 +85,20 @@
         If Me.ComboBoxOrigen IsNot Nothing Then
             ' Extraemos el ID del string "ID - Nombre"
             Dim texto As String = Me.ComboBoxOrigen.SelectedItem.ToString()
+            LimpiarTodoMenosOrigen()
             refrescarcomboboxvolunatiosfromcentro(texto)
             s = New Suministro
             ListaSuministros = Me.s.SuministrosCentro(texto)
-            LimpiarTodoMenosOrigen()
             refrescarcomboboxcentro2()
             ConfigurarGrid()
         End If
     End Sub
 
     Private Sub ButtonConfirmar_Click(sender As Object, e As EventArgs) Handles ButtonConfirmar.Click
+        Dim envioañadido As Boolean = False
+        Dim Aux As Envio = New Envio()
         Try
+
             ' 1. VALIDACIONES PREVIAS
             If ComboBoxOrigen.SelectedItem Is Nothing OrElse ComboBoxDestino.SelectedItem Is Nothing Then
                 Throw New Exception("Debe seleccionar un centro de origen y uno de destino.")
@@ -107,29 +111,54 @@
             ' 2. CAPTURA DE DATOS DE CABECERA
             Dim idOrigen As String = ComboBoxOrigen.SelectedItem.ToString()
             Dim idDestino As String = ComboBoxDestino.SelectedItem.ToString()
-            Dim fechaEnvio As Date = fecha.Value ' Asumiendo que es un DateTimePicker
+            Dim fechaEnvio As Date = fecha.Value.Date ' Asumiendo que es un DateTimePicker
             Dim dnivoluntario As String = ComboBoxVoluntarios.SelectedItem.ToString()
 
             If DataGridView.Rows.Count = 0 OrElse (DataGridView.Rows.Count = 1 And DataGridView.Rows(0).IsNewRow) Then
                 Throw New Exception("El envío debe tener al menos un suministro.")
             End If
 
+            Aux.id_destino = idDestino
+            Aux.id_origen = idOrigen
+            Aux.dni_voluntario = dnivoluntario
+            Aux.fecha = fechaEnvio
+            Aux.Estado = "preparandose"
+
+            Aux.InsertarEnvio()
+            envioañadido = True
+            Dim colUltimo As Collection = Aux.UltimoEnvio()
+            If colUltimo IsNot Nothing AndAlso colUltimo.Count > 0 Then
+                Dim fila As Collection = colUltimo(1)
+                Aux.id = CInt(fila(1))
+            End If
             For Each fila As DataGridViewRow In DataGridView.Rows
-                ' Saltamos la fila vacía que permite añadir nuevas (si existe)
+                ' Saltamos la fila nueva vacía
                 If fila.IsNewRow Then Continue For
 
-                ' Validar que la celda de Suministro no esté vacía
+                ' Validamos que el usuario haya seleccionado un suministro
                 If fila.Cells("suministro").Value Is Nothing Then
                     Throw New Exception("Hay una fila sin suministro seleccionado.")
                 End If
 
-                ' Validar que la cantidad sea un número válido
-                Dim cantidad As Integer
-                If Not Integer.TryParse(fila.Cells("Cantidad").Value?.ToString(), cantidad) OrElse cantidad <= 0 Then
-                    Throw New Exception("La cantidad en todas las filas debe ser un número entero mayor a 0.")
+                ' Creamos el objeto Detalle
+                Dim detalle As New detalle_envio()
+                detalle.id_envio = Aux.id
+
+                ' Obtenemos el ID del suministro gracias al ValueMember del ComboBoxColumn
+                detalle.id_suministro = CInt(fila.Cells("suministro").Value)
+
+                ' Validamos y capturamos la cantidad
+                Dim cant As Integer
+                If Not Integer.TryParse(fila.Cells("Cantidad").Value?.ToString(), cant) OrElse cant <= 0 Then
+                    Throw New Exception("La cantidad debe ser un número entero mayor a 0.")
                 End If
+                detalle.cantidad = cant
 
-
+                ' Insertamos el detalle y restamos el stock (Lógica de tu Dominio)
+                ' Si falla la actualización de stock, devolvemos 0 y lanzamos excepción
+                If detalle.InsertarDetalleYRestarStock(Aux.id_origen) = 0 Then
+                    Throw New Exception("Error al procesar el suministro ID: " & detalle.id_suministro & ". Verifique stock.")
+                End If
             Next
 
             MessageBox.Show("Envío procesado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -138,6 +167,9 @@
         Catch ex As Exception
             ' CAPTURA DE CUALQUIER ERROR (Validación o Base de Datos)
             MessageBox.Show(ex.Message, "Error al confirmar envío", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            If envioañadido Then
+                Aux.eliminarenvio()
+            End If
         End Try
     End Sub
     Private Sub ConfigurarGrid()
