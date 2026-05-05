@@ -97,6 +97,7 @@
     Private Sub ButtonConfirmar_Click(sender As Object, e As EventArgs) Handles ButtonConfirmar.Click
         Dim envioañadido As Boolean = False
         Dim Aux As Envio = New Envio()
+        Dim Entregados As Integer = 0
         Try
 
             ' 1. VALIDACIONES PREVIAS
@@ -159,6 +160,7 @@
                 If detalle.InsertarDetalleYRestarStock(Aux.id_origen) = 0 Then
                     Throw New Exception("Error al procesar el suministro ID: " & detalle.id_suministro & ". Verifique stock.")
                 End If
+                Entregados = Entregados + 1
             Next
 
             MessageBox.Show("Envío procesado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -168,7 +170,24 @@
             ' CAPTURA DE CUALQUIER ERROR (Validación o Base de Datos)
             MessageBox.Show(ex.Message, "Error al confirmar envío", MessageBoxButtons.OK, MessageBoxIcon.Error)
             If envioañadido Then
-                Aux.eliminarenvio()
+                ' Usamos un bucle for normal para controlar el índice hasta 'Entregados'
+                For i As Integer = 0 To Entregados - 1
+                    Dim fila As DataGridViewRow = DataGridView.Rows(i)
+
+                    ' Extraemos los datos necesarios para reponer el stock
+                    Dim idSuministro As Integer = CInt(fila.Cells("suministro").Value)
+                    Dim cantidadAReponer As Integer = CInt(fila.Cells("Cantidad").Value)
+
+                    ' Instanciamos Almacenamiento para devolver el stock
+                    Dim alm As New Almacenamiento()
+                    alm.IdCentro = Aux.id_origen
+                    alm.IdSuministro = idSuministro
+                    alm.CantidadStock = cantidadAReponer ' La cantidad que restamos antes
+
+                    ' Llamamos a SumarStock (que ya tienes definido en tu Almacenamiento)
+                    alm.SumarStock()
+                Next
+                Aux.EliminarEnvio()
             End If
         End Try
     End Sub
