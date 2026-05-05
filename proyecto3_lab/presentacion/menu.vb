@@ -33,4 +33,12 @@
     Private Sub EditarEstadoEnvioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditarEstadoEnvioToolStripMenuItem.Click
         cambiarvista(New envios_editar_pag())
     End Sub
+
+    Private Sub panel_principal_Paint(sender As Object, e As PaintEventArgs) Handles panel_principal.Paint
+
+    End Sub
+
+    Private Sub EntregasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EntregasToolStripMenuItem.Click
+        cambiarvista(New Entregas_pag)
+    End Sub
 End Class

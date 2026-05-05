@@ -36,6 +36,15 @@
 
         Return Me.EntregaDAO.Insertar(Me)
     End Function
+    Public Function ActualizarEntrega() As Integer
+        Return Me.EntregaDAO.Actualizar(Me)
+    End Function
+    Public Function UltimaEntrega()
+        Return Me.EntregaDAO.UltimaEntregaCreada()
+    End Function
+    Public Function EliminarEntrega() As Integer
+        Return Me.EntregaDAO.Borrar(Me)
+    End Function
 
 
 End Class

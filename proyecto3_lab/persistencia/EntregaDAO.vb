@@ -65,4 +65,7 @@
     Public Function Borrar(ByVal ent As entrega) As Integer
         Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM entrega WHERE idEntrega=" & ent.id & ";")
     End Function
+    Public Function UltimaEntregaCreada()
+        Return AgenteBD.ObtenerAgente.Leer("SELECT * FROM envio ORDER BY idEnvio DESC LIMIT 1;")
+    End Function
 End Class
