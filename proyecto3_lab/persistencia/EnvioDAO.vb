@@ -16,7 +16,6 @@
             e.Estado = aux(6).ToString
             Me.Envio.Add(e)
         Next
-        Throw New NotImplementedException()
     End Sub
     Public Sub Leer(ByRef Envio As Envio)
         Dim col As Collection : Dim aux As Collection
@@ -37,7 +36,9 @@
     Public Function Actualizar(Envio As Envio) As Integer
         Return AgenteBD.ObtenerAgente.Modificar("UPDATE envio SET idCentroOrigen='" & Envio.id_origen & "', idCentroDestino='" & Envio.id_destino & "', DniVoluntario='" & Envio.dni_voluntario & "', Fecha='" & Envio.fecha & "', Estado='" & Envio.Estado & "' WHERE idEnvio='" & Envio.id & "';")
     End Function
-
+    Public Function ActualizarEsatdo(Envio As Envio) As Integer
+        Return AgenteBD.ObtenerAgente.Modificar("UPDATE envio SET Estado='" & Envio.Estado & "' WHERE idEnvio='" & Envio.id & "';")
+    End Function
     Public Function Borrar(Envio As Envio) As Integer
         AgenteBD.ObtenerAgente.Modificar("DELETE FROM detalle_envio WHERE idEnvio=" & Envio.id & ";")
         Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM envio WHERE idEnvio='" & Envio.id & "';")

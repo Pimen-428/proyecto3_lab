@@ -113,6 +113,7 @@ Partial Class CentroLogistico_pag_editar
         ' 
         ' ComboBoxId
         ' 
+        ComboBoxId.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBoxId.FormattingEnabled = True
         ComboBoxId.Location = New Point(67, 103)
         ComboBoxId.Name = "ComboBoxId"

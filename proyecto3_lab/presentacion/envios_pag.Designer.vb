@@ -37,6 +37,7 @@ Partial Class envios_pag
         ' 
         ' ComboBoxOrigen
         ' 
+        ComboBoxOrigen.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBoxOrigen.FormattingEnabled = True
         ComboBoxOrigen.Location = New Point(46, 55)
         ComboBoxOrigen.Name = "ComboBoxOrigen"
@@ -45,6 +46,7 @@ Partial Class envios_pag
         ' 
         ' ComboBoxDestino
         ' 
+        ComboBoxDestino.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBoxDestino.FormattingEnabled = True
         ComboBoxDestino.Location = New Point(402, 55)
         ComboBoxDestino.Name = "ComboBoxDestino"
@@ -53,6 +55,7 @@ Partial Class envios_pag
         ' 
         ' ComboBoxVoluntarios
         ' 
+        ComboBoxVoluntarios.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBoxVoluntarios.FormattingEnabled = True
         ComboBoxVoluntarios.Location = New Point(46, 155)
         ComboBoxVoluntarios.Name = "ComboBoxVoluntarios"

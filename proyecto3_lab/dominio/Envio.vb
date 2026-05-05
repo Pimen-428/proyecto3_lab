@@ -26,6 +26,9 @@
     Public Function ActualizarEnvio() As Integer
         Return Me.EnvioDAO.Actualizar(Me)
     End Function
+    Public Function ActualizarEstado() As Integer
+        Return Me.EnvioDAO.ActualizarEsatdo(Me)
+    End Function
     Public Function UltimoEnvio()
         Return Me.EnvioDAO.UltimoEnvioCreado()
     End Function

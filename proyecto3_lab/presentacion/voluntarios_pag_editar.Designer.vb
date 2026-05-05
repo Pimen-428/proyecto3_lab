@@ -36,6 +36,7 @@ Partial Class voluntarios_pag_editar
         ' 
         ' ComboBoxDniEditar
         ' 
+        ComboBoxDniEditar.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBoxDniEditar.FormattingEnabled = True
         ComboBoxDniEditar.Location = New Point(408, 225)
         ComboBoxDniEditar.Name = "ComboBoxDniEditar"
@@ -114,6 +115,7 @@ Partial Class voluntarios_pag_editar
         ' 
         ' ComboBoxDni
         ' 
+        ComboBoxDni.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBoxDni.FormattingEnabled = True
         ComboBoxDni.Location = New Point(136, 112)
         ComboBoxDni.Name = "ComboBoxDni"
