@@ -8,7 +8,7 @@
         refrescarcomboboxcentro1()
     End Sub
 
-
+    Dim z As zona_conflicto
     Dim c As Centro_logistico
     Dim v As Voluntario
     Dim s As Suministro
@@ -29,15 +29,15 @@
     End Sub
     Private Sub refrescarcomboboxcentro2()
         Me.ComboBoxDestino.Items.Clear()
-        Dim pAux As Centro_logistico
-        Me.c = New Centro_logistico
+        Dim pAux As zona_conflicto
+        Me.z = New zona_conflicto
         Try
-            Me.c.LeerTodosCentros()
+            Me.z.LeerTodasZonas()
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
-        For Each pAux In Me.c.CentroDAO.Centro
+        For Each pAux In Me.z.ZonaDAO.Zonas
             If ComboBoxOrigen.SelectedItem.ToString() <> pAux.id.ToString() Then
                 Me.ComboBoxDestino.Items.Add(pAux.id)
             End If
@@ -202,5 +202,9 @@
         colCant.Name = "Cantidad"
         colCant.HeaderText = "Cantidad a Enviar"
         Me.DataGridView.Columns.Add(colCant)
+    End Sub
+
+    Private Sub Panel_editar_Paint(sender As Object, e As PaintEventArgs) Handles Panel_editar.Paint
+
     End Sub
 End Class
