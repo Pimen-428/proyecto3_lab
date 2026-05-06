@@ -31,4 +31,7 @@
     Public Sub suministrodelcentro()
         Me.CentroDAO.suministrosdelcentro(Me)
     End Sub
+    Public Sub leercentroyvoluntarios()
+        Me.CentroDAO.leercentroyvoluntarios(Me)
+    End Sub
 End Class

@@ -46,4 +46,5 @@
     Public Function UltimoEnvioCreado()
         Return AgenteBD.ObtenerAgente.Leer("SELECT * FROM envio ORDER BY idEnvio DESC LIMIT 1;")
     End Function
+
 End Class

@@ -46,7 +46,7 @@ Public Class SuminstroDao
             Me.Suministros.Add(ent)
         Next
     End Sub
-    Public Function ObtenerPorId(ByVal idSuministro As Integer) As Suministro
+    Public Function ObtenerPorId(ByRef idSuministro As Integer) As Suministro
         Dim col, aux As Collection
         col = AgenteBD.ObtenerAgente.Leer("SELECT idSuministro, Descripcion, Categoria, PesoUnitario " &
                                        "FROM suministro " &
@@ -77,6 +77,49 @@ Public Class SuminstroDao
             ent.Descripcion = aux(2).ToString()
             ent.Categoria = aux(3).ToString()
             ent.PesoUnitario = CDbl(aux(4))
+            Me.Suministros.Add(ent)
+        Next
+    End Sub
+    Public Sub Obtenersuministro(ByRef suminsitro As Suministro)
+        Dim col, aux As Collection
+        col = AgenteBD.ObtenerAgente.Leer("SELECT idSuministro, Descripcion, Categoria, PesoUnitario " &
+                                       "FROM suministro " &
+                                       "WHERE idSuministro = " & suminsitro.id_suministro & ";")
+
+        For Each aux In col
+            suminsitro.id_suministro = CInt(aux(1))
+            suminsitro.Descripcion = aux(2).ToString()
+            suminsitro.Categoria = aux(3).ToString()
+            suminsitro.PesoUnitario = CDbl(aux(4))
+        Next
+    End Sub
+    Public Sub top10suministros()
+        Dim ent As Suministro
+        Dim col As Collection
+        Dim sql As String
+
+        ' La consulta une ambas tablas y suma las cantidades
+        sql = "SELECT s.idSuministro, s.Descripcion, s.Categoria, s.PesoUnitario, " &
+          "SUM(mov.Cantidad) AS Total " &
+          "FROM suministro s " &
+          "INNER JOIN (" &
+          "  SELECT idSuministro, Cantidad FROM detalle_envio " &
+          "  UNION ALL " &
+          "  SELECT idSuministro, Cantidad FROM detalle_entrega " &
+          ") AS mov ON s.idSuministro = mov.idSuministro " &
+          "GROUP BY s.idSuministro, s.Descripcion, s.Categoria, s.PesoUnitario " &
+          "ORDER BY Total DESC " &
+          "LIMIT 10;"
+
+        col = AgenteBD.ObtenerAgente().Leer(sql)
+
+        For Each aux In col
+            ent = New Suministro(CInt(aux(1))) ' idSuministro
+            ent.Descripcion = aux(2).ToString()
+            ent.Categoria = aux(3).ToString()
+            ent.PesoUnitario = CDbl(aux(4))
+            ent.Cantidad = CInt(aux(5))
+
             Me.Suministros.Add(ent)
         Next
     End Sub

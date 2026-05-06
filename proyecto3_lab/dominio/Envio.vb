@@ -35,4 +35,5 @@
     Public Function EliminarEnvio() As Integer
         Return Me.EnvioDAO.Borrar(Me)
     End Function
+
 End Class

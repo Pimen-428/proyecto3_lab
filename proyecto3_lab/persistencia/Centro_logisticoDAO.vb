@@ -3,9 +3,11 @@
 Public Class Centro_logisticoDAO
     Public ReadOnly Property Centro As Collection
     Public ReadOnly Property suministros As Collection
+    Public ReadOnly Property voluntarios As Collection
     Public Sub New()
         Me.Centro = New Collection
         Me.suministros = New Collection
+        Me.voluntarios = New Collection
     End Sub
     Public Sub LeerTodos()
         Dim c As Centro_logistico
@@ -23,9 +25,6 @@ Public Class Centro_logisticoDAO
         Dim colSum, auxSum As Collection
         Dim s As Suministro
         Dim sql As String
-
-
-
         ' Consulta con JOIN para obtener los datos legibles
         ' Usamos el ID del centro que ya viene dentro del objeto
         sql = "SELECT 
@@ -75,4 +74,37 @@ Public Class Centro_logisticoDAO
     Public Function Borrar(centro_logistico As Centro_logistico) As Integer
         Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM centro_logistico WHERE idCentro='" & centro_logistico.id & "';")
     End Function
+    Public Sub leercentroyvoluntarios(centro As Centro_logistico)
+        Dim c As Centro_logistico = Nothing
+        Dim v As Voluntario
+        Dim col, aux As Collection
+
+        ' Consulta que une centro y voluntarios para un ID específico
+        Dim sql As String = "SELECT c.idCentro, c.Nombre, c.Ciudad, c.CapacidadTM, " &
+                            "v.DNI, v.Nombre, v.Especialidad " &
+                            "FROM centro_logistico c " &
+                            "LEFT JOIN voluntario v ON c.idCentro = v.idCentro " &
+                            "WHERE c.idCentro = " & centro.id
+
+        col = AgenteBD.ObtenerAgente().Leer(sql)
+
+        For Each aux In col
+            ' 1. La primera vez que entra al bucle, creamos el objeto Centro
+            If c Is Nothing Then
+                c = New Centro_logistico(aux(1).ToString)
+                c.nombre_centro = aux(2).ToString
+                c.ciudad_centro = aux(3).ToString
+                c.capacidad = aux(4)
+                Me.Centro.Add(c) ' Lo metemos en tu colección de centros
+            End If
+
+            ' 2. Si el DNI no es nulo (el centro tiene voluntarios), creamos el voluntario
+            If Not IsDBNull(aux(5)) Then
+                v = New Voluntario(aux(5).ToString) ' aux(5) es el DNI
+                v.Nombre = aux(6).ToString          ' aux(6) es el Nombre del voluntario
+                v.especialidad = aux(7).ToString    ' aux(7) es la Especialidad
+                Me.voluntarios.Add(v)
+            End If
+        Next
+    End Sub
 End Class

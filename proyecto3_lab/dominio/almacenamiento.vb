@@ -17,7 +17,7 @@
         Return Me.AlmacenamientoDAO.ObtenerStock(Me.IdCentro, Me.IdSuministro)
     End Function
 
-    Public Function ObtenerStockTotalKilos() As Decimal
+    Public Function ObtenerStockTotalKilos() As Double
         Return Me.AlmacenamientoDAO.ObtenerStockTotalKilos(Me.IdCentro)
     End Function
 

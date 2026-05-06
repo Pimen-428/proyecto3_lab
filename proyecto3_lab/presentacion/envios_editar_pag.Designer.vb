@@ -35,7 +35,7 @@ Partial Class envios_editar_pag
         ListBoxenvios.Dock = DockStyle.Left
         ListBoxenvios.FormattingEnabled = True
         ListBoxenvios.Location = New Point(0, 0)
-        ListBoxenvios.Margin = New Padding(2, 2, 2, 2)
+        ListBoxenvios.Margin = New Padding(2)
         ListBoxenvios.Name = "ListBoxenvios"
         ListBoxenvios.Size = New Size(121, 458)
         ListBoxenvios.TabIndex = 0
@@ -55,9 +55,9 @@ Partial Class envios_editar_pag
         ComboBoxEstados.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBoxEstados.FormattingEnabled = True
         ComboBoxEstados.Location = New Point(390, 172)
-        ComboBoxEstados.Margin = New Padding(2, 2, 2, 2)
+        ComboBoxEstados.Margin = New Padding(2)
         ComboBoxEstados.Name = "ComboBoxEstados"
-        ComboBoxEstados.Size = New Size(122, 28)
+        ComboBoxEstados.Size = New Size(223, 28)
         ComboBoxEstados.TabIndex = 3
         ' 
         ' Label1
@@ -73,9 +73,9 @@ Partial Class envios_editar_pag
         ' Button1
         ' 
         Button1.Location = New Point(423, 286)
-        Button1.Margin = New Padding(2, 2, 2, 2)
+        Button1.Margin = New Padding(2)
         Button1.Name = "Button1"
-        Button1.Size = New Size(75, 23)
+        Button1.Size = New Size(94, 29)
         Button1.TabIndex = 5
         Button1.Text = "Confirmar"
         Button1.UseVisualStyleBackColor = True
@@ -85,7 +85,7 @@ Partial Class envios_editar_pag
         ComboBoxEnvio.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBoxEnvio.FormattingEnabled = True
         ComboBoxEnvio.Location = New Point(205, 172)
-        ComboBoxEnvio.Margin = New Padding(2, 2, 2, 2)
+        ComboBoxEnvio.Margin = New Padding(2)
         ComboBoxEnvio.Name = "ComboBoxEnvio"
         ComboBoxEnvio.Size = New Size(122, 28)
         ComboBoxEnvio.TabIndex = 6
@@ -100,7 +100,7 @@ Partial Class envios_editar_pag
         Controls.Add(ComboBoxEstados)
         Controls.Add(IdEnvio)
         Controls.Add(ListBoxenvios)
-        Margin = New Padding(2, 2, 2, 2)
+        Margin = New Padding(2)
         Name = "envios_editar_pag"
         Size = New Size(697, 458)
         ResumeLayout(False)

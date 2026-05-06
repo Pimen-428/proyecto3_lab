@@ -1,22 +1,25 @@
 ﻿Public Class CentroLogistico_pag_añadir
+    'este boton se pulsa para añadir el cento a la BD
     Private Sub ButtonAñadir_Click(sender As Object, e As EventArgs) Handles ButtonAñadir.Click
         Dim pAux As Centro_logistico
+        'comprobamos los textbox
         If TextBoxCiudad.Text = "" Or TextBoxCapacidad.Text = "" Or TextBoxNombre.Text = "" Then
             MessageBox.Show("Faltan datos por rellenar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
-
+        'comprobamos que la capacidad es un numero intentando parsearla
         Dim capacidadValue As Decimal
         If Not Decimal.TryParse(TextBoxCapacidad.Text, capacidadValue) Then
             MessageBox.Show("La capacidad debe ser un valor numérico.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-
+        'creamos el centrologistico
         pAux = New Centro_logistico()
         pAux.capacidad = TextBoxCapacidad.Text
         pAux.ciudad_centro = TextBoxCiudad.Text
         pAux.nombre_centro = TextBoxNombre.Text
         Try
+            'lo insertamos en la BD
             pAux.InsertarCentro()
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -26,6 +29,7 @@
         formularioPadre.refrescarlistbox()
         vaciarTextBox()
     End Sub
+    'los textbox se vacian al terminar el añadido
     Private Sub vaciarTextBox()
         TextBoxCapacidad.Text = ""
         TextBoxCiudad.Text = ""

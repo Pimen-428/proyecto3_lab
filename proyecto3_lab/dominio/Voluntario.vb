@@ -5,6 +5,8 @@
     Public Property especialidad As String
     Public Property centro As Integer
 
+    Public Property Cantidad_envios As Integer
+
 
     Public ReadOnly Property PerDAO As voluntarioDAO
 
@@ -40,5 +42,8 @@
 
     Public Sub LeerTodasPersonasdecentro(centro As String)
         Me.PerDAO.Leerdecentro(centro)
+    End Sub
+    Public Sub leervoluntariosporcantidadenvios()
+        Me.PerDAO.leerPorEnvios()
     End Sub
 End Class

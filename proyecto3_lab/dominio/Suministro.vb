@@ -13,10 +13,12 @@ Public Class Suministro
 
     Public Sub New(id As Integer)
         Me.id_suministro = id
+        Me.suDAO = New SuminstroDao
     End Sub
 
     Public Sub New(id As String)
         Integer.TryParse(id, Me.id_suministro)
+        Me.suDAO = New SuminstroDao
     End Sub
 
     Public Sub New(id As Integer, descripcion As String, categoria As String, pesoUnitario As Decimal)
@@ -24,10 +26,17 @@ Public Class Suministro
         Me.Descripcion = descripcion
         Me.Categoria = categoria
         Me.PesoUnitario = pesoUnitario
+        Me.suDAO = New SuminstroDao
     End Sub
-    ''metodo creado pro pimen, devuelve los suministros de un centro determinado
+    Public Sub obtenersuministro()
+        Me.suDAO.Obtenersuministro(Me)
+    End Sub
+    ' devuelve los suministros de un centro determinado
     Public Function SuministrosCentro(centro As String) As Collection
         Me.suDAO.suministrocentro(centro) ' Esto rellena suDAO.Suministros
         Return Me.suDAO.Suministros
     End Function
+    Public Sub top10suministros()
+        Me.suDAO.top10suministros()
+    End Sub
 End Class

@@ -20,7 +20,7 @@ Public Class AlmacenamientoDAO
     End Function
 
     ' Stock total en kilos de un centro (para validar capacidad)
-    Public Function ObtenerStockTotalKilos(ByVal idCentro As Integer) As Decimal
+    Public Function ObtenerStockTotalKilos(ByVal idCentro As Integer) As Double
         Dim col, aux As Collection
         col = AgenteBD.ObtenerAgente.Leer(
               "SELECT COALESCE(SUM(a.CantidadStock * s.PesoUnitario), 0) " &

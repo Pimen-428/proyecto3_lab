@@ -118,7 +118,7 @@
             If DataGridView.Rows.Count = 0 OrElse (DataGridView.Rows.Count = 1 And DataGridView.Rows(0).IsNewRow) Then
                 Throw New Exception("El envío debe tener al menos un suministro.")
             End If
-
+            'metemos los datos en la variable auxiliar que es el envio
             Aux.id_destino = idDestino
             Aux.id_origen = idOrigen
             Aux.dni_voluntario = dnivoluntario
@@ -132,6 +132,7 @@
                 Dim fila As Collection = colUltimo(1)
                 Aux.id = CInt(fila(1))
             End If
+            ' en esta funcion recorremos todos las columnas del datagridview y las añadimosa detalle envio y añadimos stock
             For Each fila As DataGridViewRow In DataGridView.Rows
                 ' Saltamos la fila nueva vacía
                 If fila.IsNewRow Then Continue For
@@ -146,7 +147,8 @@
                 detalle.id_envio = Aux.id
 
                 ' Obtenemos el ID del suministro gracias al ValueMember del ComboBoxColumn
-                detalle.id_suministro = CInt(fila.Cells("suministro").Value)
+                Dim suministroseleccionado = CInt(fila.Cells("suministro").Value)
+                detalle.id_suministro = suministroseleccionado
 
                 ' Validamos y capturamos la cantidad
                 Dim cant As Integer
@@ -154,18 +156,36 @@
                     Throw New Exception("La cantidad debe ser un número entero mayor a 0.")
                 End If
                 detalle.cantidad = cant
-
-                ' Insertamos el detalle y restamos el stock (Lógica de tu Dominio)
+                ' comprobamos si el centro destino tiene suficiente espacio para meter este envio
+                Dim centrodestino = New Centro_logistico(idDestino)
+                centrodestino.LeerCentro()
+                Dim almacenamientocentrodestino = centrodestino.capacidad * 1000
+                Dim almacenamientodestino = New Almacenamiento()
+                almacenamientodestino.IdCentro = idDestino
+                Dim ocupadoactualldestino = almacenamientodestino.ObtenerStockTotalKilos()
+                Dim suministroactual = New Suministro(suministroseleccionado)
+                suministroactual.obtenersuministro()
+                Dim pesocantidad = suministroactual.PesoUnitario * cant
+                'acaba comprobacion de peso
+                If (ocupadoactualldestino + pesocantidad > almacenamientocentrodestino) Then
+                    Throw New Exception("Error La capacidad del centro : " & idDestino & ". es " & almacenamientocentrodestino & " kilos, no se puede superar ")
+                End If
+                ' Insertamos el detalle y restamos el stock (Lógica del Dominio)
                 ' Si falla la actualización de stock, devolvemos 0 y lanzamos excepción
                 If detalle.InsertarDetalleYRestarStock(Aux.id_origen) = 0 Then
                     Throw New Exception("Error al procesar el suministro ID: " & detalle.id_suministro & ". Verifique stock.")
                 End If
+                'tambien sumamos el stock al centro correspondiente despues de comprobar que el peso estaba bien
+                almacenamientodestino.IdSuministro = suministroseleccionado
+                almacenamientodestino.CantidadStock = cant
+                almacenamientodestino.SumarStock()
+
                 Entregados = Entregados + 1
             Next
 
             MessageBox.Show("Envío procesado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LimpiarTodo()
-
+            refrescarcomboboxcentro1()
         Catch ex As Exception
             ' CAPTURA DE CUALQUIER ERROR (Validación o Base de Datos)
             MessageBox.Show(ex.Message, "Error al confirmar envío", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -183,9 +203,15 @@
                     alm.IdCentro = Aux.id_origen
                     alm.IdSuministro = idSuministro
                     alm.CantidadStock = cantidadAReponer ' La cantidad que restamos antes
-
-                    ' Llamamos a SumarStock (que ya tienes definido en tu Almacenamiento)
+                    'sumamos el stock al centro al que se le quitamos
                     alm.SumarStock()
+                    ' Instanciamos Almacenamiento para quitar el stock
+                    Dim almquitar As New Almacenamiento()
+                    alm.IdCentro = Aux.id_destino
+                    alm.IdSuministro = idSuministro
+                    alm.CantidadStock = cantidadAReponer ' La cantidad que restamos antes
+                    'restamos el stock al centro al que se le quitamos
+                    alm.RestarStock()
                 Next
                 Aux.EliminarEnvio()
             End If
@@ -202,8 +228,7 @@
         Dim colCombo As New DataGridViewComboBoxColumn()
         colCombo.Name = "suministro"
         colCombo.HeaderText = "Suministro"
-        ' Aquí cargamos los suministros (los 100 que insertamos antes)
-        ' Suponiendo que tienes una lista de suministros en Me.listaSuministros
+        ' Aquí cargamos los suministros 
         colCombo.DataSource = Me.listaSuministros
         colCombo.DisplayMember = "Descripcion"
         colCombo.ValueMember = "id_suministro"

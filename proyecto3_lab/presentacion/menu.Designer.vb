@@ -26,14 +26,23 @@ Partial Class menu
         MenuPrincipalToolStripMenuItem = New ToolStripMenuItem()
         ToolStripMenuItem1 = New ToolStripMenuItem()
         ToolStripTextBox1 = New ToolStripMenuItem()
-        CentrosLogisticosToolStripMenuItem = New ToolStripMenuItem()
-        CentrosToolStripMenuItem = New ToolStripMenuItem()
-        InventarioPorCentroToolStripMenuItem = New ToolStripMenuItem()
-        EnviosToolStripMenuItem = New ToolStripMenuItem()
-        RealizarEnvioToolStripMenuItem = New ToolStripMenuItem()
-        EditarEstadoEnvioToolStripMenuItem = New ToolStripMenuItem()
-        ZonasDeConflictoToolStripMenuItem1 = New ToolStripMenuItem()
-        EntregasToolStripMenuItem = New ToolStripMenuItem()
+        VerVoluntariosToolStripMenuItem = New ToolStripMenuItem()
+        EntrgasDeCadaVoluntarioToolStripMenuItem = New ToolStripMenuItem()
+        EntregasDeCadaVoluntarioToolStripMenuItem = New ToolStripMenuItem()
+        VerCentrosToolStripMenuItem = New ToolStripMenuItem()
+        AlmacenamientoPorCentroToolStripMenuItem = New ToolStripMenuItem()
+        VoluntariosPorCentroToolStripMenuItem1 = New ToolStripMenuItem()
+        ZonasConflictoToolStripMenuItem = New ToolStripMenuItem()
+        SuministrosToolStripMenuItem = New ToolStripMenuItem()
+        VerSuministrosToolStripMenuItem = New ToolStripMenuItem()
+        Top10SuministrosEnviadosToolStripMenuItem = New ToolStripMenuItem()
+        TransaccionesToolStripMenuItem = New ToolStripMenuItem()
+        EnvioToolStripMenuItem = New ToolStripMenuItem()
+        RealizarEnvioToolStripMenuItem1 = New ToolStripMenuItem()
+        EditarEstadoEnvioToolStripMenuItem1 = New ToolStripMenuItem()
+        ListadoTodosLosEnviosToolStripMenuItem = New ToolStripMenuItem()
+        EntregaToolStripMenuItem = New ToolStripMenuItem()
+        RecepcionToolStripMenuItem = New ToolStripMenuItem()
         panel_principal = New Panel()
         MenuStrip1.SuspendLayout()
         SuspendLayout()
@@ -42,7 +51,7 @@ Partial Class menu
         ' 
         MenuStrip1.BackColor = SystemColors.ActiveCaption
         MenuStrip1.ImageScalingSize = New Size(20, 20)
-        MenuStrip1.Items.AddRange(New ToolStripItem() {MenuPrincipalToolStripMenuItem, ToolStripMenuItem1, CentrosLogisticosToolStripMenuItem, EnviosToolStripMenuItem, ZonasDeConflictoToolStripMenuItem1, EntregasToolStripMenuItem})
+        MenuStrip1.Items.AddRange(New ToolStripItem() {MenuPrincipalToolStripMenuItem, ToolStripMenuItem1, TransaccionesToolStripMenuItem})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
         MenuStrip1.Size = New Size(800, 28)
@@ -58,66 +67,123 @@ Partial Class menu
         ' 
         ' ToolStripMenuItem1
         ' 
-        ToolStripMenuItem1.DropDownItems.AddRange(New ToolStripItem() {ToolStripTextBox1})
+        ToolStripMenuItem1.DropDownItems.AddRange(New ToolStripItem() {ToolStripTextBox1, EntregasDeCadaVoluntarioToolStripMenuItem, ZonasConflictoToolStripMenuItem, SuministrosToolStripMenuItem})
         ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        ToolStripMenuItem1.Size = New Size(97, 24)
-        ToolStripMenuItem1.Text = "Voluntarios"
+        ToolStripMenuItem1.Size = New Size(88, 24)
+        ToolStripMenuItem1.Text = "Entidades"
         ' 
         ' ToolStripTextBox1
         ' 
+        ToolStripTextBox1.DropDownItems.AddRange(New ToolStripItem() {VerVoluntariosToolStripMenuItem, EntrgasDeCadaVoluntarioToolStripMenuItem})
         ToolStripTextBox1.Name = "ToolStripTextBox1"
-        ToolStripTextBox1.Size = New Size(189, 26)
-        ToolStripTextBox1.Text = "ver voluntarios"
+        ToolStripTextBox1.Size = New Size(224, 26)
+        ToolStripTextBox1.Text = "Voluntarios"
         ' 
-        ' CentrosLogisticosToolStripMenuItem
+        ' VerVoluntariosToolStripMenuItem
         ' 
-        CentrosLogisticosToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {CentrosToolStripMenuItem, InventarioPorCentroToolStripMenuItem})
-        CentrosLogisticosToolStripMenuItem.Name = "CentrosLogisticosToolStripMenuItem"
-        CentrosLogisticosToolStripMenuItem.Size = New Size(140, 24)
-        CentrosLogisticosToolStripMenuItem.Text = "Centros logisticos"
+        VerVoluntariosToolStripMenuItem.Name = "VerVoluntariosToolStripMenuItem"
+        VerVoluntariosToolStripMenuItem.Size = New Size(278, 26)
+        VerVoluntariosToolStripMenuItem.Text = "Ver voluntarios"
         ' 
-        ' CentrosToolStripMenuItem
+        ' EntrgasDeCadaVoluntarioToolStripMenuItem
         ' 
-        CentrosToolStripMenuItem.Name = "CentrosToolStripMenuItem"
-        CentrosToolStripMenuItem.Size = New Size(231, 26)
-        CentrosToolStripMenuItem.Text = "Centros"
+        EntrgasDeCadaVoluntarioToolStripMenuItem.Name = "EntrgasDeCadaVoluntarioToolStripMenuItem"
+        EntrgasDeCadaVoluntarioToolStripMenuItem.Size = New Size(278, 26)
+        EntrgasDeCadaVoluntarioToolStripMenuItem.Text = "Entregas de cada Voluntario"
         ' 
-        ' InventarioPorCentroToolStripMenuItem
+        ' EntregasDeCadaVoluntarioToolStripMenuItem
         ' 
-        InventarioPorCentroToolStripMenuItem.Name = "InventarioPorCentroToolStripMenuItem"
-        InventarioPorCentroToolStripMenuItem.Size = New Size(231, 26)
-        InventarioPorCentroToolStripMenuItem.Text = "Inventario por centro"
+        EntregasDeCadaVoluntarioToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {VerCentrosToolStripMenuItem, AlmacenamientoPorCentroToolStripMenuItem, VoluntariosPorCentroToolStripMenuItem1})
+        EntregasDeCadaVoluntarioToolStripMenuItem.Name = "EntregasDeCadaVoluntarioToolStripMenuItem"
+        EntregasDeCadaVoluntarioToolStripMenuItem.Size = New Size(224, 26)
+        EntregasDeCadaVoluntarioToolStripMenuItem.Text = "Centros"
         ' 
-        ' EnviosToolStripMenuItem
+        ' VerCentrosToolStripMenuItem
         ' 
-        EnviosToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {RealizarEnvioToolStripMenuItem, EditarEstadoEnvioToolStripMenuItem})
-        EnviosToolStripMenuItem.Name = "EnviosToolStripMenuItem"
-        EnviosToolStripMenuItem.Size = New Size(65, 24)
-        EnviosToolStripMenuItem.Text = "Envios"
+        VerCentrosToolStripMenuItem.Name = "VerCentrosToolStripMenuItem"
+        VerCentrosToolStripMenuItem.Size = New Size(278, 26)
+        VerCentrosToolStripMenuItem.Text = "Ver centros"
         ' 
-        ' RealizarEnvioToolStripMenuItem
+        ' AlmacenamientoPorCentroToolStripMenuItem
         ' 
-        RealizarEnvioToolStripMenuItem.Name = "RealizarEnvioToolStripMenuItem"
-        RealizarEnvioToolStripMenuItem.Size = New Size(220, 26)
-        RealizarEnvioToolStripMenuItem.Text = "Realizar envio"
+        AlmacenamientoPorCentroToolStripMenuItem.Name = "AlmacenamientoPorCentroToolStripMenuItem"
+        AlmacenamientoPorCentroToolStripMenuItem.Size = New Size(278, 26)
+        AlmacenamientoPorCentroToolStripMenuItem.Text = "Almacenamiento por centro"
         ' 
-        ' EditarEstadoEnvioToolStripMenuItem
+        ' VoluntariosPorCentroToolStripMenuItem1
         ' 
-        EditarEstadoEnvioToolStripMenuItem.Name = "EditarEstadoEnvioToolStripMenuItem"
-        EditarEstadoEnvioToolStripMenuItem.Size = New Size(220, 26)
-        EditarEstadoEnvioToolStripMenuItem.Text = "Editar estado envio"
+        VoluntariosPorCentroToolStripMenuItem1.Name = "VoluntariosPorCentroToolStripMenuItem1"
+        VoluntariosPorCentroToolStripMenuItem1.Size = New Size(278, 26)
+        VoluntariosPorCentroToolStripMenuItem1.Text = "voluntarios por centro"
         ' 
-        ' ZonasDeConflictoToolStripMenuItem1
+        ' ZonasConflictoToolStripMenuItem
         ' 
-        ZonasDeConflictoToolStripMenuItem1.Name = "ZonasDeConflictoToolStripMenuItem1"
-        ZonasDeConflictoToolStripMenuItem1.Size = New Size(148, 24)
-        ZonasDeConflictoToolStripMenuItem1.Text = "Zonas de Conflicto"
+        ZonasConflictoToolStripMenuItem.Name = "ZonasConflictoToolStripMenuItem"
+        ZonasConflictoToolStripMenuItem.Size = New Size(224, 26)
+        ZonasConflictoToolStripMenuItem.Text = "Zonas de conflicto"
         ' 
-        ' EntregasToolStripMenuItem
+        ' SuministrosToolStripMenuItem
         ' 
-        EntregasToolStripMenuItem.Name = "EntregasToolStripMenuItem"
-        EntregasToolStripMenuItem.Size = New Size(80, 24)
-        EntregasToolStripMenuItem.Text = "Entregas"
+        SuministrosToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {VerSuministrosToolStripMenuItem, Top10SuministrosEnviadosToolStripMenuItem})
+        SuministrosToolStripMenuItem.Name = "SuministrosToolStripMenuItem"
+        SuministrosToolStripMenuItem.Size = New Size(224, 26)
+        SuministrosToolStripMenuItem.Text = "Suministros"
+        ' 
+        ' VerSuministrosToolStripMenuItem
+        ' 
+        VerSuministrosToolStripMenuItem.Name = "VerSuministrosToolStripMenuItem"
+        VerSuministrosToolStripMenuItem.Size = New Size(276, 26)
+        VerSuministrosToolStripMenuItem.Text = "ver suministros"
+        ' 
+        ' Top10SuministrosEnviadosToolStripMenuItem
+        ' 
+        Top10SuministrosEnviadosToolStripMenuItem.Name = "Top10SuministrosEnviadosToolStripMenuItem"
+        Top10SuministrosEnviadosToolStripMenuItem.Size = New Size(276, 26)
+        Top10SuministrosEnviadosToolStripMenuItem.Text = "top 10 suministros enviados"
+        ' 
+        ' TransaccionesToolStripMenuItem
+        ' 
+        TransaccionesToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {EnvioToolStripMenuItem, EntregaToolStripMenuItem, RecepcionToolStripMenuItem})
+        TransaccionesToolStripMenuItem.Name = "TransaccionesToolStripMenuItem"
+        TransaccionesToolStripMenuItem.Size = New Size(114, 24)
+        TransaccionesToolStripMenuItem.Text = "Transacciones"
+        ' 
+        ' EnvioToolStripMenuItem
+        ' 
+        EnvioToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {RealizarEnvioToolStripMenuItem1, EditarEstadoEnvioToolStripMenuItem1, ListadoTodosLosEnviosToolStripMenuItem})
+        EnvioToolStripMenuItem.Name = "EnvioToolStripMenuItem"
+        EnvioToolStripMenuItem.Size = New Size(224, 26)
+        EnvioToolStripMenuItem.Text = "Envio"
+        ' 
+        ' RealizarEnvioToolStripMenuItem1
+        ' 
+        RealizarEnvioToolStripMenuItem1.Name = "RealizarEnvioToolStripMenuItem1"
+        RealizarEnvioToolStripMenuItem1.Size = New Size(251, 26)
+        RealizarEnvioToolStripMenuItem1.Text = "Realizar envio"
+        ' 
+        ' EditarEstadoEnvioToolStripMenuItem1
+        ' 
+        EditarEstadoEnvioToolStripMenuItem1.Name = "EditarEstadoEnvioToolStripMenuItem1"
+        EditarEstadoEnvioToolStripMenuItem1.Size = New Size(251, 26)
+        EditarEstadoEnvioToolStripMenuItem1.Text = "Editar estado envio"
+        ' 
+        ' ListadoTodosLosEnviosToolStripMenuItem
+        ' 
+        ListadoTodosLosEnviosToolStripMenuItem.Name = "ListadoTodosLosEnviosToolStripMenuItem"
+        ListadoTodosLosEnviosToolStripMenuItem.Size = New Size(251, 26)
+        ListadoTodosLosEnviosToolStripMenuItem.Text = "Listado todos los envios"
+        ' 
+        ' EntregaToolStripMenuItem
+        ' 
+        EntregaToolStripMenuItem.Name = "EntregaToolStripMenuItem"
+        EntregaToolStripMenuItem.Size = New Size(224, 26)
+        EntregaToolStripMenuItem.Text = "Entrega"
+        ' 
+        ' RecepcionToolStripMenuItem
+        ' 
+        RecepcionToolStripMenuItem.Name = "RecepcionToolStripMenuItem"
+        RecepcionToolStripMenuItem.Size = New Size(224, 26)
+        RecepcionToolStripMenuItem.Text = "Recepcion"
         ' 
         ' panel_principal
         ' 
@@ -148,13 +214,22 @@ Partial Class menu
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents MenuPrincipalToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents panel_principal As Panel
-    Friend WithEvents CentrosLogisticosToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EnviosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripTextBox1 As ToolStripMenuItem
-    Friend WithEvents ZonasDeConflictoToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents RealizarEnvioToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EditarEstadoEnvioToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EntregasToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CentrosToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents InventarioPorCentroToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EntregasDeCadaVoluntarioToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents VerVoluntariosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EntrgasDeCadaVoluntarioToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents VerCentrosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AlmacenamientoPorCentroToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents VoluntariosPorCentroToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ZonasConflictoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SuministrosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents VerSuministrosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Top10SuministrosEnviadosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TransaccionesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EnvioToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RealizarEnvioToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents EditarEstadoEnvioToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ListadoTodosLosEnviosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EntregaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RecepcionToolStripMenuItem As ToolStripMenuItem
 End Class
