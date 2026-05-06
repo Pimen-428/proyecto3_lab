@@ -1,4 +1,6 @@
-﻿Public Class CentroLogistico_pag_editar
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
+Public Class CentroLogistico_pag_editar
     Private c As Centro_logistico
     Friend Sub centroseleccionado(seleccionado As Centro_logistico)
         c = seleccionado
@@ -91,7 +93,7 @@
         refrescarcombobox()
     End Sub
     Public Sub vaciarTextBox()
-        ComboBoxId.Text = ""
+        ComboBoxId.SelectedIndex = -1
         TextBoxnombre.Text = ""
         TextBoxAlmacenamiento.Text = ""
         TextBoxCiudad.Text = ""

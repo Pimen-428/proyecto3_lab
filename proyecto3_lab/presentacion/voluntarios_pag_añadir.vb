@@ -48,7 +48,7 @@
         TextBoxDni_añadir.Text = ""
         TextBoxEspecialidad_añadir.Text = ""
         TextBoxNombre_añadir.Text = ""
-        ComboBox_añadir.Text = ""
+        ComboBox_añadir.SelectedIndex = -1
     End Sub
 
 End Class

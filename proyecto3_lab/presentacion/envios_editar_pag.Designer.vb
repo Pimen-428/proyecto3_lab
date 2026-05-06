@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class envios_editar_pag
     Inherits System.Windows.Forms.UserControl
 
     'UserControl reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class envios_editar_pag
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         ListBoxenvios = New ListBox()
         IdEnvio = New Label()
@@ -35,14 +35,16 @@ Partial Class envios_editar_pag
         ListBoxenvios.Dock = DockStyle.Left
         ListBoxenvios.FormattingEnabled = True
         ListBoxenvios.Location = New Point(0, 0)
+        ListBoxenvios.Margin = New Padding(2, 2, 2, 2)
         ListBoxenvios.Name = "ListBoxenvios"
-        ListBoxenvios.Size = New Size(150, 458)
+        ListBoxenvios.Size = New Size(121, 458)
         ListBoxenvios.TabIndex = 0
         ' 
         ' IdEnvio
         ' 
         IdEnvio.AutoSize = True
-        IdEnvio.Location = New Point(256, 179)
+        IdEnvio.Location = New Point(205, 143)
+        IdEnvio.Margin = New Padding(2, 0, 2, 0)
         IdEnvio.Name = "IdEnvio"
         IdEnvio.Size = New Size(58, 20)
         IdEnvio.TabIndex = 2
@@ -52,15 +54,17 @@ Partial Class envios_editar_pag
         ' 
         ComboBoxEstados.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBoxEstados.FormattingEnabled = True
-        ComboBoxEstados.Location = New Point(487, 215)
+        ComboBoxEstados.Location = New Point(390, 172)
+        ComboBoxEstados.Margin = New Padding(2, 2, 2, 2)
         ComboBoxEstados.Name = "ComboBoxEstados"
-        ComboBoxEstados.Size = New Size(151, 28)
+        ComboBoxEstados.Size = New Size(122, 28)
         ComboBoxEstados.TabIndex = 3
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(487, 179)
+        Label1.Location = New Point(390, 143)
+        Label1.Margin = New Padding(2, 0, 2, 0)
         Label1.Name = "Label1"
         Label1.Size = New Size(54, 20)
         Label1.TabIndex = 4
@@ -68,9 +72,10 @@ Partial Class envios_editar_pag
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(529, 358)
+        Button1.Location = New Point(423, 286)
+        Button1.Margin = New Padding(2, 2, 2, 2)
         Button1.Name = "Button1"
-        Button1.Size = New Size(94, 29)
+        Button1.Size = New Size(75, 23)
         Button1.TabIndex = 5
         Button1.Text = "Confirmar"
         Button1.UseVisualStyleBackColor = True
@@ -79,9 +84,10 @@ Partial Class envios_editar_pag
         ' 
         ComboBoxEnvio.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBoxEnvio.FormattingEnabled = True
-        ComboBoxEnvio.Location = New Point(256, 215)
+        ComboBoxEnvio.Location = New Point(205, 172)
+        ComboBoxEnvio.Margin = New Padding(2, 2, 2, 2)
         ComboBoxEnvio.Name = "ComboBoxEnvio"
-        ComboBoxEnvio.Size = New Size(151, 28)
+        ComboBoxEnvio.Size = New Size(122, 28)
         ComboBoxEnvio.TabIndex = 6
         ' 
         ' envios_editar_pag
@@ -94,6 +100,7 @@ Partial Class envios_editar_pag
         Controls.Add(ComboBoxEstados)
         Controls.Add(IdEnvio)
         Controls.Add(ListBoxenvios)
+        Margin = New Padding(2, 2, 2, 2)
         Name = "envios_editar_pag"
         Size = New Size(697, 458)
         ResumeLayout(False)

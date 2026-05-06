@@ -68,7 +68,7 @@
                 cambiarvista(vistaEditar)
                 editar_boolean = True
             Catch ex As Exception
-                MessageBox.Show("Error al cargar el voluntario: " & ex.Message)
+                MessageBox.Show("Error al cargar el centro: " & ex.Message)
             End Try
         End If
     End Sub

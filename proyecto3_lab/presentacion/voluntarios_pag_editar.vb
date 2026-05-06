@@ -1,6 +1,9 @@
-﻿Public Class voluntarios_pag_editar
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
+Public Class voluntarios_pag_editar
     Private c As Centro_logistico
     Private v As Voluntario
+
     Public Sub voluntarioseleccionado(ByVal v_recibido As Voluntario)
         v = v_recibido
         ComboBoxDni.Text = v.DNI
@@ -86,7 +89,7 @@
         refrescarcombobox()
         refrescarcomboboxdni()
     End Sub
-    Private Sub refrescarcombobox()
+    Public Sub refrescarcombobox()
         Me.ComboBoxDniEditar.Items.Clear()
         Dim pAux As Centro_logistico
         Me.c = New Centro_logistico
@@ -100,7 +103,7 @@
             Me.ComboBoxDniEditar.Items.Add(pAux.id)
         Next
     End Sub
-    Private Sub refrescarcomboboxdni()
+    Public Sub refrescarcomboboxdni()
         Me.ComboBoxDni.Items.Clear()
         Dim pAux As Voluntario
         Me.v = New Voluntario
@@ -116,11 +119,9 @@
     End Sub
 
     Private Sub vaciarTextBox()
-        ComboBoxDni.Text = ""
+        ComboBoxDni.SelectedIndex = -1
         TextBoxEspecialidadEditar.Text = ""
         TextBoxNombreEditar.Text = ""
-        ComboBoxDniEditar.Text = ""
+        ComboBoxDniEditar.SelectedIndex = -1
     End Sub
-
-
 End Class

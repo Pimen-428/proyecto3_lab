@@ -38,9 +38,7 @@
             Exit Sub
         End Try
         For Each pAux In Me.z.ZonaDAO.Zonas
-            If ComboBoxOrigen.SelectedItem.ToString() <> pAux.id.ToString() Then
-                Me.ComboBoxDestino.Items.Add(pAux.id)
-            End If
+            Me.ComboBoxDestino.Items.Add(pAux.id)
         Next
     End Sub
     Public Sub LimpiarTodo()
@@ -204,7 +202,5 @@
         Me.DataGridView.Columns.Add(colCant)
     End Sub
 
-    Private Sub Panel_editar_Paint(sender As Object, e As PaintEventArgs) Handles Panel_editar.Paint
 
-    End Sub
 End Class

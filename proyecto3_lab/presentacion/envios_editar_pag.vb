@@ -86,4 +86,5 @@
             MessageBox.Show("Ocurrió un error al actualizar: " & ex.Message, "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 End Class

@@ -27,12 +27,14 @@ Partial Class menu
         ToolStripMenuItem1 = New ToolStripMenuItem()
         ToolStripTextBox1 = New ToolStripMenuItem()
         CentrosLogisticosToolStripMenuItem = New ToolStripMenuItem()
+        CentrosToolStripMenuItem = New ToolStripMenuItem()
+        InventarioPorCentroToolStripMenuItem = New ToolStripMenuItem()
         EnviosToolStripMenuItem = New ToolStripMenuItem()
         RealizarEnvioToolStripMenuItem = New ToolStripMenuItem()
         EditarEstadoEnvioToolStripMenuItem = New ToolStripMenuItem()
         ZonasDeConflictoToolStripMenuItem1 = New ToolStripMenuItem()
-        panel_principal = New Panel()
         EntregasToolStripMenuItem = New ToolStripMenuItem()
+        panel_principal = New Panel()
         MenuStrip1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -43,8 +45,7 @@ Partial Class menu
         MenuStrip1.Items.AddRange(New ToolStripItem() {MenuPrincipalToolStripMenuItem, ToolStripMenuItem1, CentrosLogisticosToolStripMenuItem, EnviosToolStripMenuItem, ZonasDeConflictoToolStripMenuItem1, EntregasToolStripMenuItem})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
-        MenuStrip1.Padding = New Padding(8, 2, 0, 2)
-        MenuStrip1.Size = New Size(1000, 33)
+        MenuStrip1.Size = New Size(800, 28)
         MenuStrip1.TabIndex = 2
         MenuStrip1.Text = "MenuStrip"
         ' 
@@ -52,79 +53,90 @@ Partial Class menu
         ' 
         MenuPrincipalToolStripMenuItem.ForeColor = SystemColors.ActiveCaptionText
         MenuPrincipalToolStripMenuItem.Name = "MenuPrincipalToolStripMenuItem"
-        MenuPrincipalToolStripMenuItem.Size = New Size(145, 29)
+        MenuPrincipalToolStripMenuItem.Size = New Size(122, 24)
         MenuPrincipalToolStripMenuItem.Text = "menu principal"
         ' 
         ' ToolStripMenuItem1
         ' 
         ToolStripMenuItem1.DropDownItems.AddRange(New ToolStripItem() {ToolStripTextBox1})
         ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        ToolStripMenuItem1.Size = New Size(117, 29)
+        ToolStripMenuItem1.Size = New Size(97, 24)
         ToolStripMenuItem1.Text = "Voluntarios"
         ' 
         ' ToolStripTextBox1
         ' 
         ToolStripTextBox1.Name = "ToolStripTextBox1"
-        ToolStripTextBox1.Size = New Size(231, 34)
+        ToolStripTextBox1.Size = New Size(189, 26)
         ToolStripTextBox1.Text = "ver voluntarios"
         ' 
         ' CentrosLogisticosToolStripMenuItem
         ' 
+        CentrosLogisticosToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {CentrosToolStripMenuItem, InventarioPorCentroToolStripMenuItem})
         CentrosLogisticosToolStripMenuItem.Name = "CentrosLogisticosToolStripMenuItem"
-        CentrosLogisticosToolStripMenuItem.Size = New Size(169, 29)
+        CentrosLogisticosToolStripMenuItem.Size = New Size(140, 24)
         CentrosLogisticosToolStripMenuItem.Text = "Centros logisticos"
+        ' 
+        ' CentrosToolStripMenuItem
+        ' 
+        CentrosToolStripMenuItem.Name = "CentrosToolStripMenuItem"
+        CentrosToolStripMenuItem.Size = New Size(231, 26)
+        CentrosToolStripMenuItem.Text = "Centros"
+        ' 
+        ' InventarioPorCentroToolStripMenuItem
+        ' 
+        InventarioPorCentroToolStripMenuItem.Name = "InventarioPorCentroToolStripMenuItem"
+        InventarioPorCentroToolStripMenuItem.Size = New Size(231, 26)
+        InventarioPorCentroToolStripMenuItem.Text = "Inventario por centro"
         ' 
         ' EnviosToolStripMenuItem
         ' 
         EnviosToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {RealizarEnvioToolStripMenuItem, EditarEstadoEnvioToolStripMenuItem})
         EnviosToolStripMenuItem.Name = "EnviosToolStripMenuItem"
-        EnviosToolStripMenuItem.Size = New Size(79, 29)
+        EnviosToolStripMenuItem.Size = New Size(65, 24)
         EnviosToolStripMenuItem.Text = "Envios"
         ' 
         ' RealizarEnvioToolStripMenuItem
         ' 
         RealizarEnvioToolStripMenuItem.Name = "RealizarEnvioToolStripMenuItem"
-        RealizarEnvioToolStripMenuItem.Size = New Size(270, 34)
+        RealizarEnvioToolStripMenuItem.Size = New Size(220, 26)
         RealizarEnvioToolStripMenuItem.Text = "Realizar envio"
         ' 
         ' EditarEstadoEnvioToolStripMenuItem
         ' 
         EditarEstadoEnvioToolStripMenuItem.Name = "EditarEstadoEnvioToolStripMenuItem"
-        EditarEstadoEnvioToolStripMenuItem.Size = New Size(270, 34)
+        EditarEstadoEnvioToolStripMenuItem.Size = New Size(220, 26)
         EditarEstadoEnvioToolStripMenuItem.Text = "Editar estado envio"
         ' 
         ' ZonasDeConflictoToolStripMenuItem1
         ' 
         ZonasDeConflictoToolStripMenuItem1.Name = "ZonasDeConflictoToolStripMenuItem1"
-        ZonasDeConflictoToolStripMenuItem1.Size = New Size(177, 29)
+        ZonasDeConflictoToolStripMenuItem1.Size = New Size(148, 24)
         ZonasDeConflictoToolStripMenuItem1.Text = "Zonas de Conflicto"
+        ' 
+        ' EntregasToolStripMenuItem
+        ' 
+        EntregasToolStripMenuItem.Name = "EntregasToolStripMenuItem"
+        EntregasToolStripMenuItem.Size = New Size(80, 24)
+        EntregasToolStripMenuItem.Text = "Entregas"
         ' 
         ' panel_principal
         ' 
         panel_principal.BackColor = SystemColors.ButtonFace
         panel_principal.BorderStyle = BorderStyle.Fixed3D
         panel_principal.Dock = DockStyle.Fill
-        panel_principal.Location = New Point(0, 33)
-        panel_principal.Margin = New Padding(4, 4, 4, 4)
+        panel_principal.Location = New Point(0, 28)
         panel_principal.Name = "panel_principal"
-        panel_principal.Size = New Size(1000, 529)
+        panel_principal.Size = New Size(800, 422)
         panel_principal.TabIndex = 4
-        ' 
-        ' EntregasToolStripMenuItem
-        ' 
-        EntregasToolStripMenuItem.Name = "EntregasToolStripMenuItem"
-        EntregasToolStripMenuItem.Size = New Size(96, 29)
-        EntregasToolStripMenuItem.Text = "Entregas"
         ' 
         ' menu
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1000, 562)
+        ClientSize = New Size(800, 450)
         Controls.Add(panel_principal)
         Controls.Add(MenuStrip1)
         MainMenuStrip = MenuStrip1
-        Margin = New Padding(4, 4, 4, 4)
         Name = "menu"
         Text = "menu"
         MenuStrip1.ResumeLayout(False)
@@ -143,4 +155,6 @@ Partial Class menu
     Friend WithEvents RealizarEnvioToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EditarEstadoEnvioToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EntregasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CentrosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InventarioPorCentroToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -18,9 +18,6 @@
         cambiarvista(New Voluntarios_pag())
     End Sub
 
-    Private Sub CentrosLogisticosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CentrosLogisticosToolStripMenuItem.Click
-        cambiarvista(New CentroLogistico_pag())
-    End Sub
     Private Sub ZonasDeConflictoToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ZonasDeConflictoToolStripMenuItem1.Click
         cambiarvista(New Zonas_pag())
     End Sub
@@ -34,11 +31,16 @@
         cambiarvista(New envios_editar_pag())
     End Sub
 
-    Private Sub panel_principal_Paint(sender As Object, e As PaintEventArgs) Handles panel_principal.Paint
-
-    End Sub
 
     Private Sub EntregasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EntregasToolStripMenuItem.Click
         cambiarvista(New Entregas_pag)
+    End Sub
+
+    Private Sub CentrosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CentrosToolStripMenuItem.Click
+        cambiarvista(New CentroLogistico_pag())
+    End Sub
+
+    Private Sub InventarioPorCentroToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InventarioPorCentroToolStripMenuItem.Click
+        cambiarvista(New Inventario_por_centro())
     End Sub
 End Class

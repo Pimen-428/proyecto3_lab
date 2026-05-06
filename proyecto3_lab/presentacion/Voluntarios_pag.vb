@@ -55,11 +55,14 @@
             Dim seleccionado As New Voluntario(dividido(0))
 
             Try
-                ' 2. Cargamos sus datos desde la BD
-                seleccionado.LeerPersona()
 
-                ' 3. Creamos la vista de edición
+                ' 2. Creamos la vista de edición
                 Dim vistaEditar As New voluntarios_pag_editar()
+                vistaEditar.refrescarcombobox()
+                vistaEditar.refrescarcomboboxdni()
+
+                ' 3. Cargamos sus datos desde la BD
+                seleccionado.LeerPersona()
 
                 ' 4. Llamamos a la función para pasarle los datos
                 vistaEditar.voluntarioseleccionado(seleccionado)
@@ -73,7 +76,4 @@
         End If
     End Sub
 
-    Private Sub Panel_voluntarios_Paint(sender As Object, e As PaintEventArgs) Handles Panel_voluntarios.Paint
-
-    End Sub
 End Class

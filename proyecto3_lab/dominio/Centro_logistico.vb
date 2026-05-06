@@ -28,5 +28,7 @@
     Public Function BorrarCentro() As Integer
         Return Me.CentroDAO.Borrar(Me)
     End Function
-
+    Public Sub suministrodelcentro()
+        Me.CentroDAO.suministrosdelcentro(Me)
+    End Sub
 End Class

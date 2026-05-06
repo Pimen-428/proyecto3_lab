@@ -5,6 +5,7 @@ Public Class Suministro
     Public Property Descripcion As String        ' VARCHAR(150)
     Public Property Categoria As String          ' VARCHAR(50)
     Public Property PesoUnitario As Decimal      ' DECIMAL(10, ?)
+    Public Property Cantidad As Integer
     Public ReadOnly Property suDAO As SuminstroDao
     Public Sub New()
         Me.suDAO = New SuminstroDao
