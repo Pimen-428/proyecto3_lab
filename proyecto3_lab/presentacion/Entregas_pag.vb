@@ -14,47 +14,52 @@
     Dim s As Suministro
     Dim ListaSuministros As Collection
     Private Sub refrescarcomboboxcentro1()
-        Me.ComboBoxOrigen.Items.Clear()
-        Dim pAux As Centro_logistico
+        Me.ComboBoxOrigen.DataSource = Nothing ' Limpiamos
         Me.c = New Centro_logistico
         Try
             Me.c.LeerTodosCentros()
+            ' SUSTITUCIÓN CRÍTICA: En lugar de For Each, usamos DataSource
+            Me.ComboBoxOrigen.DataSource = Me.c.CentroDAO.Centro
+            Me.ComboBoxOrigen.DisplayMember = "id" ' Lo que el usuario ve
+            Me.ComboBoxOrigen.ValueMember = "id"   ' El valor interno que leerá el botón
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            Exit Sub
         End Try
-        For Each pAux In Me.c.CentroDAO.Centro
-            Me.ComboBoxOrigen.Items.Add(pAux.id)
-        Next
     End Sub
-    Private Sub refrescarcomboboxcentro2()
-        Me.ComboBoxDestino.Items.Clear()
-        Dim pAux As zona_conflicto
+    Private Sub refrescarcomboboxzona()
+        Me.ComboBoxDestino.DataSource = Nothing
         Me.z = New zona_conflicto
         Try
             Me.z.LeerTodasZonas()
+            ' SUSTITUCIÓN CRÍTICA:
+            Me.ComboBoxDestino.DataSource = Me.z.ZonaDAO.Zonas
+            Me.ComboBoxDestino.DisplayMember = "id"
+            Me.ComboBoxDestino.ValueMember = "id" ' Según tu esquema idZona
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            Exit Sub
         End Try
-        For Each pAux In Me.z.ZonaDAO.Zonas
-            Me.ComboBoxDestino.Items.Add(pAux.id)
-        Next
     End Sub
     Public Sub LimpiarTodo()
+
+        ComboBoxOrigen.DataSource = Nothing
         ComboBoxOrigen.Text = ""
-        ComboBoxOrigen.Items.Clear()
+
+        ComboBoxDestino.DataSource = Nothing
         ComboBoxDestino.Text = ""
-        ComboBoxDestino.Items.Clear()
+
+        ComboBoxVoluntarios.DataSource = Nothing
         ComboBoxVoluntarios.Text = ""
-        ComboBoxVoluntarios.Items.Clear()
+
         DataGridView.Rows.Clear()
     End Sub
     Public Sub LimpiarTodoMenosOrigen()
+
+        ComboBoxDestino.DataSource = Nothing
         ComboBoxDestino.Text = ""
-        ComboBoxDestino.Items.Clear()
+
+        ComboBoxVoluntarios.DataSource = Nothing
         ComboBoxVoluntarios.Text = ""
-        ComboBoxVoluntarios.Items.Clear()
+
         DataGridView.Rows.Clear()
     End Sub
     Private Sub refrescarcomboboxvolunatios()
@@ -72,29 +77,31 @@
         Next
     End Sub
     Private Sub refrescarcomboboxvolunatiosfromcentro(centro As String)
-        Me.ComboBoxVoluntarios.Items.Clear()
+        Me.ComboBoxVoluntarios.DataSource = Nothing
         Me.v = New Voluntario
         Try
             Me.v.LeerTodasPersonasdecentro(centro)
+            ' SUSTITUCIÓN CRÍTICA:
+            Me.ComboBoxVoluntarios.DataSource = Me.v.PerDAO.Personas
+            Me.ComboBoxVoluntarios.DisplayMember = "DNI"
+            Me.ComboBoxVoluntarios.ValueMember = "DNI" ' El DNI es la PK del voluntario
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            Exit Sub
         End Try
-        For Each pAux In Me.v.PerDAO.Personas
-            Me.ComboBoxVoluntarios.Items.Add(pAux.DNI)
-        Next
     End Sub
 
 
     Private Sub ComboBoxOrigen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxOrigen.SelectedIndexChanged
-        If Me.ComboBoxOrigen IsNot Nothing Then
-            ' Extraemos el ID del string "ID - Nombre"
-            Dim texto As String = Me.ComboBoxOrigen.SelectedItem.ToString()
+        ' Verificamos que haya una selección válida y que sea un objeto de datos
+        If ComboBoxOrigen.SelectedValue IsNot Nothing AndAlso IsNumeric(ComboBoxOrigen.SelectedValue) Then
+            Dim texto As String = ComboBoxOrigen.SelectedValue.ToString()
+
             LimpiarTodoMenosOrigen()
             refrescarcomboboxvolunatiosfromcentro(texto)
+
             s = New Suministro
             ListaSuministros = Me.s.SuministrosCentro(texto)
-            refrescarcomboboxcentro2()
+            refrescarcomboboxzona()
             ConfigurarGrid()
         End If
     End Sub
@@ -102,79 +109,77 @@
     Private Sub ButtonConfirmar_Click(sender As Object, e As EventArgs) Handles BtnConfirmar.Click
         Dim envioañadido As Boolean = False
         Dim Aux As entrega = New entrega()
+
         Try
-
-            ' 1. VALIDACIONES PREVIAS
-            If ComboBoxOrigen.SelectedItem Is Nothing OrElse ComboBoxDestino.SelectedItem Is Nothing Then
-                Throw New Exception("Debe seleccionar un centro de origen y una zona de destino.")
+            ' 1. VALIDACIONES DE SELECCIÓN (Esto evita el error 'SelectedValue devolvió Nothing')
+            If ComboBoxOrigen.SelectedValue Is Nothing Then
+                MessageBox.Show("Por favor, seleccione un Centro de Origen.", "Dato incompleto")
+                Exit Sub
             End If
 
-            If ComboBoxVoluntarios.SelectedItem Is Nothing Then
-                Throw New Exception("Debe asignar un voluntario al envío.")
+            If ComboBoxDestino.SelectedValue Is Nothing Then
+                MessageBox.Show("Por favor, seleccione una Zona de Destino.", "Dato incompleto")
+                Exit Sub
             End If
 
-            ' 2. CAPTURA DE DATOS DE CABECERA
-            Dim idOrigen As String = ComboBoxOrigen.SelectedItem.ToString()
-            Dim idDestino As String = ComboBoxDestino.SelectedItem.ToString()
-            Dim fechaEnvio As Date = fecha.Value.Date ' Asumiendo que es un DateTimePicker
-            Dim dnivoluntario As String = ComboBoxVoluntarios.SelectedItem.ToString()
+            If ComboBoxVoluntarios.SelectedValue Is Nothing Then
+                MessageBox.Show("Por favor, seleccione un Voluntario.", "Dato incompleto")
+                Exit Sub
+            End If
 
             If DataGridView.Rows.Count = 0 OrElse (DataGridView.Rows.Count = 1 And DataGridView.Rows(0).IsNewRow) Then
-                Throw New Exception("La entrega debe tener al menos un suministro.")
+                MessageBox.Show("La entrega debe tener al menos un suministro.", "Dato incompleto")
+                Exit Sub
             End If
 
-            Aux.id_zona_destino = idDestino
-            Aux.id_centro_origen = idOrigen
-            Aux.dni_voluntario = dnivoluntario
-            Aux.fecha = fechaEnvio
+            ' 2. ASIGNACIÓN DE DATOS A LA CABECERA
+            ' Usamos CInt porque los IDs son números enteros en tu esquema
+            Aux.id_centro_origen = CInt(ComboBoxOrigen.SelectedValue)
+            Aux.id_zona_destino = CInt(ComboBoxDestino.SelectedValue)
+            Aux.dni_voluntario = ComboBoxVoluntarios.SelectedValue.ToString()
+            Aux.fecha = fecha.Value.Date
 
+            ' 3. GENERAR EL ID Y GUARDAR EL PADRE (Importante para la Foreign Key)
+            Aux.GenerarNuevoID()
 
-            Aux.InsertarEntrega()
-            envioañadido = True
-            Dim colUltimo As Collection = Aux.UltimaEntrega()
-            If colUltimo IsNot Nothing AndAlso colUltimo.Count > 0 Then
-                Dim fila As Collection = colUltimo(1)
-                Aux.id = CInt(fila(1))
+            If Aux.InsertarEntrega() > 0 Then
+                envioañadido = True
+            Else
+                Throw New Exception("Error crítico: No se pudo registrar la cabecera de la entrega.")
             End If
+
+            ' 4. PROCESAR CADA SUMINISTRO EN EL GRID
             For Each fila As DataGridViewRow In DataGridView.Rows
-                ' Saltamos la fila nueva vacía
                 If fila.IsNewRow Then Continue For
 
-                ' Validamos que el usuario haya seleccionado un suministro
-                If fila.Cells("suministro").Value Is Nothing Then
-                    Throw New Exception("Hay una fila sin suministro seleccionado.")
-                End If
-
-                ' Creamos el objeto Detalle
                 Dim detalle As New detalle_entrega()
-                detalle.id = Aux.id
+                detalle.id_entrega = Aux.id ' Le pasamos el ID que acabamos de generar
 
-                ' Obtenemos el ID del suministro gracias al ValueMember del ComboBoxColumn
+                ' Validamos que la celda del suministro tenga valor
+                If fila.Cells("suministro").Value Is Nothing Then Continue For
                 detalle.id_suministro = CInt(fila.Cells("suministro").Value)
 
-                ' Validamos y capturamos la cantidad
+                ' Capturamos cantidad
                 Dim cant As Integer
-                If Not Integer.TryParse(fila.Cells("Cantidad").Value?.ToString(), cant) OrElse cant <= 0 Then
-                    Throw New Exception("La cantidad debe ser un número entero mayor a 0.")
+                If Not Integer.TryParse(fila.Cells("Cantidad").Value?.ToString(), cant) Then
+                    cant = 0
                 End If
                 detalle.cantidad = cant
 
-                ' Insertamos el detalle y restamos el stock (Lógica de tu Dominio)
-                ' Si falla la actualización de stock, devolvemos 0 y lanzamos excepción
+                ' 5. GUARDAR DETALLE Y ACTUALIZAR STOCK EN ORIGEN
+                ' Solo restamos en el origen porque las zonas de conflicto no tienen stock
                 If detalle.InsertarDetalleYRestarStock(Aux.id_centro_origen) = 0 Then
-                    Throw New Exception("Error al procesar el suministro ID: " & detalle.id_suministro & ". Verifique stock.")
+                    Throw New Exception("Fallo al insertar detalle o stock insuficiente para ID: " & detalle.id_suministro)
                 End If
             Next
 
-            MessageBox.Show("Entrega procesada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("¡Entrega confirmada con éxito!", "Éxito")
             LimpiarTodo()
 
         Catch ex As Exception
-            ' CAPTURA DE CUALQUIER ERROR (Validación o Base de Datos)
-            MessageBox.Show(ex.Message, "Error al confirmar entrega", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            If envioañadido Then
-                Aux.EliminarEntrega()
-            End If
+            MessageBox.Show("Error: " & ex.Message, "Error al procesar")
+            ' Si la cabecera se guardó pero falló un detalle, borramos la cabecera (rollback manual)
+            If envioañadido Then Aux.EliminarEntrega()
         End Try
     End Sub
     Private Sub ConfigurarGrid()
@@ -202,5 +207,7 @@
         Me.DataGridView.Columns.Add(colCant)
     End Sub
 
+    Private Sub Panel_editar_Paint(sender As Object, e As PaintEventArgs) Handles Panel_editar.Paint
 
+    End Sub
 End Class
