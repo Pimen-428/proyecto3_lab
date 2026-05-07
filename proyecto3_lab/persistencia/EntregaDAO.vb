@@ -71,4 +71,36 @@
 
         Return AgenteBD.ObtenerAgente.Leer("SELECT * FROM entrega ORDER BY idEntrega DESC LIMIT 1;")
     End Function
+
+    Public Function InformeHistorialSuministros(idZona As Integer, fInicio As String, fFin As String) As DataTable
+        Dim tabla As New DataTable()
+        tabla.Columns.Add("Fecha")
+        tabla.Columns.Add("Suministro")
+        tabla.Columns.Add("Cantidad")
+        tabla.Columns.Add("Zona Destino")
+
+
+        Dim sql As String = "SELECT e.fecha, s.Descripcion, de.cantidad, z.idZona " &
+                        "FROM detalle_entrega de " &
+                        "INNER JOIN entrega e ON de.idEntrega = e.idEntrega " &
+                        "INNER JOIN suministro s ON de.idSuministro = s.idSuministro " &
+                        "INNER JOIN zona_conflicto z ON e.idZonaDestino = z.idZona " &
+                        "WHERE e.idZonaDestino = " & idZona & " " &
+                        "AND e.fecha BETWEEN '" & fInicio & "' AND '" & fFin & "' " &
+                        "ORDER BY e.fecha DESC;"
+
+        Try
+            Dim datos As Collection = AgenteBD.ObtenerAgente().Leer(sql)
+
+            For Each fila As Collection In datos
+                If fila.Count >= 4 Then
+                    tabla.Rows.Add(fila(1), fila(2), fila(3), fila(4))
+                End If
+            Next
+        Catch ex As Exception
+            MsgBox("Error en SQL del DAO: " & ex.Message)
+        End Try
+
+        Return tabla
+    End Function
 End Class
