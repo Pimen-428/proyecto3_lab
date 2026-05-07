@@ -45,6 +45,18 @@
     Public Function EliminarEntrega() As Integer
         Return Me.EntregaDAO.Borrar(Me)
     End Function
+    Public Sub GenerarNuevoID()
+        Dim col As Collection = Me.EntregaDAO.UltimaEntregaCreada()
+        If col.Count > 0 Then
+
+            Dim fila As Collection = DirectCast(col.Item(1), Collection)
+            Me.id = CInt(fila.Item(1)) + 1
+        Else
+
+            Me.id = 1
+        End If
+    End Sub
+
 
 
 End Class
