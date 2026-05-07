@@ -38,7 +38,9 @@
             Exit Sub
         End Try
         For Each pAux In Me.z.ZonaDAO.Zonas
-            Me.ComboBoxDestino.Items.Add(pAux.id)
+            If ComboBoxOrigen.SelectedItem.ToString() <> pAux.id.ToString() Then
+                Me.ComboBoxDestino.Items.Add(pAux.id)
+            End If
         Next
     End Sub
     Public Sub LimpiarTodo()
