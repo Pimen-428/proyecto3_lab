@@ -168,7 +168,7 @@
                 Dim pesocantidad = suministroactual.PesoUnitario * cant
                 'acaba comprobacion de peso
                 If (ocupadoactualldestino + pesocantidad > almacenamientocentrodestino) Then
-                    Throw New Exception("Error La capacidad del centro : " & idDestino & ". es " & almacenamientocentrodestino & " kilos, no se puede superar ")
+                    Throw New Exception("Error La capacidad del centro : " & idDestino & " es " & almacenamientocentrodestino & " kilos, no se puede superar esa capacidad")
                 End If
                 ' Insertamos el detalle y restamos el stock (Lógica del Dominio)
                 ' Si falla la actualización de stock, devolvemos 0 y lanzamos excepción

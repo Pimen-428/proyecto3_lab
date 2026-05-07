@@ -1,4 +1,6 @@
-﻿Public Class menu
+﻿Imports System.Linq.Expressions
+
+Public Class menu
 
     Private Sub menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cambiarvista(New VentanaInicio())
@@ -57,5 +59,9 @@
 
     Private Sub Top10SuministrosEnviadosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Top10SuministrosEnviadosToolStripMenuItem.Click
         cambiarvista(New top_10_suministros)
+    End Sub
+
+    Private Sub EntregaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EntregaToolStripMenuItem.Click
+        cambiarvista(New Entregas_pag)
     End Sub
 End Class

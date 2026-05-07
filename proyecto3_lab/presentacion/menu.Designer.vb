@@ -76,7 +76,7 @@ Partial Class menu
         ' 
         ToolStripTextBox1.DropDownItems.AddRange(New ToolStripItem() {VerVoluntariosToolStripMenuItem, EntrgasDeCadaVoluntarioToolStripMenuItem})
         ToolStripTextBox1.Name = "ToolStripTextBox1"
-        ToolStripTextBox1.Size = New Size(224, 26)
+        ToolStripTextBox1.Size = New Size(215, 26)
         ToolStripTextBox1.Text = "Voluntarios"
         ' 
         ' VerVoluntariosToolStripMenuItem
@@ -95,7 +95,7 @@ Partial Class menu
         ' 
         EntregasDeCadaVoluntarioToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {VerCentrosToolStripMenuItem, AlmacenamientoPorCentroToolStripMenuItem, VoluntariosPorCentroToolStripMenuItem1})
         EntregasDeCadaVoluntarioToolStripMenuItem.Name = "EntregasDeCadaVoluntarioToolStripMenuItem"
-        EntregasDeCadaVoluntarioToolStripMenuItem.Size = New Size(224, 26)
+        EntregasDeCadaVoluntarioToolStripMenuItem.Size = New Size(215, 26)
         EntregasDeCadaVoluntarioToolStripMenuItem.Text = "Centros"
         ' 
         ' VerCentrosToolStripMenuItem
@@ -119,14 +119,14 @@ Partial Class menu
         ' ZonasConflictoToolStripMenuItem
         ' 
         ZonasConflictoToolStripMenuItem.Name = "ZonasConflictoToolStripMenuItem"
-        ZonasConflictoToolStripMenuItem.Size = New Size(224, 26)
+        ZonasConflictoToolStripMenuItem.Size = New Size(215, 26)
         ZonasConflictoToolStripMenuItem.Text = "Zonas de conflicto"
         ' 
         ' SuministrosToolStripMenuItem
         ' 
         SuministrosToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {VerSuministrosToolStripMenuItem, Top10SuministrosEnviadosToolStripMenuItem})
         SuministrosToolStripMenuItem.Name = "SuministrosToolStripMenuItem"
-        SuministrosToolStripMenuItem.Size = New Size(224, 26)
+        SuministrosToolStripMenuItem.Size = New Size(215, 26)
         SuministrosToolStripMenuItem.Text = "Suministros"
         ' 
         ' VerSuministrosToolStripMenuItem
