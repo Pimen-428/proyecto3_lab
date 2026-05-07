@@ -39,11 +39,13 @@
 
     Public Function Insertar(ByVal ent As entrega) As Integer
         Dim sql As String
-        sql = "INSERT INTO entrega (idCentroOrigen, idZonaDestino, DniVoluntario, Fecha) VALUES (" &
-              ent.id_centro_origen & ", " &
-              ent.id_zona_destino & ", '" &
-              ent.dni_voluntario & "', '" &
-              ent.fecha.ToString("yyyy-MM-dd") & "');"
+
+        sql = "INSERT INTO entrega (idEntrega, idCentroOrigen, idZonaDestino, DniVoluntario, Fecha) VALUES (" &
+          ent.id & ", " &
+          ent.id_centro_origen & ", " &
+          ent.id_zona_destino & ", '" &
+          ent.dni_voluntario & "', '" &
+          ent.fecha.ToString("yyyy-MM-dd") & "');"
 
         Return AgenteBD.ObtenerAgente.Modificar(sql)
     End Function
@@ -65,7 +67,8 @@
     Public Function Borrar(ByVal ent As entrega) As Integer
         Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM entrega WHERE idEntrega=" & ent.id & ";")
     End Function
-    Public Function UltimaEntregaCreada()
-        Return AgenteBD.ObtenerAgente.Leer("SELECT * FROM envio ORDER BY idEnvio DESC LIMIT 1;")
+    Public Function UltimaEntregaCreada() As Collection
+
+        Return AgenteBD.ObtenerAgente.Leer("SELECT * FROM entrega ORDER BY idEntrega DESC LIMIT 1;")
     End Function
 End Class

@@ -54,7 +54,8 @@ Partial Class menu
         MenuStrip1.Items.AddRange(New ToolStripItem() {MenuPrincipalToolStripMenuItem, ToolStripMenuItem1, TransaccionesToolStripMenuItem})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
-        MenuStrip1.Size = New Size(800, 28)
+        MenuStrip1.Padding = New Padding(8, 2, 0, 2)
+        MenuStrip1.Size = New Size(1000, 33)
         MenuStrip1.TabIndex = 2
         MenuStrip1.Text = "MenuStrip"
         ' 
@@ -62,127 +63,127 @@ Partial Class menu
         ' 
         MenuPrincipalToolStripMenuItem.ForeColor = SystemColors.ActiveCaptionText
         MenuPrincipalToolStripMenuItem.Name = "MenuPrincipalToolStripMenuItem"
-        MenuPrincipalToolStripMenuItem.Size = New Size(122, 24)
+        MenuPrincipalToolStripMenuItem.Size = New Size(145, 29)
         MenuPrincipalToolStripMenuItem.Text = "menu principal"
         ' 
         ' ToolStripMenuItem1
         ' 
         ToolStripMenuItem1.DropDownItems.AddRange(New ToolStripItem() {ToolStripTextBox1, EntregasDeCadaVoluntarioToolStripMenuItem, ZonasConflictoToolStripMenuItem, SuministrosToolStripMenuItem})
         ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        ToolStripMenuItem1.Size = New Size(88, 24)
+        ToolStripMenuItem1.Size = New Size(105, 29)
         ToolStripMenuItem1.Text = "Entidades"
         ' 
         ' ToolStripTextBox1
         ' 
         ToolStripTextBox1.DropDownItems.AddRange(New ToolStripItem() {VerVoluntariosToolStripMenuItem, EntrgasDeCadaVoluntarioToolStripMenuItem})
         ToolStripTextBox1.Name = "ToolStripTextBox1"
-        ToolStripTextBox1.Size = New Size(224, 26)
+        ToolStripTextBox1.Size = New Size(260, 34)
         ToolStripTextBox1.Text = "Voluntarios"
         ' 
         ' VerVoluntariosToolStripMenuItem
         ' 
         VerVoluntariosToolStripMenuItem.Name = "VerVoluntariosToolStripMenuItem"
-        VerVoluntariosToolStripMenuItem.Size = New Size(278, 26)
+        VerVoluntariosToolStripMenuItem.Size = New Size(335, 34)
         VerVoluntariosToolStripMenuItem.Text = "Ver voluntarios"
         ' 
         ' EntrgasDeCadaVoluntarioToolStripMenuItem
         ' 
         EntrgasDeCadaVoluntarioToolStripMenuItem.Name = "EntrgasDeCadaVoluntarioToolStripMenuItem"
-        EntrgasDeCadaVoluntarioToolStripMenuItem.Size = New Size(278, 26)
+        EntrgasDeCadaVoluntarioToolStripMenuItem.Size = New Size(335, 34)
         EntrgasDeCadaVoluntarioToolStripMenuItem.Text = "Entregas de cada Voluntario"
         ' 
         ' EntregasDeCadaVoluntarioToolStripMenuItem
         ' 
         EntregasDeCadaVoluntarioToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {VerCentrosToolStripMenuItem, AlmacenamientoPorCentroToolStripMenuItem, VoluntariosPorCentroToolStripMenuItem1})
         EntregasDeCadaVoluntarioToolStripMenuItem.Name = "EntregasDeCadaVoluntarioToolStripMenuItem"
-        EntregasDeCadaVoluntarioToolStripMenuItem.Size = New Size(224, 26)
+        EntregasDeCadaVoluntarioToolStripMenuItem.Size = New Size(260, 34)
         EntregasDeCadaVoluntarioToolStripMenuItem.Text = "Centros"
         ' 
         ' VerCentrosToolStripMenuItem
         ' 
         VerCentrosToolStripMenuItem.Name = "VerCentrosToolStripMenuItem"
-        VerCentrosToolStripMenuItem.Size = New Size(278, 26)
+        VerCentrosToolStripMenuItem.Size = New Size(335, 34)
         VerCentrosToolStripMenuItem.Text = "Ver centros"
         ' 
         ' AlmacenamientoPorCentroToolStripMenuItem
         ' 
         AlmacenamientoPorCentroToolStripMenuItem.Name = "AlmacenamientoPorCentroToolStripMenuItem"
-        AlmacenamientoPorCentroToolStripMenuItem.Size = New Size(278, 26)
+        AlmacenamientoPorCentroToolStripMenuItem.Size = New Size(335, 34)
         AlmacenamientoPorCentroToolStripMenuItem.Text = "Almacenamiento por centro"
         ' 
         ' VoluntariosPorCentroToolStripMenuItem1
         ' 
         VoluntariosPorCentroToolStripMenuItem1.Name = "VoluntariosPorCentroToolStripMenuItem1"
-        VoluntariosPorCentroToolStripMenuItem1.Size = New Size(278, 26)
+        VoluntariosPorCentroToolStripMenuItem1.Size = New Size(335, 34)
         VoluntariosPorCentroToolStripMenuItem1.Text = "voluntarios por centro"
         ' 
         ' ZonasConflictoToolStripMenuItem
         ' 
         ZonasConflictoToolStripMenuItem.Name = "ZonasConflictoToolStripMenuItem"
-        ZonasConflictoToolStripMenuItem.Size = New Size(224, 26)
+        ZonasConflictoToolStripMenuItem.Size = New Size(260, 34)
         ZonasConflictoToolStripMenuItem.Text = "Zonas de conflicto"
         ' 
         ' SuministrosToolStripMenuItem
         ' 
         SuministrosToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {VerSuministrosToolStripMenuItem, Top10SuministrosEnviadosToolStripMenuItem})
         SuministrosToolStripMenuItem.Name = "SuministrosToolStripMenuItem"
-        SuministrosToolStripMenuItem.Size = New Size(224, 26)
+        SuministrosToolStripMenuItem.Size = New Size(260, 34)
         SuministrosToolStripMenuItem.Text = "Suministros"
         ' 
         ' VerSuministrosToolStripMenuItem
         ' 
         VerSuministrosToolStripMenuItem.Name = "VerSuministrosToolStripMenuItem"
-        VerSuministrosToolStripMenuItem.Size = New Size(276, 26)
+        VerSuministrosToolStripMenuItem.Size = New Size(339, 34)
         VerSuministrosToolStripMenuItem.Text = "ver suministros"
         ' 
         ' Top10SuministrosEnviadosToolStripMenuItem
         ' 
         Top10SuministrosEnviadosToolStripMenuItem.Name = "Top10SuministrosEnviadosToolStripMenuItem"
-        Top10SuministrosEnviadosToolStripMenuItem.Size = New Size(276, 26)
+        Top10SuministrosEnviadosToolStripMenuItem.Size = New Size(339, 34)
         Top10SuministrosEnviadosToolStripMenuItem.Text = "top 10 suministros enviados"
         ' 
         ' TransaccionesToolStripMenuItem
         ' 
         TransaccionesToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {EnvioToolStripMenuItem, EntregaToolStripMenuItem, RecepcionToolStripMenuItem})
         TransaccionesToolStripMenuItem.Name = "TransaccionesToolStripMenuItem"
-        TransaccionesToolStripMenuItem.Size = New Size(114, 24)
+        TransaccionesToolStripMenuItem.Size = New Size(135, 29)
         TransaccionesToolStripMenuItem.Text = "Transacciones"
         ' 
         ' EnvioToolStripMenuItem
         ' 
         EnvioToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {RealizarEnvioToolStripMenuItem1, EditarEstadoEnvioToolStripMenuItem1, ListadoTodosLosEnviosToolStripMenuItem})
         EnvioToolStripMenuItem.Name = "EnvioToolStripMenuItem"
-        EnvioToolStripMenuItem.Size = New Size(224, 26)
+        EnvioToolStripMenuItem.Size = New Size(270, 34)
         EnvioToolStripMenuItem.Text = "Envio"
         ' 
         ' RealizarEnvioToolStripMenuItem1
         ' 
         RealizarEnvioToolStripMenuItem1.Name = "RealizarEnvioToolStripMenuItem1"
-        RealizarEnvioToolStripMenuItem1.Size = New Size(251, 26)
+        RealizarEnvioToolStripMenuItem1.Size = New Size(307, 34)
         RealizarEnvioToolStripMenuItem1.Text = "Realizar envio"
         ' 
         ' EditarEstadoEnvioToolStripMenuItem1
         ' 
         EditarEstadoEnvioToolStripMenuItem1.Name = "EditarEstadoEnvioToolStripMenuItem1"
-        EditarEstadoEnvioToolStripMenuItem1.Size = New Size(251, 26)
+        EditarEstadoEnvioToolStripMenuItem1.Size = New Size(307, 34)
         EditarEstadoEnvioToolStripMenuItem1.Text = "Editar estado envio"
         ' 
         ' ListadoTodosLosEnviosToolStripMenuItem
         ' 
         ListadoTodosLosEnviosToolStripMenuItem.Name = "ListadoTodosLosEnviosToolStripMenuItem"
-        ListadoTodosLosEnviosToolStripMenuItem.Size = New Size(251, 26)
+        ListadoTodosLosEnviosToolStripMenuItem.Size = New Size(307, 34)
         ListadoTodosLosEnviosToolStripMenuItem.Text = "Listado todos los envios"
         ' 
         ' EntregaToolStripMenuItem
         ' 
         EntregaToolStripMenuItem.Name = "EntregaToolStripMenuItem"
-        EntregaToolStripMenuItem.Size = New Size(224, 26)
+        EntregaToolStripMenuItem.Size = New Size(270, 34)
         EntregaToolStripMenuItem.Text = "Entrega"
         ' 
         ' RecepcionToolStripMenuItem
         ' 
         RecepcionToolStripMenuItem.Name = "RecepcionToolStripMenuItem"
-        RecepcionToolStripMenuItem.Size = New Size(224, 26)
+        RecepcionToolStripMenuItem.Size = New Size(270, 34)
         RecepcionToolStripMenuItem.Text = "Recepcion"
         ' 
         ' panel_principal
@@ -190,19 +191,21 @@ Partial Class menu
         panel_principal.BackColor = SystemColors.ButtonFace
         panel_principal.BorderStyle = BorderStyle.Fixed3D
         panel_principal.Dock = DockStyle.Fill
-        panel_principal.Location = New Point(0, 28)
+        panel_principal.Location = New Point(0, 33)
+        panel_principal.Margin = New Padding(4, 4, 4, 4)
         panel_principal.Name = "panel_principal"
-        panel_principal.Size = New Size(800, 422)
+        panel_principal.Size = New Size(1000, 529)
         panel_principal.TabIndex = 4
         ' 
         ' menu
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(1000, 562)
         Controls.Add(panel_principal)
         Controls.Add(MenuStrip1)
         MainMenuStrip = MenuStrip1
+        Margin = New Padding(4, 4, 4, 4)
         Name = "menu"
         Text = "menu"
         MenuStrip1.ResumeLayout(False)
