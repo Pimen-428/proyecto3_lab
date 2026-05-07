@@ -10,9 +10,12 @@
     End Sub
 
     Private Sub btn_actualizar_Click(sender As Object, e As EventArgs) Handles btn_actualizar.Click
-        zonaActual.nombre = txt_nombre.Text
-        zonaActual.pais = txt_pais.Text
-        zonaActual.nivel_urgencia = Convert.ToInt32(txt_urgencia.Text)
+
+        zonaActual.nombre = TextBoxNombreEditar.Text
+        zonaActual.pais = TextBoxPaisEditar.Text
+
+
+        zonaActual.nivel_urgencia = Convert.ToInt32(NumericUpDown1.Value)
 
         Try
             zonaActual.ActualizarZona()
@@ -39,5 +42,7 @@
         End If
     End Sub
 
+    Private Sub zonas_pag_editar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
 End Class

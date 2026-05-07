@@ -28,8 +28,8 @@
 
         Dim resultadoDetalle As Integer = Me.DetalleDAO.Insertar(Me)
 
-        If resultadoDetalle > 0 Then
 
+        If resultadoDetalle > 0 Then
             Return Me.DetalleDAO.ActualizarStock(idCentroOrigen, Me.id_suministro, Me.cantidad)
         Else
             Return 0
