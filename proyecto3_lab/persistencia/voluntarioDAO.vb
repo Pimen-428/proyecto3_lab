@@ -75,5 +75,29 @@
             Me.Personas.Add(p)
         Next
     End Sub
+
+
+    Public Function LeerEntregasPorVoluntario(dni As String) As DataTable
+        Dim dt As New DataTable()
+
+
+        Dim sql As String = "SELECT e.idEntrega, e.fecha, z.NombreZona AS Zona_Destino " &
+                        "FROM entrega e " &
+                        "INNER JOIN zona_conflicto z ON e.idZonaDestino = z.idZona " &
+                        "WHERE e.dniVoluntario = '" & dni & "' " &
+                        "ORDER BY e.fecha DESC;"
+
+        Dim col As Collection = AgenteBD.ObtenerAgente().Leer(sql)
+
+        dt.Columns.Add("ID Entrega")
+        dt.Columns.Add("Fecha")
+        dt.Columns.Add("Zona de Destino")
+
+        For Each fila As Collection In col
+            dt.Rows.Add(fila(1), fila(2), fila(3))
+        Next
+
+        Return dt
+    End Function
 End Class
 

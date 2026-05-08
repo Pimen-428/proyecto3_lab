@@ -131,6 +131,28 @@
                 MessageBox.Show("La entrega debe tener al menos un suministro.", "Dato incompleto")
                 Exit Sub
             End If
+            ' Control de errores
+            Dim idCentro As Integer = CInt(ComboBoxOrigen.SelectedValue)
+
+            For Each fila As DataGridViewRow In DataGridView.Rows
+                If fila.IsNewRow Then Continue For
+
+
+                Dim idSumi As Integer = CInt(fila.Cells("suministro").Value)
+                Dim cantPedida As Integer = 0
+                Integer.TryParse(fila.Cells("Cantidad").Value?.ToString(), cantPedida)
+
+
+                Dim prod As New Suministro(idSumi)
+                Dim validacion As String = prod.ValidarEntrega(idCentro, cantPedida)
+
+
+                If validacion <> "OK" Then
+                    MessageBox.Show(validacion, "Error de Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Exit Sub
+                End If
+            Next
+            ' ---
 
             ' 2. ASIGNACIÓN DE DATOS A LA CABECERA
             ' Usamos CInt porque los IDs son números enteros en tu esquema
