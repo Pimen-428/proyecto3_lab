@@ -68,4 +68,8 @@ Public Class menu
     Private Sub SuministrosPorFechaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SuministrosPorFechaToolStripMenuItem.Click
         cambiarvista(New Suministros_por_fechas)
     End Sub
+
+    Private Sub RecepcionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RecepcionToolStripMenuItem.Click
+
+    End Sub
 End Class

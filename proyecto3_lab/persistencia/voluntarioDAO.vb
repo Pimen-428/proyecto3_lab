@@ -41,6 +41,29 @@
             Me.Personas.Add(v)
         Next
     End Sub
+    Public Sub leerPorEntregas()
+        Dim v As Voluntario
+        Dim col, aux As Collection
+        ' La consulta cuenta los envíos por DNI y ordena de mayor a menor
+        Dim sql As String = "SELECT v.DNI, v.Nombre, v.Especialidad, v.idCentro, COUNT(e.idEntrega) as TotalEnvios " &
+                            "FROM voluntario v " &
+                            "LEFT JOIN entrega e ON v.DNI = e.DniVoluntario " &
+                            "GROUP BY v.DNI, v.Nombre, v.Especialidad, v.idCentro " &
+                            "ORDER BY TotalEnvios DESC"
+
+        col = AgenteBD.ObtenerAgente().Leer(sql)
+
+        For Each aux In col
+            ' Creamos el objeto voluntario 
+            v = New Voluntario(aux(1).ToString)
+            v.Nombre = aux(2).ToString
+            v.especialidad = aux(3).ToString
+            v.centro = aux(4)
+            v.Cantidad_envios = CInt(aux(5))
+            'añadimos el voluntario con todos los datos de la base de datos a la coleccion
+            Me.Personas.Add(v)
+        Next
+    End Sub
     Public Sub Leer(ByRef p As Voluntario)
         Dim col As Collection : Dim aux As Collection
         col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM voluntario WHERE DNI='" & p.DNI & "';")

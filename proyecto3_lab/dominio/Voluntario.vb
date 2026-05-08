@@ -46,6 +46,9 @@
     Public Sub leervoluntariosporcantidadenvios()
         Me.PerDAO.leerPorEnvios()
     End Sub
+    Public Sub leervoluntariosporcantidadentregas()
+        Me.PerDAO.leerPorEntregas()
+    End Sub
 
     Public Function ObtenerMisEntregas() As DataTable
         Return Me.PerDAO.LeerEntregasPorVoluntario(Me.DNI)

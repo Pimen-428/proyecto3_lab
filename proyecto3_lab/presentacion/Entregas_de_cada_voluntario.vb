@@ -55,7 +55,7 @@
         Me.v = New Voluntario
         Me.ListBox1.Items.Clear()
         Try
-            Me.v.leervoluntariosporcantidadenvios()
+            Me.v.leervoluntariosporcantidadentregas()
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
