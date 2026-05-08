@@ -57,6 +57,8 @@
         End If
     End Sub
 
+    Public Function InformeHistorialSuministros(idZ As Integer, f1 As String, f2 As String) As DataTable
 
-
+        Return Me.EntregaDAO.InformeHistorialSuministros(idZ, f1, f2)
+    End Function
 End Class

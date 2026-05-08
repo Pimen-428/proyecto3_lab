@@ -39,4 +39,22 @@ Public Class Suministro
     Public Sub top10suministros()
         Me.suDAO.top10suministros()
     End Sub
+
+    Public Function ValidarEntrega(idCentro As Integer, cantidadPedida As Integer) As String
+
+        Dim stockActual As Integer = Me.suDAO.ObtenerCantidadStock(Me.id_suministro, idCentro)
+
+
+        If stockActual <= 0 Then
+            Return "ERROR: No hay stock de este suministro en el centro seleccionado."
+        End If
+
+
+        If (stockActual - cantidadPedida) < 0 Then
+            Return "ERROR: Stock insuficiente. Solo quedan " & stockActual & " unidades y has solicitado " & cantidadPedida & "."
+        End If
+
+
+        Return "OK"
+    End Function
 End Class

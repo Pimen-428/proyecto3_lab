@@ -123,4 +123,20 @@ Public Class SuminstroDao
             Me.Suministros.Add(ent)
         Next
     End Sub
+
+    Public Function ObtenerCantidadStock(idSuministro As Integer, idCentro As Integer) As Integer
+
+        Dim sql As String = "SELECT CantidadStock FROM almacenamiento " &
+                        "WHERE idSuministro = " & idSuministro & " AND idCentro = " & idCentro & ";"
+
+        Dim col As Collection = AgenteBD.ObtenerAgente().Leer(sql)
+
+        If col.Count > 0 Then
+
+            Dim aux As Collection = DirectCast(col(1), Collection)
+            Return CInt(aux(1))
+        Else
+            Return 0
+        End If
+    End Function
 End Class
