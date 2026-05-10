@@ -30,5 +30,12 @@
     Public Function InsertarStock(ByVal kilos As Double) As Integer
         Return Me.RecepcionDAO.InsertarStock(Me, kilos)
     End Function
+    Public Sub LeerTodosRecepciones()
+        Me.RecepcionDAO.LeerTodos()
+    End Sub
+
+    Public Sub LeerRecepcion()
+        Me.RecepcionDAO.Leer(Me)
+    End Sub
 
 End Class

@@ -2,7 +2,32 @@
 
 Public Class RecepcionDao
 
-    Dim R As Recepcion
+    Public Recepcion As New Collection
+
+    Public Sub LeerTodos()
+        Dim r As Recepcion
+        Dim col, aux As Collection
+        col = AgenteBD.ObtenerAgente().Leer("SELECT * FROM Recepcion ORDER BY idRecepcion")
+        For Each aux In col
+            r = New Recepcion(aux(1))
+            r.IdCentro = aux(2)
+            r.DniVoluntario = aux(3).ToString
+            r.Fecha = CDate(aux(4))
+            r.Origen = aux(5).ToString
+            Me.Recepcion.Add(r)
+        Next
+    End Sub
+
+    Public Sub Leer(ByRef rec As Recepcion)
+        Dim col As Collection : Dim aux As Collection
+        col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM Recepcion WHERE idRecepcion=" & rec.IdRecepcion & ";")
+        For Each aux In col
+            rec.IdCentro = aux(2)
+            rec.DniVoluntario = aux(3).ToString
+            rec.Fecha = CDate(aux(4))
+            rec.Origen = aux(5).ToString
+        Next
+    End Sub
     Dim col, aux As Collection
     Public Function Insertar(ByVal rec As Recepcion) As Integer
         Dim sql As String

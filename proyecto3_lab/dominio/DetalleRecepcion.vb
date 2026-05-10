@@ -25,5 +25,8 @@
     Public Function InsertarDetalle() As Integer
         Return Me.DetalleRecepcionDAO.Insertar(Me)
     End Function
+    Public Function ActualizarDetalle() As Integer
+        Return Me.DetalleRecepcionDAO.Actualizar(Me)
+    End Function
 
 End Class

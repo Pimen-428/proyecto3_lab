@@ -69,7 +69,20 @@ Public Class menu
         cambiarvista(New Suministros_por_fechas)
     End Sub
 
-    Private Sub RecepcionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RecepcionToolStripMenuItem.Click
 
+
+    Private Sub RecepcionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RecepcionToolStripMenuItem.Click
+        cambiarvista(New Recepcion_pag())
+    End Sub
+
+    Private Sub AñadirRecepToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AñadirRecepToolStripMenuItem.Click
+        cambiarvista(New Recepcion__añadir())
+    End Sub
+    Private Sub VerRecepcionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerRecepcionToolStripMenuItem.Click
+        cambiarvista(New Recepcion_pag())
+    End Sub
+
+    Private Sub EditarRecepcionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditarRecepcionToolStripMenuItem.Click
+        cambiarvista(New Recepcion_editar())
     End Sub
 End Class

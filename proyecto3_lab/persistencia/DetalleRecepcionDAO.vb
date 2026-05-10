@@ -38,5 +38,11 @@ Public Class DetalleRecepcionDAO
 
         Return col
     End Function
-
+    Public Function Actualizar(ByVal det As DetalleRecepcion) As Integer
+        Dim sql As String
+        sql = "UPDATE detalle_recepcion SET Cantidad=" & det.Cantidad &
+              " WHERE idRecepcion=" & det.IdRecepcion &
+              " AND idSuministro=" & det.IdSuministro & ";"
+        Return AgenteBD.ObtenerAgente.Modificar(sql)
+    End Function
 End Class

@@ -40,94 +40,92 @@ Partial Class Entregas_pag
         ' ComboBoxOrigen
         ' 
         ComboBoxOrigen.FormattingEnabled = True
-        ComboBoxOrigen.Location = New Point(60, 126)
-        ComboBoxOrigen.Margin = New Padding(4, 4, 4, 4)
+        ComboBoxOrigen.Location = New Point(42, 76)
+        ComboBoxOrigen.Margin = New Padding(3, 2, 3, 2)
         ComboBoxOrigen.Name = "ComboBoxOrigen"
-        ComboBoxOrigen.Size = New Size(188, 33)
+        ComboBoxOrigen.Size = New Size(133, 23)
         ComboBoxOrigen.TabIndex = 1
         ' 
         ' CentroOrigen
         ' 
         CentroOrigen.AutoSize = True
-        CentroOrigen.Location = New Point(66, 64)
-        CentroOrigen.Margin = New Padding(2, 0, 2, 0)
+        CentroOrigen.Location = New Point(46, 38)
+        CentroOrigen.Margin = New Padding(1, 0, 1, 0)
         CentroOrigen.Name = "CentroOrigen"
-        CentroOrigen.Size = New Size(149, 25)
+        CentroOrigen.Size = New Size(98, 15)
         CentroOrigen.TabIndex = 2
         CentroOrigen.Text = "Centro de Origen"
         ' 
         ' ComboBoxDestino
         ' 
         ComboBoxDestino.FormattingEnabled = True
-        ComboBoxDestino.Location = New Point(608, 126)
-        ComboBoxDestino.Margin = New Padding(4, 4, 4, 4)
+        ComboBoxDestino.Location = New Point(426, 76)
+        ComboBoxDestino.Margin = New Padding(3, 2, 3, 2)
         ComboBoxDestino.Name = "ComboBoxDestino"
-        ComboBoxDestino.Size = New Size(188, 33)
+        ComboBoxDestino.Size = New Size(133, 23)
         ComboBoxDestino.TabIndex = 3
         ' 
         ' ZonaDestino
         ' 
         ZonaDestino.AutoSize = True
-        ZonaDestino.Location = New Point(641, 64)
-        ZonaDestino.Margin = New Padding(2, 0, 2, 0)
+        ZonaDestino.Location = New Point(449, 38)
+        ZonaDestino.Margin = New Padding(1, 0, 1, 0)
         ZonaDestino.Name = "ZonaDestino"
-        ZonaDestino.Size = New Size(141, 25)
+        ZonaDestino.Size = New Size(92, 15)
         ZonaDestino.TabIndex = 4
         ZonaDestino.Text = "Zona de destino"
         ' 
         ' ComboBoxVoluntarios
         ' 
         ComboBoxVoluntarios.FormattingEnabled = True
-        ComboBoxVoluntarios.Location = New Point(66, 312)
-        ComboBoxVoluntarios.Margin = New Padding(4, 4, 4, 4)
+        ComboBoxVoluntarios.Location = New Point(46, 187)
+        ComboBoxVoluntarios.Margin = New Padding(3, 2, 3, 2)
         ComboBoxVoluntarios.Name = "ComboBoxVoluntarios"
-        ComboBoxVoluntarios.Size = New Size(188, 33)
+        ComboBoxVoluntarios.Size = New Size(133, 23)
         ComboBoxVoluntarios.TabIndex = 5
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(66, 252)
-        Label2.Margin = New Padding(4, 0, 4, 0)
+        Label2.Location = New Point(46, 151)
         Label2.Name = "Label2"
-        Label2.Size = New Size(182, 25)
+        Label2.Size = New Size(120, 15)
         Label2.TabIndex = 8
         Label2.Text = "Voluntario encargado"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(678, 252)
-        Label4.Margin = New Padding(4, 0, 4, 0)
+        Label4.Location = New Point(475, 151)
         Label4.Name = "Label4"
-        Label4.Size = New Size(105, 25)
+        Label4.Size = New Size(70, 15)
         Label4.TabIndex = 10
         Label4.Text = "Fecha envio"
         ' 
         ' fecha
         ' 
-        fecha.Location = New Point(534, 314)
-        fecha.Margin = New Padding(4, 4, 4, 4)
+        fecha.Location = New Point(374, 188)
+        fecha.Margin = New Padding(3, 2, 3, 2)
         fecha.Name = "fecha"
-        fecha.Size = New Size(384, 31)
+        fecha.Size = New Size(270, 23)
         fecha.TabIndex = 11
         ' 
         ' DataGridView
         ' 
         DataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView.Location = New Point(22, 401)
-        DataGridView.Margin = New Padding(4, 4, 4, 4)
+        DataGridView.Location = New Point(15, 241)
+        DataGridView.Margin = New Padding(3, 2, 3, 2)
         DataGridView.Name = "DataGridView"
         DataGridView.RowHeadersWidth = 51
-        DataGridView.Size = New Size(498, 375)
+        DataGridView.Size = New Size(349, 225)
         DataGridView.TabIndex = 12
         ' 
         ' BtnConfirmar
         ' 
-        BtnConfirmar.Location = New Point(678, 684)
-        BtnConfirmar.Margin = New Padding(4, 4, 4, 4)
+        BtnConfirmar.Location = New Point(475, 410)
+        BtnConfirmar.Margin = New Padding(3, 2, 3, 2)
         BtnConfirmar.Name = "BtnConfirmar"
-        BtnConfirmar.Size = New Size(118, 36)
+        BtnConfirmar.Size = New Size(83, 22)
         BtnConfirmar.TabIndex = 13
         BtnConfirmar.Text = "Confirmar"
         BtnConfirmar.UseVisualStyleBackColor = True
@@ -144,20 +142,20 @@ Partial Class Entregas_pag
         Panel_editar.Controls.Add(ZonaDestino)
         Panel_editar.Controls.Add(BtnConfirmar)
         Panel_editar.Controls.Add(CentroOrigen)
-        Panel_editar.Location = New Point(21, 25)
-        Panel_editar.Margin = New Padding(2)
+        Panel_editar.Location = New Point(15, 15)
+        Panel_editar.Margin = New Padding(1, 1, 1, 1)
         Panel_editar.Name = "Panel_editar"
-        Panel_editar.Size = New Size(952, 816)
+        Panel_editar.Size = New Size(666, 490)
         Panel_editar.TabIndex = 15
         ' 
         ' Entregas_pag
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         Controls.Add(Panel_editar)
-        Margin = New Padding(2)
+        Margin = New Padding(1, 1, 1, 1)
         Name = "Entregas_pag"
-        Size = New Size(974, 896)
+        Size = New Size(682, 538)
         CType(DataGridView, ComponentModel.ISupportInitialize).EndInit()
         Panel_editar.ResumeLayout(False)
         Panel_editar.PerformLayout()

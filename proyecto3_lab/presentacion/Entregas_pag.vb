@@ -232,4 +232,8 @@
     Private Sub Panel_editar_Paint(sender As Object, e As PaintEventArgs) Handles Panel_editar.Paint
 
     End Sub
+
+    Private Sub fecha_ValueChanged(sender As Object, e As EventArgs) Handles fecha.ValueChanged
+
+    End Sub
 End Class
