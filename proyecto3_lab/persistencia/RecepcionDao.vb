@@ -7,7 +7,7 @@ Public Class RecepcionDao
     Public Sub LeerTodos()
         Dim r As Recepcion
         Dim col, aux As Collection
-        col = AgenteBD.ObtenerAgente().Leer("SELECT * FROM Recepcion ORDER BY idRecepcion")
+        col = AgenteBD.ObtenerAgente().Leer("SELECT idRecepcion, idCentro, DniVoluntario, Fecha, Origen FROM recepcion ORDER BY idRecepcion")
         For Each aux In col
             r = New Recepcion(aux(1))
             r.IdCentro = aux(2)
@@ -31,12 +31,21 @@ Public Class RecepcionDao
     Dim col, aux As Collection
     Public Function Insertar(ByVal rec As Recepcion) As Integer
         Dim sql As String
-        sql = "INSERT INTO recepcion (idCentro, DniVoluntario, Fecha) VALUES (" &
-              rec.IdCentro & ", '" &
-              rec.DniVoluntario & "', '" &
-              rec.Fecha.ToString("yyyy-MM-dd") & "');"
+        sql = "INSERT INTO recepcion (idCentro, DniVoluntario, Fecha, Origen) VALUES (" &
+          rec.IdCentro & ", '" &
+          rec.DniVoluntario & "', '" &
+          rec.Fecha.ToString("yyyy-MM-dd") & "', '" &
+          rec.Origen & "');"
 
-        Return AgenteBD.ObtenerAgente.Modificar(sql)
+        AgenteBD.ObtenerAgente.Modificar(sql)
+
+        ' Obtener el ID generado
+        Dim colId As Collection = AgenteBD.ObtenerAgente.Leer("SELECT LAST_INSERT_ID();")
+        For Each aux As Collection In colId
+            rec.IdRecepcion = CInt(aux(1))
+        Next
+
+        Return rec.IdRecepcion
     End Function
     Public Function InsertarStock(ByVal ent As Recepcion, ByVal kilos As Double) As Integer
 
