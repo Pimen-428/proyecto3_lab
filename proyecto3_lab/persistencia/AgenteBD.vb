@@ -3,7 +3,7 @@
     Private Shared _instancia As AgenteBD
     Private Shared conexion As MySql.Data.MySqlClient.MySqlConnection
     'linea a cambiar si da error el agente
-    Private Const cadenaConexion As String = "server=localhost;database=ayuda_humanitaria;uid=root;pwd=Alejandro27+"
+    Private Const cadenaConexion As String = "server=localhost;database=ayuda_humanitaria;uid=root;pwd=Muzka777"
 
     Private Sub New()
         AgenteBD.conexion = New MySql.Data.MySqlClient.MySqlConnection(AgenteBD.cadenaConexion)

@@ -71,6 +71,9 @@ Public Class menu
 
 
 
+    Private Sub VerSuministrosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerSuministrosToolStripMenuItem.Click
+        cambiarvista(New Suministro_pag())
+    End Sub
     Private Sub RecepcionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RecepcionToolStripMenuItem.Click
         cambiarvista(New Recepcion_pag())
     End Sub
@@ -84,5 +87,15 @@ Public Class menu
 
     Private Sub EditarRecepcionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditarRecepcionToolStripMenuItem.Click
         cambiarvista(New Recepcion_editar())
+    End Sub
+
+    Private Sub TransaccionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransaccionesToolStripMenuItem.Click
+
+    End Sub
+    Private Sub HistoricoEnviosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HistoricoDeEnvioToolStripMenuItem.Click
+        cambiarvista(New Historico_envio_pag())
+    End Sub
+    Private Sub ListadoGlobaldeAlmacenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListadoGlobalDeAlmacenToolStripMenuItem.Click
+        cambiarvista(New ListadoGlobaldeAlmacenPag())
     End Sub
 End Class

@@ -57,4 +57,10 @@ Public Class Suministro
 
         Return "OK"
     End Function
+    Public Function InsertarSuministro() As Integer
+        Return Me.suDAO.Insertar(Me)
+    End Function
+    Public Sub LeerTodosSuministros()
+        Me.suDAO.LeerTodos()
+    End Sub
 End Class

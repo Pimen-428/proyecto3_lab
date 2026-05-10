@@ -1,11 +1,12 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-
-Public Class Recepcion_editar
+﻿Public Class Recepcion_editar
 
     Dim d As DetalleRecepcion
+    Dim s As Suministro
+
     Public Sub New()
         InitializeComponent()
     End Sub
+
     Public Sub New(idRecepcion As Integer, idSuministro As Integer)
         InitializeComponent()
         Me.d = New DetalleRecepcion(idRecepcion, idSuministro)
@@ -15,8 +16,14 @@ Public Class Recepcion_editar
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        If TextBox1.Text.Trim() = "" OrElse TextBox2.Text.Trim() = "" OrElse TextBox3.Text.Trim() = "" Then
+        If TextBox1.Text.Trim() = "" OrElse TextBox2.Text.Trim() = "" OrElse TextBox3.Text.Trim() = "" OrElse TextBox4.Text.Trim() = "" Then
             MessageBox.Show("Rellene todos los campos.", "Dato incompleto")
+            Exit Sub
+        End If
+
+        Dim peso As Decimal
+        If Not Decimal.TryParse(TextBox4.Text.Trim(), peso) OrElse peso <= 0 Then
+            MessageBox.Show("Introduzca un peso válido.", "Dato incompleto")
             Exit Sub
         End If
 
@@ -24,8 +31,12 @@ Public Class Recepcion_editar
         Me.d.IdSuministro = CInt(TextBox2.Text.Trim())
         Me.d.Cantidad = CInt(TextBox3.Text.Trim())
 
+        Me.s = New Suministro(CInt(TextBox2.Text.Trim()))
+        Me.s.PesoUnitario = peso
+
         Try
             If Me.d.ActualizarDetalle() > 0 Then
+                Me.s.suDAO.Update(Me.s)
                 MessageBox.Show("Detalle actualizado con éxito.", "Éxito")
                 Me.Hide()
             Else

@@ -1,44 +1,39 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Suministro_pag
-    Inherits System.Windows.Forms.UserControl
+﻿Public Class Suministro_pag
+    Dim s As Suministro
 
-    Private components As System.ComponentModel.IContainer
-
-    <System.Diagnostics.DebuggerStepThrough()>
-    Private Sub InitializeComponent()
-        ListBoxSuministros = New ListBox()
-        PanelSuministro = New Panel()
-        StatusStrip1 = New StatusStrip()
-        AñadirSuministro_boton = New ToolStripStatusLabel()
-        EditarSuministro_boton = New ToolStripStatusLabel()
-
-        StatusStrip1.SuspendLayout()
-        SuspendLayout()
-
-        ' ListBox
-        ListBoxSuministros.Dock = DockStyle.Left
-        ListBoxSuministros.Size = New Size(180, 500)
-
-        ' Panel
-        PanelSuministro.Dock = DockStyle.Fill
-
-        ' StatusStrip
-        StatusStrip1.Items.AddRange(New ToolStripItem() {AñadirSuministro_boton, EditarSuministro_boton})
-
-        AñadirSuministro_boton.Text = "Añadir Suministro"
-        EditarSuministro_boton.Text = "Editar Suministro"
-
-        Controls.Add(StatusStrip1)
-        Controls.Add(PanelSuministro)
-        Controls.Add(ListBoxSuministros)
-
-        ResumeLayout(False)
+    Private Sub Suministros_pag_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ConfigurarGrid()
+        RefrescarGrid()
     End Sub
 
-    Friend WithEvents ListBoxSuministros As ListBox
-    Friend WithEvents PanelSuministro As Panel
-    Friend WithEvents StatusStrip1 As StatusStrip
-    Friend WithEvents AñadirSuministro_boton As ToolStripStatusLabel
-    Friend WithEvents EditarSuministro_boton As ToolStripStatusLabel
+    Private Sub ConfigurarGrid()
+        DataGridView1.Columns.Clear()
+        DataGridView1.AutoGenerateColumns = False
+        DataGridView1.ReadOnly = True
+
+        DataGridView1.Columns.Add(New DataGridViewTextBoxColumn() With {
+            .Name = "colId", .HeaderText = "ID", .DataPropertyName = "id_suministro", .Width = 50
+        })
+        DataGridView1.Columns.Add(New DataGridViewTextBoxColumn() With {
+            .Name = "colDescripcion", .HeaderText = "Descripción", .DataPropertyName = "Descripcion", .Width = 200
+        })
+        DataGridView1.Columns.Add(New DataGridViewTextBoxColumn() With {
+            .Name = "colCategoria", .HeaderText = "Categoría", .DataPropertyName = "Categoria", .Width = 120
+        })
+        DataGridView1.Columns.Add(New DataGridViewTextBoxColumn() With {
+            .Name = "colPeso", .HeaderText = "Peso Unitario", .DataPropertyName = "PesoUnitario", .Width = 100
+        })
+    End Sub
+
+    Private Sub RefrescarGrid()
+        Me.s = New Suministro()
+        Try
+            Me.s.LeerTodosSuministros()
+            DataGridView1.DataSource = Nothing
+            DataGridView1.DataSource = Me.s.suDAO.Suministros
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End Try
+    End Sub
 
 End Class

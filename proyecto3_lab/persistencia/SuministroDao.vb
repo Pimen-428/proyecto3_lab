@@ -9,12 +9,19 @@ Public Class SuminstroDao
 
     Public Function Insertar(ByVal ent As Suministro) As Integer
         Dim sql As String
-        sql = "INSERT INTO Suminstro (id_suministro, Descripcion, Categoria, PesoUnitario) VALUES (" &
-              ent.id_suministro & ", '" &
-              ent.Descripcion & "', '" &
-              ent.Categoria & "', " &
-              ent.PesoUnitario & ");"
-        Return AgenteBD.ObtenerAgente.Modificar(sql)
+        sql = "INSERT INTO suministro (Descripcion, Categoria, PesoUnitario) VALUES ('" &
+          ent.Descripcion & "', '" &
+          ent.Categoria & "', " &
+          ent.PesoUnitario.ToString(System.Globalization.CultureInfo.InvariantCulture) & ");"
+        AgenteBD.ObtenerAgente.Modificar(sql)
+
+        ' Obtener el ID generado
+        Dim colId As Collection = AgenteBD.ObtenerAgente.Leer("SELECT LAST_INSERT_ID();")
+        For Each aux As Collection In colId
+            ent.id_suministro = CInt(aux(1))
+        Next
+
+        Return ent.id_suministro
     End Function
     Public Function Update(ByVal ent As Suministro)
         Dim sql As String
@@ -36,7 +43,7 @@ Public Class SuminstroDao
         Dim ent As Suministro
         Dim col, aux As Collection
 
-        col = AgenteBD.ObtenerAgente().Leer("SELECT id_suministro, Descripcion, Categoria, PesoUnitario, Fecha FROM suministro ORDER BY id_suministro")
+        col = AgenteBD.ObtenerAgente().Leer("SELECT idSuministro, Descripcion, Categoria, PesoUnitario FROM suministro ORDER BY idSuministro")
 
         For Each aux In col
             ent = New Suministro(CInt(aux(1)))
