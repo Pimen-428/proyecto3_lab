@@ -39,6 +39,9 @@ Public Class Suministro
     Public Sub top10suministros()
         Me.suDAO.top10suministros()
     End Sub
+    Public Sub editarsuministro()
+        Me.suDAO.Update(Me)
+    End Sub
 
     Public Function ValidarEntrega(idCentro As Integer, cantidadPedida As Integer) As String
 

@@ -65,7 +65,7 @@ Public Class menu
         cambiarvista(New Entregas_pag)
     End Sub
 
-    Private Sub SuministrosPorFechaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SuministrosPorFechaToolStripMenuItem.Click
+    Private Sub SuministrosPorFechaToolStripMenuItem_Click(sender As Object, e As EventArgs)
         cambiarvista(New Suministros_por_fechas)
     End Sub
 
@@ -73,9 +73,6 @@ Public Class menu
 
     Private Sub VerSuministrosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerSuministrosToolStripMenuItem.Click
         cambiarvista(New Suministro_pag())
-    End Sub
-    Private Sub RecepcionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RecepcionToolStripMenuItem.Click
-        cambiarvista(New Recepcion_pag())
     End Sub
 
     Private Sub AñadirRecepToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AñadirRecepToolStripMenuItem.Click
@@ -97,5 +94,17 @@ Public Class menu
     End Sub
     Private Sub ListadoGlobaldeAlmacenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListadoGlobalDeAlmacenToolStripMenuItem.Click
         cambiarvista(New ListadoGlobaldeAlmacenPag())
+    End Sub
+
+    Private Sub HacerEntregaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HacerEntregaToolStripMenuItem.Click
+        cambiarvista(New Entregas_pag())
+    End Sub
+
+    Private Sub EntregasPorFechaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EntregasPorFechaToolStripMenuItem.Click
+        cambiarvista(New Suministros_por_fechas())
+    End Sub
+
+    Private Sub CrearNuevoSuministroToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CrearNuevoSuministroToolStripMenuItem.Click
+        cambiarvista(New Suministro_Añadir())
     End Sub
 End Class

@@ -15,7 +15,6 @@ Public Class Suministro_Añadir
             MessageBox.Show("Introduzca un peso válido.", "Dato incompleto")
             Exit Sub
         End If
-
         Try
             Me.s = New Suministro()
             Me.s.Descripcion = TextBox1.Text.Trim()
@@ -24,17 +23,17 @@ Public Class Suministro_Añadir
 
             If Me.s.InsertarSuministro() > 0 Then
                 MessageBox.Show("Suministro añadido con éxito.", "Éxito")
-                Me.Hide()
             Else
                 MessageBox.Show("No se pudo registrar el suministro.", "Error")
             End If
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message, "Error")
         End Try
-
+        vaciarTextBox()
     End Sub
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Descripción.Click
-
+    Private Sub vaciarTextBox()
+        TextBox1.Text = ""
+        TextBox2.Text = ""
+        TextBox3.Text = ""
     End Sub
 End Class

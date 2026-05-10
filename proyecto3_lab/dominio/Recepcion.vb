@@ -37,5 +37,10 @@
     Public Sub LeerRecepcion()
         Me.RecepcionDAO.Leer(Me)
     End Sub
-
+    Public Function UltimoEnvio()
+        Return Me.RecepcionDAO.UltimoEnvioCreado()
+    End Function
+    Public Function EliminarRecepcion() As Integer
+        Return Me.RecepcionDAO.Borrar(Me)
+    End Function
 End Class

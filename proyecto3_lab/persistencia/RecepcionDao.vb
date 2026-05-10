@@ -75,14 +75,14 @@ Public Class RecepcionDao
             Return -1 ' ERROR: supera capacidad
         End If
 
-        ' 4. Insertar o actualizar stock
-        Dim sql As String
-
-        sql = "INSERT INTO almacenamiento (idCentro, Kilos) VALUES (" &
-          ent.IdCentro & ", " & kilos & ");"
-
-        Return AgenteBD.ObtenerAgente.Modificar(sql)
+        Return 1
 
     End Function
-
+    Public Function UltimoEnvioCreado()
+        Return AgenteBD.ObtenerAgente.Leer("SELECT * FROM recepcion ORDER BY idRecepcion DESC LIMIT 1;")
+    End Function
+    Public Function Borrar(recp As Recepcion) As Integer
+        AgenteBD.ObtenerAgente.Modificar("DELETE FROM detalle_recepcion WHERE idRecepcion=" & recp.IdRecepcion & ";")
+        Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM recepcion WHERE idRecepcion='" & recp.IdRecepcion & "';")
+    End Function
 End Class

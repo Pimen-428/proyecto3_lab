@@ -52,11 +52,11 @@ Public Class AlmacenamientoDAO
     Public Function ObtenerListadoGlobal() As Collection
         Dim col As Collection
         col = AgenteBD.ObtenerAgente.Leer(
-              "SELECT cl.Nombre AS Centro, s.Descripcion, a.CantidadStock " &
+              "SELECT cl.idCentro, cl.Nombre AS Centro, s.Descripcion, a.CantidadStock " &
               "FROM almacenamiento a " &
               "JOIN suministro s ON a.idSuministro = s.idSuministro " &
               "JOIN centro_logistico cl ON a.idCentro = cl.idCentro " &
-              "ORDER BY cl.Nombre, s.Descripcion;")
+              "ORDER BY cl.idCentro;")
 
         Return col
     End Function

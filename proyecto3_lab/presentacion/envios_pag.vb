@@ -240,4 +240,6 @@
         colCant.HeaderText = "Cantidad a Enviar"
         Me.DataGridView.Columns.Add(colCant)
     End Sub
+
+
 End Class

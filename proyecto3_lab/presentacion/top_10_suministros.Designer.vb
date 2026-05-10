@@ -29,9 +29,10 @@ Partial Class top_10_suministros
         ' 
         labeltop.AutoSize = True
         labeltop.BackColor = SystemColors.ButtonHighlight
+        labeltop.Font = New Font("Segoe UI", 7F)
         labeltop.Location = New Point(213, 32)
         labeltop.Name = "labeltop"
-        labeltop.Size = New Size(229, 20)
+        labeltop.Size = New Size(181, 15)
         labeltop.TabIndex = 0
         labeltop.Text = "TOP 10 SUMINISTROS ENVIADOS"
         ' 

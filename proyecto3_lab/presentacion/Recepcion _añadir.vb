@@ -1,4 +1,6 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+﻿Imports System.Linq.Expressions
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports Mysqlx.Cursor
 
 Public Class Recepcion__añadir
     Dim a As Almacenamiento
@@ -6,153 +8,206 @@ Public Class Recepcion__añadir
     Dim r As Recepcion
     Dim c As Centro_logistico
     Dim v As Voluntario
+    Dim ListaSuministros As Collection
 
     Private Sub Recepcion_anadir_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RefrescarComboBoxCentro()
-
+        refrescar_lista_suministros()
     End Sub
 
     Private Sub RefrescarComboBoxCentro()
-        ComboBox1.DataSource = Nothing
+        Me.ComboBox1.Items.Clear()
+        Dim pAux As Centro_logistico
         Me.c = New Centro_logistico
         Try
             Me.c.LeerTodosCentros()
-            ComboBox1.DataSource = Me.c.CentroDAO.Centro
-            ComboBox1.DisplayMember = "id"
-            ComboBox1.ValueMember = "id"
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
         End Try
+        For Each pAux In Me.c.CentroDAO.Centro
+            Me.ComboBox1.Items.Add(pAux.id)
+        Next
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-        If ComboBox1.SelectedItem IsNot Nothing Then
-            Dim centroSeleccionado As Centro_logistico = CType(ComboBox1.SelectedItem, Centro_logistico)
-            Dim centro As String = centroSeleccionado.id.ToString()
-            RefrescarComboBoxVoluntario(centro)
+        If Me.ComboBox1 IsNot Nothing Then
+            ' Extraemos el ID del string "ID - Nombre"
+            Dim texto As String = Me.ComboBox1.SelectedItem.ToString()
+            LimpiarTodoMenosOrigen()
+            RefrescarComboBoxVoluntario(texto)
+            ConfigurarGrid()
         End If
     End Sub
 
     Private Sub RefrescarComboBoxVoluntario(centro As String)
-        ComboBox2.DataSource = Nothing
+        Me.ComboBox2.Items.Clear()
+        Dim pAux As Voluntario
         Me.v = New Voluntario
         Try
             Me.v.LeerTodasPersonasdecentro(centro)
-            ComboBox2.DataSource = Me.v.PerDAO.Personas
-            ComboBox2.DisplayMember = "DNI"
-            ComboBox2.ValueMember = "DNI"
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
         End Try
+        For Each pAux In Me.v.PerDAO.Personas
+            Me.ComboBox2.Items.Add(pAux.DNI)
+        Next
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
-        ' VALIDACIONES
-        If ComboBox1.SelectedValue Is Nothing Then
-            MessageBox.Show("Seleccione un centro.", "Dato incompleto")
-            Exit Sub
-        End If
-
-        If ComboBox2.SelectedValue Is Nothing Then
-            MessageBox.Show("Seleccione un voluntario.", "Dato incompleto")
-            Exit Sub
-        End If
-
-        If TextBox1.Text.Trim() = "" Then
-            MessageBox.Show("Introduzca el origen.", "Dato incompleto")
-            Exit Sub
-        End If
-
-        If TextBox3.Text.Trim() = "" OrElse TextBox4.Text.Trim() = "" OrElse TextBox5.Text.Trim() = "" Then
-            MessageBox.Show("Rellene todos los datos del suministro.", "Dato incompleto")
-            Exit Sub
-        End If
-
-        Dim cantidad As Integer
-        If Not Integer.TryParse(TextBox2.Text.Trim(), cantidad) OrElse cantidad <= 0 Then
-            MessageBox.Show("Introduzca una cantidad válida.", "Dato incompleto")
-            Exit Sub
-        End If
-
-        Dim peso As Decimal
-        If Not Decimal.TryParse(TextBox5.Text.Trim(), peso) OrElse peso <= 0 Then
-            MessageBox.Show("Introduzca un peso unitario válido.", "Dato incompleto")
-            Exit Sub
-        End If
-
+        Dim envioañadido As Boolean = False
+        Dim Aux As Recepcion = New Recepcion()
+        Dim Entregados As Integer = 0
         Try
-            ' 1. INSERTAR RECEPCION
-            Me.r = New Recepcion()
-            Me.r.IdCentro = CInt(ComboBox1.SelectedValue)
-            Me.r.DniVoluntario = ComboBox2.SelectedValue.ToString()
-            Me.r.Fecha = DateTimePicker1.Value.Date
-            Me.r.Origen = TextBox1.Text.Trim()
 
-            If Me.r.InsertarRecepcion() = 0 Then
-                MessageBox.Show("No se pudo registrar la recepción.", "Error")
-                Exit Sub
+            ' 1. VALIDACIONES PREVIAS
+            If ComboBox1.SelectedItem Is Nothing Then
+                Throw New Exception("Debe seleccionar un centro de destino.")
             End If
 
-            ' 2. INSERTAR SUMINISTRO
-            Me.s = New Suministro()
-            Me.s.Descripcion = TextBox3.Text.Trim()
-            Me.s.Categoria = TextBox4.Text.Trim()
-            Me.s.PesoUnitario = peso
-
-            If Me.s.InsertarSuministro() = 0 Then
-                MessageBox.Show("No se pudo registrar el suministro.", "Error")
-                Exit Sub
+            If ComboBox2.SelectedItem Is Nothing Then
+                Throw New Exception("Debe asignar un voluntario al envío.")
             End If
+            If TextBox1.Text = "" Then
+                Throw New Exception("se debe poner un origen")
+            End If
+            ' 2. CAPTURA DE DATOS DE CABECERA
+            Dim idDestino As String = ComboBox1.SelectedItem.ToString()
+            Dim fechaEnvio As Date = DateTimePicker1.Value.Date
+            Dim dnivoluntario As String = ComboBox2.SelectedItem.ToString()
+            Dim origen As String = TextBox1.Text
+            If DataGridView1.Rows.Count = 0 OrElse (DataGridView1.Rows.Count = 1 And DataGridView1.Rows(0).IsNewRow) Then
+                Throw New Exception("El envío debe tener al menos un suministro.")
+            End If
+            'metemos los datos en la variable auxiliar que es el envio
+            Aux.IdCentro = idDestino
+            Aux.DniVoluntario = dnivoluntario
+            Aux.fecha = fechaEnvio
+            Aux.Origen = origen
+            Aux.InsertarRecepcion()
+            envioañadido = True
+            Dim colUltimo As Collection = Aux.UltimoEnvio()
+            If colUltimo IsNot Nothing AndAlso colUltimo.Count > 0 Then
+                Dim fila As Collection = colUltimo(1)
+                Aux.IdRecepcion = CInt(fila(1))
+            End If
+            ' en esta funcion recorremos todos las columnas del datagridview y las añadimosa detalle envio y añadimos stock
+            For Each fila As DataGridViewRow In DataGridView1.Rows
+                ' Saltamos la fila nueva vacía
+                If fila.IsNewRow Then Continue For
 
-            ' 3. SUMAR STOCK
-            Me.a = New Almacenamiento()
-            Me.a.IdCentro = CInt(ComboBox1.SelectedValue)
-            Me.a.IdSuministro = Me.s.id_suministro
-            Me.a.CantidadStock = cantidad
-            Me.a.SumarStock()
+                ' Validamos que el usuario haya seleccionado un suministro
+                If fila.Cells("suministro").Value Is Nothing Then
+                    Throw New Exception("Hay una fila sin suministro seleccionado.")
+                End If
 
-            MessageBox.Show("Recepción añadida con éxito.", "Éxito")
+                ' Creamos el objeto Detalle
+                Dim detalle As New DetalleRecepcion()
+                detalle.IdRecepcion = Aux.IdRecepcion
 
+                ' Obtenemos el ID del suministro gracias al ValueMember del ComboBoxColumn
+                Dim suministroseleccionado = CInt(fila.Cells("suministro").Value)
+                detalle.IdSuministro = suministroseleccionado
 
+                ' Validamos y capturamos la cantidad
+                Dim cant As Integer
+                If Not Integer.TryParse(fila.Cells("Cantidad").Value?.ToString(), cant) OrElse cant <= 0 Then
+                    Throw New Exception("La cantidad debe ser un número entero mayor a 0.")
+                End If
+                detalle.cantidad = cant
+                Dim centrodestino = New Centro_logistico(idDestino)
+                centrodestino.LeerCentro()
+                Dim almacenamientocentrodestino = centrodestino.capacidad * 1000
+                Dim almacenamientodestino = New Almacenamiento()
+                almacenamientodestino.IdCentro = idDestino
+                Dim ocupadoactualldestino = almacenamientodestino.ObtenerStockTotalKilos()
+                Dim suministroactual = New Suministro(suministroseleccionado)
+                suministroactual.obtenersuministro()
+                Dim pesocantidad = suministroactual.PesoUnitario * cant
+                'acaba comprobacion de peso
+                If (ocupadoactualldestino + pesocantidad > almacenamientocentrodestino) Then
+                    Throw New Exception("Error La capacidad del centro : " & idDestino & " es " & almacenamientocentrodestino & " kilos, no se puede superar esa capacidad")
+                End If
+                detalle.InsertarDetalle()
+                'sumamos el stock al centro correspondiente despues de comprobar que el peso estaba bien
+                almacenamientodestino.IdCentro = idDestino
+                almacenamientodestino.IdSuministro = suministroseleccionado
+                almacenamientodestino.CantidadStock = cant
+                almacenamientodestino.SumarStock()
+
+                Entregados = Entregados + 1
+            Next
+
+            MessageBox.Show("Envío procesado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            LimpiarTodo()
+            RefrescarComboBoxCentro()
         Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message, "Error")
+            ' CAPTURA DE CUALQUIER ERROR (Validación o Base de Datos)
+            MessageBox.Show(ex.Message, "Error al confirmar envío", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            If envioañadido Then
+                ' Usamos un bucle for normal para controlar el índice hasta 'Entregados'
+                For i As Integer = 0 To Entregados - 1
+                    Dim fila As DataGridViewRow = DataGridView1.Rows(i)
+
+                    ' Extraemos los datos necesarios para reponer el stock
+                    Dim idSuministro As Integer = CInt(fila.Cells("suministro").Value)
+                    Dim cantidadAReponer As Integer = CInt(fila.Cells("Cantidad").Value)
+
+                    ' Instanciamos Almacenamiento para devolver el stock
+                    Dim alm As New Almacenamiento()
+                    alm.IdCentro = Aux.IdCentro
+                    alm.IdSuministro = idSuministro
+                    alm.CantidadStock = cantidadAReponer ' La cantidad que restamos antes
+                    'restamos el stock al centro al que se le quitamos
+                    alm.RestarStock()
+                Next
+                Aux.EliminarRecepcion()
+            End If
         End Try
-
+    End Sub
+    Public Sub LimpiarTodo()
+        ComboBox1.Text = ""
+        ComboBox1.Items.Clear()
+        ComboBox2.Text = ""
+        ComboBox2.Items.Clear()
+        TextBox1.Text = ""
+        DataGridView1.Rows.Clear()
     End Sub
 
-
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
+    Public Sub LimpiarTodoMenosOrigen()
+        ComboBox2.Text = ""
+        ComboBox2.Items.Clear()
+        TextBox1.Text = ""
+        DataGridView1.Rows.Clear()
     End Sub
 
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-
+    Public Sub refrescar_lista_suministros()
+        Dim suministro = New Suministro()
+        suministro.LeerTodosSuministros()
+        ListaSuministros = suministro.suDAO.Suministros
     End Sub
+    Private Sub ConfigurarGrid()
+        Me.DataGridView1.Columns.Clear()
+        If Me.ListaSuministros Is Nothing OrElse Me.ListaSuministros.Count = 0 Then
+            MessageBox.Show("Este centro no tiene suministros disponibles.")
+            Exit Sub
+        End If
 
-    Private Sub Origen_Click(sender As Object, e As EventArgs) Handles Origen.Click
+        ' 1. Columna de ComboBox para Suministros
+        Dim colCombo As New DataGridViewComboBoxColumn()
+        colCombo.Name = "suministro"
+        colCombo.HeaderText = "Suministro"
+        ' Aquí cargamos los suministros 
+        colCombo.DataSource = Me.listaSuministros
+        colCombo.DisplayMember = "Descripcion"
+        colCombo.ValueMember = "id_suministro"
+        Me.DataGridView1.Columns.Add(colCombo)
 
-    End Sub
-
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-
-    End Sub
-
-
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
-
-    End Sub
-
-    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
-
-    End Sub
-
-    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-
-    End Sub
-
-    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
-
+        ' 2. Columna para la Cantidad
+        Dim colCant As New DataGridViewTextBoxColumn()
+        colCant.Name = "Cantidad"
+        colCant.HeaderText = "Cantidad a Enviar"
+        Me.DataGridView1.Columns.Add(colCant)
     End Sub
 End Class

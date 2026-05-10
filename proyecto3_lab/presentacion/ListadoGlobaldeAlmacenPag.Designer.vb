@@ -29,18 +29,21 @@ Partial Class ListadoGlobaldeAlmacenPag
         ' DataGridView1
         ' 
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(3, 3)
+        DataGridView1.Location = New Point(3, 4)
+        DataGridView1.Margin = New Padding(3, 4, 3, 4)
         DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(530, 285)
+        DataGridView1.RowHeadersWidth = 51
+        DataGridView1.Size = New Size(606, 380)
         DataGridView1.TabIndex = 0
         ' 
         ' ListadoGlobaldeAlmacenPag
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         Controls.Add(DataGridView1)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "ListadoGlobaldeAlmacenPag"
-        Size = New Size(536, 291)
+        Size = New Size(613, 388)
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub

@@ -41,23 +41,20 @@
     End Sub
     Public Sub LimpiarTodo()
 
-        ComboBoxOrigen.DataSource = Nothing
+
         ComboBoxOrigen.Text = ""
 
-        ComboBoxDestino.DataSource = Nothing
+
         ComboBoxDestino.Text = ""
 
-        ComboBoxVoluntarios.DataSource = Nothing
+
         ComboBoxVoluntarios.Text = ""
 
         DataGridView.Rows.Clear()
     End Sub
     Public Sub LimpiarTodoMenosOrigen()
-
-        ComboBoxDestino.DataSource = Nothing
         ComboBoxDestino.Text = ""
 
-        ComboBoxVoluntarios.DataSource = Nothing
         ComboBoxVoluntarios.Text = ""
 
         DataGridView.Rows.Clear()
@@ -229,11 +226,4 @@
         Me.DataGridView.Columns.Add(colCant)
     End Sub
 
-    Private Sub Panel_editar_Paint(sender As Object, e As PaintEventArgs) Handles Panel_editar.Paint
-
-    End Sub
-
-    Private Sub fecha_ValueChanged(sender As Object, e As EventArgs) Handles fecha.ValueChanged
-
-    End Sub
 End Class
