@@ -113,7 +113,7 @@ Public Class Recepcion__añadir
             Me.a.SumarStock()
 
             MessageBox.Show("Recepción añadida con éxito.", "Éxito")
-            Me.Hide()
+
 
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message, "Error")

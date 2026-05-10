@@ -39,12 +39,14 @@ Partial Class Recepcion__añadir
         TextBox5 = New TextBox()
         Label6 = New Label()
         Label7 = New Label()
+        DataGridView1 = New DataGridView()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(35, 48)
+        Label1.Location = New Point(24, 16)
         Label1.Name = "Label1"
         Label1.Size = New Size(43, 15)
         Label1.TabIndex = 4
@@ -54,7 +56,7 @@ Partial Class Recepcion__añadir
         ' 
         ComboBox1.AccessibleName = "ComboBoxCentro"
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(24, 66)
+        ComboBox1.Location = New Point(24, 34)
         ComboBox1.Name = "ComboBox1"
         ComboBox1.Size = New Size(121, 23)
         ComboBox1.TabIndex = 8
@@ -64,7 +66,7 @@ Partial Class Recepcion__añadir
         ' 
         ComboBox2.AccessibleName = "ComboBoxVoluntario"
         ComboBox2.FormattingEnabled = True
-        ComboBox2.Location = New Point(284, 78)
+        ComboBox2.Location = New Point(12, 96)
         ComboBox2.Name = "ComboBox2"
         ComboBox2.Size = New Size(121, 23)
         ComboBox2.TabIndex = 9
@@ -73,7 +75,7 @@ Partial Class Recepcion__añadir
         ' DateTimePicker1
         ' 
         DateTimePicker1.AccessibleName = "DatePickerFecha"
-        DateTimePicker1.Location = New Point(252, 140)
+        DateTimePicker1.Location = New Point(164, 96)
         DateTimePicker1.Name = "DateTimePicker1"
         DateTimePicker1.Size = New Size(200, 23)
         DateTimePicker1.TabIndex = 10
@@ -81,7 +83,7 @@ Partial Class Recepcion__añadir
         ' TextBox1
         ' 
         TextBox1.AccessibleName = "TextBoxOrigen"
-        TextBox1.Location = New Point(24, 140)
+        TextBox1.Location = New Point(179, 40)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(100, 23)
         TextBox1.TabIndex = 11
@@ -101,7 +103,7 @@ Partial Class Recepcion__añadir
         ' 
         Label2.AccessibleName = "Voluntario"
         Label2.AutoSize = True
-        Label2.Location = New Point(311, 48)
+        Label2.Location = New Point(24, 78)
         Label2.Name = "Label2"
         Label2.Size = New Size(61, 15)
         Label2.TabIndex = 13
@@ -111,7 +113,7 @@ Partial Class Recepcion__añadir
         ' 
         Origen.AccessibleName = "Voluntario"
         Origen.AutoSize = True
-        Origen.Location = New Point(33, 122)
+        Origen.Location = New Point(195, 16)
         Origen.Name = "Origen"
         Origen.Size = New Size(43, 15)
         Origen.TabIndex = 14
@@ -120,7 +122,7 @@ Partial Class Recepcion__añadir
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(319, 122)
+        Label3.Location = New Point(195, 78)
         Label3.Name = "Label3"
         Label3.Size = New Size(38, 15)
         Label3.TabIndex = 15
@@ -129,7 +131,7 @@ Partial Class Recepcion__añadir
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(37, 202)
+        Label4.Location = New Point(24, 150)
         Label4.Name = "Label4"
         Label4.Size = New Size(55, 15)
         Label4.TabIndex = 18
@@ -138,7 +140,7 @@ Partial Class Recepcion__añadir
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(319, 202)
+        Label5.Location = New Point(179, 150)
         Label5.Name = "Label5"
         Label5.Size = New Size(69, 15)
         Label5.TabIndex = 19
@@ -146,28 +148,28 @@ Partial Class Recepcion__añadir
         ' 
         ' TextBox2
         ' 
-        TextBox2.Location = New Point(33, 220)
+        TextBox2.Location = New Point(12, 168)
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(100, 23)
         TextBox2.TabIndex = 20
         ' 
         ' TextBox3
         ' 
-        TextBox3.Location = New Point(305, 220)
+        TextBox3.Location = New Point(170, 168)
         TextBox3.Name = "TextBox3"
         TextBox3.Size = New Size(100, 23)
         TextBox3.TabIndex = 21
         ' 
         ' TextBox4
         ' 
-        TextBox4.Location = New Point(24, 267)
+        TextBox4.Location = New Point(24, 257)
         TextBox4.Name = "TextBox4"
         TextBox4.Size = New Size(100, 23)
         TextBox4.TabIndex = 22
         ' 
         ' TextBox5
         ' 
-        TextBox5.Location = New Point(305, 279)
+        TextBox5.Location = New Point(170, 267)
         TextBox5.Name = "TextBox5"
         TextBox5.Size = New Size(100, 23)
         TextBox5.TabIndex = 23
@@ -175,7 +177,7 @@ Partial Class Recepcion__añadir
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Location = New Point(37, 249)
+        Label6.Location = New Point(37, 239)
         Label6.Name = "Label6"
         Label6.Size = New Size(58, 15)
         Label6.TabIndex = 24
@@ -184,17 +186,26 @@ Partial Class Recepcion__añadir
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Location = New Point(311, 261)
+        Label7.Location = New Point(179, 249)
         Label7.Name = "Label7"
         Label7.Size = New Size(76, 15)
         Label7.TabIndex = 25
         Label7.Text = "Peso unitario"
+        ' 
+        ' DataGridView1
+        ' 
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Location = New Point(488, 3)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.Size = New Size(293, 390)
+        DataGridView1.TabIndex = 26
         ' 
         ' Recepcion__añadir
         ' 
         AccessibleName = "Voluntario"
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        Controls.Add(DataGridView1)
         Controls.Add(Label7)
         Controls.Add(Label6)
         Controls.Add(TextBox5)
@@ -213,7 +224,8 @@ Partial Class Recepcion__añadir
         Controls.Add(ComboBox1)
         Controls.Add(Label1)
         Name = "Recepcion__añadir"
-        Size = New Size(485, 330)
+        Size = New Size(799, 418)
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -234,5 +246,6 @@ Partial Class Recepcion__añadir
     Friend WithEvents TextBox5 As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
+    Friend WithEvents DataGridView1 As DataGridView
 
 End Class
