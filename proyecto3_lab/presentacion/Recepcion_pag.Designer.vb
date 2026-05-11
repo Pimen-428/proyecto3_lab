@@ -30,17 +30,20 @@ Partial Class Recepcion_pag
         ' 
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Location = New Point(0, 0)
+        DataGridView1.Margin = New Padding(3, 4, 3, 4)
         DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(493, 275)
+        DataGridView1.RowHeadersWidth = 51
+        DataGridView1.Size = New Size(563, 367)
         DataGridView1.TabIndex = 8
         ' 
         ' Recepcion_pag
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         Controls.Add(DataGridView1)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "Recepcion_pag"
-        Size = New Size(493, 275)
+        Size = New Size(563, 367)
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub

@@ -58,34 +58,36 @@ Public Class voluntarios_pag_editar
             MessageBox.Show("Faltan datos por rellenar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
-        Dim Dni As String = ComboBoxDni.Text
-        Dim Centro As Integer = Convert.ToInt16(ComboBoxDniEditar.Text)
-        Dim nombre As String = TextBoxNombreEditar.Text
-        Dim especialidad As String = TextBoxEspecialidadEditar.Text
-        Dim pAux As Voluntario
-        pAux = New Voluntario(Dni)
-        pAux.centro = Centro
-        pAux.Nombre = nombre
-        pAux.especialidad = especialidad
-        ' Mostramos el mensaje con botones Yes y No, y un icono de interrogación
-        respuesta = MessageBox.Show("¿Estás seguro de que quieres editar este voluntario?",
+        Try
+            Dim Dni As String = ComboBoxDni.Text
+            Dim Centro As Integer = Convert.ToInt16(ComboBoxDniEditar.Text)
+            Dim nombre As String = TextBoxNombreEditar.Text
+            Dim especialidad As String = TextBoxEspecialidadEditar.Text
+            Dim pAux As Voluntario
+            pAux = New Voluntario(Dni)
+            pAux.centro = Centro
+            pAux.Nombre = nombre
+            pAux.especialidad = especialidad
+            ' Mostramos el mensaje con botones Yes y No, y un icono de interrogación
+            respuesta = MessageBox.Show("¿Estás seguro de que quieres editar este voluntario?",
                                     "Confirmación",
                                     MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question)
-        ' Evaluamos la respuesta
-        If respuesta = DialogResult.Yes Then
-            Try
+            ' Evaluamos la respuesta
+            If respuesta = DialogResult.Yes Then
+
                 ' Aquí va el código si el usuario pulsa SÍ
                 pAux.ActualizarPersona()
                 MessageBox.Show("editado con éxito.")
-            Catch ex As Exception
-                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                Exit Sub
-            End Try
-        Else
-            ' Aquí va el código (o nada) si el usuario pulsa NO
-            MessageBox.Show("Operación cancelada.")
-        End If
+
+            Else
+                ' Aquí va el código (o nada) si el usuario pulsa NO
+                MessageBox.Show("Operación cancelada.")
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        Exit Sub
+        End Try
         vaciarTextBox()
         Dim formularioPadre As Voluntarios_pag = DirectCast(Me.Parent.Parent, Voluntarios_pag)
         formularioPadre.refrescarlistbox()

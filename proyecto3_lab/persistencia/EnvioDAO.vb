@@ -46,5 +46,18 @@
     Public Function UltimoEnvioCreado()
         Return AgenteBD.ObtenerAgente.Leer("SELECT * FROM envio ORDER BY idEnvio DESC LIMIT 1;")
     End Function
+    Public Sub historicoenvios(fechaInicio As String, fechaFin As String)
+        Dim col As Collection = AgenteBD.ObtenerAgente.Leer(
+             "SELECT * FROM envio WHERE Fecha BETWEEN '" & fechaInicio & "' AND '" & fechaFin & "' ORDER BY Fecha;")
 
+        For Each aux In col
+            Dim Envio As Envio = New Envio(aux(1))
+            Envio.id_origen = aux(2)
+            Envio.id_destino = aux(3)
+            Envio.dni_voluntario = aux(4).ToString
+            Envio.fecha = CDate(aux(5))
+            Envio.Estado = aux(6).ToString
+            Me.Envio.Add(Envio)
+        Next
+    End Sub
 End Class

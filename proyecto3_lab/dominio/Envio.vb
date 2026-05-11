@@ -35,5 +35,7 @@
     Public Function EliminarEnvio() As Integer
         Return Me.EnvioDAO.Borrar(Me)
     End Function
-
+    Public Sub historicoenvios(Fechainicio As String, Fechafin As String)
+        Me.EnvioDAO.historicoenvios(Fechainicio, Fechafin)
+    End Sub
 End Class

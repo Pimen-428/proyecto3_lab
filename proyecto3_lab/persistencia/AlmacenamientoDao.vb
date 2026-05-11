@@ -66,6 +66,7 @@ Public Class AlmacenamientoDAO
                                ByVal idSuministro As Integer,
                                ByVal cantidad As Integer) As Integer
         Dim sql As String
+        'si ya esta ese suministro creado para eso esta el update, para sumar el stock
         sql = "INSERT INTO almacenamiento (idCentro, idSuministro, CantidadStock) " &
               "VALUES (" & idCentro & ", " & idSuministro & ", " & cantidad & ") " &
               "ON DUPLICATE KEY UPDATE CantidadStock = CantidadStock + " & cantidad & ";"
@@ -73,7 +74,7 @@ Public Class AlmacenamientoDAO
         Return AgenteBD.ObtenerAgente.Modificar(sql)
     End Function
 
-    ' Restar stock → cuando se hace un envío o entrega
+    'Funcion para restar stock cuando se hace un envío o entrega
     Public Function RestarStock(ByVal idCentro As Integer,
                                 ByVal idSuministro As Integer,
                                 ByVal cantidad As Integer) As Integer

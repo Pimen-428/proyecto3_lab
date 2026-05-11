@@ -33,7 +33,7 @@ Partial Class ListadoGlobaldeAlmacenPag
         DataGridView1.Margin = New Padding(3, 4, 3, 4)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(606, 380)
+        DataGridView1.Size = New Size(1062, 380)
         DataGridView1.TabIndex = 0
         ' 
         ' ListadoGlobaldeAlmacenPag
@@ -43,7 +43,7 @@ Partial Class ListadoGlobaldeAlmacenPag
         Controls.Add(DataGridView1)
         Margin = New Padding(3, 4, 3, 4)
         Name = "ListadoGlobaldeAlmacenPag"
-        Size = New Size(613, 388)
+        Size = New Size(1068, 388)
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub

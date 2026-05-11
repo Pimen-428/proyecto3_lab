@@ -48,7 +48,6 @@ Partial Class menu
         RecepcionToolStripMenuItem = New ToolStripMenuItem()
         AñadirRecepToolStripMenuItem = New ToolStripMenuItem()
         VerRecepcionToolStripMenuItem = New ToolStripMenuItem()
-        EditarRecepcionToolStripMenuItem = New ToolStripMenuItem()
         ListadoGlobalDeAlmacenToolStripMenuItem = New ToolStripMenuItem()
         panel_principal = New Panel()
         MenuStrip1.SuspendLayout()
@@ -172,19 +171,19 @@ Partial Class menu
         ' RealizarEnvioToolStripMenuItem1
         ' 
         RealizarEnvioToolStripMenuItem1.Name = "RealizarEnvioToolStripMenuItem1"
-        RealizarEnvioToolStripMenuItem1.Size = New Size(224, 26)
+        RealizarEnvioToolStripMenuItem1.Size = New Size(220, 26)
         RealizarEnvioToolStripMenuItem1.Text = "Realizar envio"
         ' 
         ' EditarEstadoEnvioToolStripMenuItem1
         ' 
         EditarEstadoEnvioToolStripMenuItem1.Name = "EditarEstadoEnvioToolStripMenuItem1"
-        EditarEstadoEnvioToolStripMenuItem1.Size = New Size(224, 26)
+        EditarEstadoEnvioToolStripMenuItem1.Size = New Size(220, 26)
         EditarEstadoEnvioToolStripMenuItem1.Text = "Editar estado envio"
         ' 
         ' HistoricoDeEnvioToolStripMenuItem
         ' 
         HistoricoDeEnvioToolStripMenuItem.Name = "HistoricoDeEnvioToolStripMenuItem"
-        HistoricoDeEnvioToolStripMenuItem.Size = New Size(224, 26)
+        HistoricoDeEnvioToolStripMenuItem.Size = New Size(220, 26)
         HistoricoDeEnvioToolStripMenuItem.Text = "Historico de envio"
         ' 
         ' EntregaToolStripMenuItem
@@ -208,7 +207,7 @@ Partial Class menu
         ' 
         ' RecepcionToolStripMenuItem
         ' 
-        RecepcionToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {AñadirRecepToolStripMenuItem, VerRecepcionToolStripMenuItem, EditarRecepcionToolStripMenuItem})
+        RecepcionToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {AñadirRecepToolStripMenuItem, VerRecepcionToolStripMenuItem})
         RecepcionToolStripMenuItem.Name = "RecepcionToolStripMenuItem"
         RecepcionToolStripMenuItem.Size = New Size(268, 26)
         RecepcionToolStripMenuItem.Text = "Recepción"
@@ -216,20 +215,14 @@ Partial Class menu
         ' AñadirRecepToolStripMenuItem
         ' 
         AñadirRecepToolStripMenuItem.Name = "AñadirRecepToolStripMenuItem"
-        AñadirRecepToolStripMenuItem.Size = New Size(209, 26)
+        AñadirRecepToolStripMenuItem.Size = New Size(224, 26)
         AñadirRecepToolStripMenuItem.Text = "Añadir Recepción"
         ' 
         ' VerRecepcionToolStripMenuItem
         ' 
         VerRecepcionToolStripMenuItem.Name = "VerRecepcionToolStripMenuItem"
-        VerRecepcionToolStripMenuItem.Size = New Size(209, 26)
+        VerRecepcionToolStripMenuItem.Size = New Size(224, 26)
         VerRecepcionToolStripMenuItem.Text = "Ver_Recepcion"
-        ' 
-        ' EditarRecepcionToolStripMenuItem
-        ' 
-        EditarRecepcionToolStripMenuItem.Name = "EditarRecepcionToolStripMenuItem"
-        EditarRecepcionToolStripMenuItem.Size = New Size(209, 26)
-        EditarRecepcionToolStripMenuItem.Text = "Editar_Recepcion"
         ' 
         ' ListadoGlobalDeAlmacenToolStripMenuItem
         ' 
@@ -285,7 +278,6 @@ Partial Class menu
     Friend WithEvents RecepcionToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AñadirRecepToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VerRecepcionToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EditarRecepcionToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HistoricoDeEnvioToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListadoGlobalDeAlmacenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HacerEntregaToolStripMenuItem As ToolStripMenuItem

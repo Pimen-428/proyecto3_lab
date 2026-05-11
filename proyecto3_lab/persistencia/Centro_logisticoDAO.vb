@@ -1,4 +1,5 @@
-﻿Imports Windows.Win32.System
+﻿Imports Google.Protobuf.WellKnownTypes
+Imports Windows.Win32.System
 
 Public Class Centro_logisticoDAO
     Public ReadOnly Property Centro As Collection
@@ -68,7 +69,9 @@ Public Class Centro_logisticoDAO
     End Function
 
     Public Function Actualizar(centro_logistico As Centro_logistico) As Integer
-        Return AgenteBD.ObtenerAgente.Modificar("UPDATE centro_logistico SET Nombre='" & centro_logistico.nombre_centro & "', Ciudad='" & centro_logistico.ciudad_centro & "', CapacidadTM='" & centro_logistico.capacidad & "' WHERE idCentro='" & centro_logistico.id & "';")
+        Dim num As Double = Val(centro_logistico.capacidad)
+        Dim capacidadFormateada As String = num.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)
+        Return AgenteBD.ObtenerAgente.Modificar("UPDATE centro_logistico SET Nombre='" & centro_logistico.nombre_centro & "', Ciudad='" & centro_logistico.ciudad_centro & "', CapacidadTM='" & capacidadFormateada & "' WHERE idCentro='" & centro_logistico.id & "';")
     End Function
 
     Public Function Borrar(centro_logistico As Centro_logistico) As Integer
@@ -89,7 +92,7 @@ Public Class Centro_logisticoDAO
         col = AgenteBD.ObtenerAgente().Leer(sql)
 
         For Each aux In col
-            ' 1. La primera vez que entra al bucle, creamos el objeto Centro
+            'La primera vez que entra al bucle, creamos el objeto Centro
             If c Is Nothing Then
                 c = New Centro_logistico(aux(1).ToString)
                 c.nombre_centro = aux(2).ToString
@@ -98,7 +101,7 @@ Public Class Centro_logisticoDAO
                 Me.Centro.Add(c) ' Lo metemos en tu colección de centros
             End If
 
-            ' 2. Si el DNI no es nulo (el centro tiene voluntarios), creamos el voluntario
+            'Si el DNI no es nulo (el centro tiene voluntarios), creamos el voluntario
             If Not IsDBNull(aux(5)) Then
                 v = New Voluntario(aux(5).ToString) ' aux(5) es el DNI
                 v.Nombre = aux(6).ToString          ' aux(6) es el Nombre del voluntario

@@ -61,7 +61,7 @@ Public Class Recepcion__añadir
         Dim Entregados As Integer = 0
         Try
 
-            ' 1. VALIDACIONES PREVIAS
+            ' control de errores
             If ComboBox1.SelectedItem Is Nothing Then
                 Throw New Exception("Debe seleccionar un centro de destino.")
             End If
@@ -72,7 +72,7 @@ Public Class Recepcion__añadir
             If TextBox1.Text = "" Then
                 Throw New Exception("se debe poner un origen")
             End If
-            ' 2. CAPTURA DE DATOS DE CABECERA
+            ' capturamos datos de la cabecera
             Dim idDestino As String = ComboBox1.SelectedItem.ToString()
             Dim fechaEnvio As Date = DateTimePicker1.Value.Date
             Dim dnivoluntario As String = ComboBox2.SelectedItem.ToString()
@@ -115,7 +115,8 @@ Public Class Recepcion__añadir
                 If Not Integer.TryParse(fila.Cells("Cantidad").Value?.ToString(), cant) OrElse cant <= 0 Then
                     Throw New Exception("La cantidad debe ser un número entero mayor a 0.")
                 End If
-                detalle.cantidad = cant
+                detalle.Cantidad = cant
+                'aqui hacemos todas las comprobaciones para ver si supera el peso del centro de destino o no
                 Dim centrodestino = New Centro_logistico(idDestino)
                 centrodestino.LeerCentro()
                 Dim almacenamientocentrodestino = centrodestino.capacidad * 1000
@@ -129,6 +130,7 @@ Public Class Recepcion__añadir
                 If (ocupadoactualldestino + pesocantidad > almacenamientocentrodestino) Then
                     Throw New Exception("Error La capacidad del centro : " & idDestino & " es " & almacenamientocentrodestino & " kilos, no se puede superar esa capacidad")
                 End If
+
                 detalle.InsertarDetalle()
                 'sumamos el stock al centro correspondiente despues de comprobar que el peso estaba bien
                 almacenamientodestino.IdCentro = idDestino
@@ -143,7 +145,7 @@ Public Class Recepcion__añadir
             LimpiarTodo()
             RefrescarComboBoxCentro()
         Catch ex As Exception
-            ' CAPTURA DE CUALQUIER ERROR (Validación o Base de Datos)
+            ' si salta algun error aqui se captura 
             MessageBox.Show(ex.Message, "Error al confirmar envío", MessageBoxButtons.OK, MessageBoxIcon.Error)
             If envioañadido Then
                 ' Usamos un bucle for normal para controlar el índice hasta 'Entregados'
@@ -194,7 +196,7 @@ Public Class Recepcion__añadir
             Exit Sub
         End If
 
-        ' 1. Columna de ComboBox para Suministros
+        ' primera columna de ComboBox para Suministros
         Dim colCombo As New DataGridViewComboBoxColumn()
         colCombo.Name = "suministro"
         colCombo.HeaderText = "Suministro"
@@ -204,7 +206,7 @@ Public Class Recepcion__añadir
         colCombo.ValueMember = "id_suministro"
         Me.DataGridView1.Columns.Add(colCombo)
 
-        ' 2. Columna para la Cantidad
+        ' segunda columna para la Cantidad
         Dim colCant As New DataGridViewTextBoxColumn()
         colCant.Name = "Cantidad"
         colCant.HeaderText = "Cantidad a Enviar"

@@ -81,11 +81,6 @@ Public Class menu
     Private Sub VerRecepcionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerRecepcionToolStripMenuItem.Click
         cambiarvista(New Recepcion_pag())
     End Sub
-
-    Private Sub EditarRecepcionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditarRecepcionToolStripMenuItem.Click
-        cambiarvista(New Recepcion_editar())
-    End Sub
-
     Private Sub TransaccionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransaccionesToolStripMenuItem.Click
 
     End Sub

@@ -24,12 +24,12 @@
         alm.IdCentro = idCentroOrigen
         alm.IdSuministro = Me.id_suministro
 
-        ' 2. Obtenemos el stock actual usando el método que ya definiste
+        'Obtenemos el stock actual usando el método que ya definiste
         Dim cantidaddelalmacen As Integer = alm.ObtenerStock()
 
-        ' 3. VALIDACIÓN: Si no hay suficiente stock, lanzamos un error o devolvemos un código
+        'VALIDACIÓN: Si no hay suficiente stock, lanzamos un error o devolvemos un código
         If cantidaddelalmacen < Me.cantidad Then
-            ' Puedes lanzar una excepción para que el Try/Catch de la presentación lo capture
+            'Lanzamos excepción para que se capture en la capa de interfaz
             Throw New Exception("Stock insuficiente para el suministro " & Me.id_suministro &
                             ". Disponible: " & cantidaddelalmacen & ", Solicitado: " & Me.cantidad)
         End If

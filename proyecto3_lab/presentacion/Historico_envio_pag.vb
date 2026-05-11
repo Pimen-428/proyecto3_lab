@@ -39,20 +39,19 @@
         Try
             Dim fechaInicio As String = DateTimePicker1.Value.Date.ToString("yyyy-MM-dd")
             Dim fechaFin As String = DateTimePicker2.Value.Date.ToString("yyyy-MM-dd")
-
-            Dim col As Collection = AgenteBD.ObtenerAgente.Leer(
-                "SELECT * FROM envio WHERE Fecha BETWEEN '" & fechaInicio & "' AND '" & fechaFin & "' ORDER BY Fecha;")
+            Dim envios As Envio = New Envio
+            envios.historicoenvios(fechaInicio, fechaFin)
 
             DataGridView1.Rows.Clear()
 
-            For Each aux As Collection In col
+            For Each aux In envios.EnvioDAO.Envio
                 DataGridView1.Rows.Add(
-                    aux(1).ToString(),
-                    aux(2).ToString(),
-                    aux(3).ToString(),
-                    aux(4).ToString(),
-                    CDate(aux(5)).ToShortDateString(),
-                    aux(6).ToString())
+                    aux.id,
+                    aux.id_origen,
+                    aux.id_destino,
+                    aux.dni_voluntario,
+                    CDate(aux.fecha).ToShortDateString(),
+                    aux.Estado)
             Next
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)

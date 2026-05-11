@@ -107,13 +107,9 @@ Public Class SuminstroDao
 
         ' La consulta une ambas tablas y suma las cantidades
         sql = "SELECT s.idSuministro, s.Descripcion, s.Categoria, s.PesoUnitario, " &
-          "SUM(mov.Cantidad) AS Total " &
+          "SUM(de.Cantidad) AS Total " &
           "FROM suministro s " &
-          "INNER JOIN (" &
-          "  SELECT idSuministro, Cantidad FROM detalle_envio " &
-          "  UNION ALL " &
-          "  SELECT idSuministro, Cantidad FROM detalle_entrega " &
-          ") AS mov ON s.idSuministro = mov.idSuministro " &
+          "INNER JOIN detalle_entrega de ON s.idSuministro = de.idSuministro " &
           "GROUP BY s.idSuministro, s.Descripcion, s.Categoria, s.PesoUnitario " &
           "ORDER BY Total DESC " &
           "LIMIT 10;"
